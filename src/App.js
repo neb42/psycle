@@ -1,26 +1,73 @@
+// @flow
+
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Spinner } from '@asidatascience/adler-ui';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { BookingHistoryProvider, BookingHistoryConsumer } from './context/BookingHistory';
+import Request from './helpers/Request';
+import Login from './pages/Login';
+
+
+type State = {
+  bookingHistory: Array<*>,
+  isFetching: boolean,
+  loggedIn: boolean,
+};
+
+export default class App extends React.Component<*, State> {
+  state: State = {
+    bookingHistory: [],
+    isFetching: false,
+    loggedIn: false,
+  };
+
+  handleLogin = async (username: string, password: string) => {
+    this.setState({ isFetching: true });
+    const bookingHistory = await this.fetchBookingHistory(username, password);
+    this.setState({
+      bookingHistory,
+      isFetching: false,
+      loggedIn: true,
+    });
+  }
+
+  fetchBookingHistory = async (username: string, password: string) => {
+    const request = Request.get('/booking-history')
+      .setQueryParameters({
+         username: {
+           value: username,
+           type: Request.pass,
+         },
+         password: {
+           value: password,
+           type: Request.pass,
+         },
+       });
+    const { bookingHistory } = await request.send();
+    return bookingHistory;
+  }
+
+  render() {
+    const { isFetching, loggedIn, bookingHistory } = this.state;
+
+    if (loggedIn) {
+      return (
+        <BookingHistoryProvider value={bookingHistory} >
+          <BookingHistoryConsumer>
+            {context =>
+              <p>{JSON.stringify(context)}</p>
+            }
+          </BookingHistoryConsumer>
+        </BookingHistoryProvider>
+      );
+    }
+
+    if (isFetching) {
+      return <Spinner />;
+    }
+
+    return (
+      <Login onLogin={this.handleLogin} />
+    );
+  }
 }
-
-export default App;
