@@ -6,6 +6,7 @@ import { Spinner } from '@asidatascience/adler-ui';
 import { BookingHistoryProvider, BookingHistoryConsumer } from './context/BookingHistory';
 import Request from './helpers/Request';
 import Login from './pages/Login';
+import InstructorCount from './components/Charts/InstructorCount';
 
 
 type State = {
@@ -55,7 +56,7 @@ export default class App extends React.Component<*, State> {
         <BookingHistoryProvider value={bookingHistory} >
           <BookingHistoryConsumer>
             {context =>
-              <p>{JSON.stringify(context)}</p>
+              <InstructorCount bookingHistory={context} width={600} height={400} />
             }
           </BookingHistoryConsumer>
         </BookingHistoryProvider>
