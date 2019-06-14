@@ -7,7 +7,7 @@ import App from './App';
 
 const GlobalStyles = createGlobalStyle`
   body {
-    background-color: black;
+    background-color: white;
     user-select: none;
   }
 `;
