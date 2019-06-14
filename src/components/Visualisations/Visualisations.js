@@ -13,6 +13,7 @@ import ClassCount from './ClassCount';
 import WeekScatter from './WeekScatter';
 import InstructorBars from './InstructorBars';
 import FavouriteInstructor from './FavouriteInstructor';
+import Studio1 from './Studio1';
 
 import * as Styles from './Visualisations.styles';
 
@@ -144,6 +145,11 @@ export default class Visualisations extends React.Component {
                 width={this.svgWidth}
               />
             </foreignObject>
+            <Studio1
+              activeIndex={activeIndex}
+              width={this.svgWidth}
+              height={this.svgHeight}
+            />
           </g>
         </svg>
       </Styles.Visualisations>

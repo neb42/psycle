@@ -44,6 +44,10 @@ const steps = [
       </React.Fragment>
     ),
   },
+  {
+    title: 'Studio 1',
+    content: 'Blah blah',
+  },
 ];
 
 export default class Sections extends React.Component {
