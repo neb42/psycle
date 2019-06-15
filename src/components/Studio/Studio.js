@@ -3,8 +3,8 @@ import React from 'react';
 const inset = 23;
 const bikeRadius = 18;
 const pillarSize = 28;
-const Studio = ({ rows, pillarPosition }) => rows.map((r, i) => (
-  <g transform={`translate(${inset * r.inset}, 0)`}>
+const Studio = ({ rows, pillarPosition, opacity }) => rows.map((r, i) => (
+  <g className="studio-row" transform={`translate(${inset * r.inset}, 0)`} opacity={opacity}>
     {Array(r.end - r.start + 1).fill(1).map((_, j) => (
       <React.Fragment>
         <g>
