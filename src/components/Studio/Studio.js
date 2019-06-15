@@ -1,22 +1,24 @@
 import React from 'react';
 
-const inset = 23;
 const bikeRadius = 18;
 const pillarSize = 28;
-const Studio = ({ rows, pillarPosition, opacity }) => rows.map((r, i) => (
-  <g className="studio-row" transform={`translate(${inset * r.inset}, 0)`} opacity={opacity}>
-    {Array(r.end - r.start + 1).fill(1).map((_, j) => (
-      <React.Fragment>
+const Studio = ({ bikeCount, getX, getY, opacity, hasPillar, getPillarX, getPillarY }) => (
+  <g opacity={opacity}>
+    {Array(bikeCount).fill(1).map((_, bikeIdx) => {
+      const bikeNumber = bikeIdx + 1;
+      const x = getX(bikeNumber);
+      const y = getY(bikeNumber);
+      return (
         <g>
           <circle
-            cx={(j * 10) + (j * bikeRadius * 2) + (r.hasPillar && j + r.start >= pillarPosition ?  20 + (bikeRadius * 3): 0)}
-            cy={(bikeRadius * 2) * (i + 1) + (i * 10)}
+            cx={x}
+            cy={y}
             r={bikeRadius}
             fill="rgba(45,45,45,.9)"
           />
           <text
-            x={(j * 10) + (j * bikeRadius * 2) + (r.hasPillar && j + r.start >= pillarPosition ?  20 + (bikeRadius * 3): 0)}
-            y={(bikeRadius * 2) * (i + 1) + (i * 10)}
+            x={x}
+            y={y}
             fill="white"
             text-anchor="middle"
             alignment-baseline="middle"
@@ -25,36 +27,36 @@ const Studio = ({ rows, pillarPosition, opacity }) => rows.map((r, i) => (
               fontFamily: 'soin_sans_neueroman,sans-serif',
             }}
           >
-            {j + r.start}
+            {bikeNumber}
           </text>
         </g>
-        {j + r.start === pillarPosition && (
-          <g>
-            <rect
-              width={pillarSize}
-              height={pillarSize}
-              x={(j * 10) + (j * bikeRadius * 2)}
-              y={(bikeRadius * 2) * (i + 1) + (i * 10) - (pillarSize / 2)}
-              fill="#ccc"
-            />
-            <text
-              x={(j * 10) + (j * bikeRadius * 2) + (pillarSize /2)}
-              y={(bikeRadius * 2) * (i + 1) + (i * 10)}
-              fill="white"
-              // text-anchor="middle"
-              // alignment-baseline="middle"
-              style={{
-                fontSize: '15px',
-                fontFamily: 'soin_sans_neueroman,sans-serif',
-              }}
-            >
-              P
-            </text>
-          </g>
-        )}
-      </React.Fragment>
-    ))}
+      );
+    })}
+    {hasPillar && (
+      <g>
+        <rect
+          width={pillarSize}
+          height={pillarSize}
+          x={getPillarX()}
+          y={getPillarY(pillarSize)}
+          fill="#ccc"
+        />
+        <text
+          x={getPillarX()}
+          y={getPillarY(pillarSize)}
+          fill="white"
+          // text-anchor="middle"
+          // alignment-baseline="middle"
+          style={{
+            fontSize: '15px',
+            fontFamily: 'soin_sans_neueroman,sans-serif',
+          }}
+        >
+          P
+        </text>
+      </g>
+    )}
   </g>
-));
+);
 
 export default Studio;
