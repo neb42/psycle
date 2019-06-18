@@ -3,6 +3,7 @@ import { nest } from 'd3-collection';
 import { scaleBand, scaleLinear, scaleSequential, scaleTime } from 'd3-scale';
 import { max, bin, extent } from 'd3-array';
 import { interpolatePuRd } from 'd3-scale-chromatic';
+import { contourDensity } from 'd3-contour';
 import moment from 'moment';
 
 import { BookingHistoryContext } from '../../context/BookingHistory';
@@ -13,7 +14,10 @@ import ClassCount from './ClassCount';
 import WeekScatter from './WeekScatter';
 import InstructorBars from './InstructorBars';
 import FavouriteInstructor from './FavouriteInstructor';
-import Studio1 from './Studio1';
+import Studio from './Studio';
+
+import * as Studio1 from '../Studio/studio1';
+import * as Studio2 from '../Studio/studio2';
 
 import * as Styles from './Visualisations.styles';
 
@@ -79,7 +83,6 @@ export default class Visualisations extends React.Component {
   }
 
   get yBarScale() {
-    console.log('HERE', this.instructorCounts.map((_, i) => i))
     const { height } = this.props;
     return scaleBand()
       .paddingInner(0.08)
@@ -100,6 +103,40 @@ export default class Visualisations extends React.Component {
     return scaleSequential()
       .domain([0, countMax])
       .interpolator(interpolatePuRd);
+  }
+
+  // Studio 1 contour density
+
+  get studio1ContourDensity() {
+    const { width, height } = this.props;
+    const { bookingHistory } = this.context;
+    const densityData = contourDensity()
+      .x(function(d) { return Studio1.getX(d.bike); })
+      .y(function(d) { return Studio1.getY(d.bike); })
+      .size([this.svgWidth, this.svgHeight])
+      .bandwidth(20)(
+        bookingHistory
+      );
+    return densityData;
+  }
+
+  get studio2ContourDensity() {
+    const { width, height } = this.props;
+    const { bookingHistory } = this.context;
+    const densityData = contourDensity()
+      .x(function(d) { return Studio2.getX(d.bike); })
+      .y(function(d) { return Studio2.getY(d.bike); })
+      .size([this.svgWidth, this.svgHeight])
+      .bandwidth(20)(
+        bookingHistory
+      );
+    return densityData;
+  }
+
+  get contourDensityColorScale() {
+    return scaleLinear()
+      .domain([0, 0.001]) // Points per square pixel.
+      .range(["white", "#69b3a2"]);
   }
 
   render() {
@@ -145,10 +182,13 @@ export default class Visualisations extends React.Component {
                 width={this.svgWidth}
               />
             </foreignObject>
-            <Studio1
+            <Studio
               activeIndex={activeIndex}
               width={this.svgWidth}
               height={this.svgHeight}
+              contourDensityColorScale={this.contourDensityColorScale}
+              studio1ContourDensity={this.studio1ContourDensity}
+              studio2ContourDensity={this.studio2ContourDensity}
             />
           </g>
         </svg>
