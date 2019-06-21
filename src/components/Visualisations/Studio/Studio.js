@@ -23,15 +23,21 @@ export default class StudioViz extends React.Component {
   handleActiveIndexChange = (activeIndex) => {
     if (activeIndex === 5) {
       this.showStudio1();
+      this.hideOverlay();
     } else if (activeIndex === 6) {
+      this.showStudio1();
       this.showHeatmap();
     } else if (activeIndex === 7) {
+      this.showStudio1();
       this.showFavouriteBike();
     } else if (activeIndex === 8) {
       this.showStudio2();
+      this.hideOverlay();
     } else if (activeIndex === 9) {
+      this.showStudio2();
       this.showHeatmap();
     } else if (activeIndex === 10) {
+      this.showStudio2();
       this.showFavouriteBike();
     } else if (activeIndex === 4 || activeIndex === 11) {
       this.hide();
@@ -39,11 +45,11 @@ export default class StudioViz extends React.Component {
   }
 
   showStudio1 = () => {
-    this.setState({ studio: 'studio1', overlay: null });
+    this.setState({ studio: 'studio1' });
   }
 
   showStudio2 = () => {
-    this.setState({ studio: 'studio2', overlay: null });
+    this.setState({ studio: 'studio2' });
   }
 
   showHeatmap = () => {
@@ -78,11 +84,11 @@ export default class StudioViz extends React.Component {
       studio2ContourDensity,
       contourDensityColorScale,
     } = this.props;
-    console.log(geoPath(studio1ContourDensity[0]))
+    const { studio } = this.state;
     return (
       // <Studio1 opacity={visible ? 1 : 0} />
       <React.Fragment>
-        <Studio />
+        <Studio studio={studio} />
         <g opacity={this.heatmapStudio1Opacity}>
           {studio1ContourDensity.map(d => (
             <path d={geoPath()(d)} fill={contourDensityColorScale(d.value)} />

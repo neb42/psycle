@@ -107,8 +107,8 @@ export default class Studio extends React.Component {
   }
 
   hideStudio = () => {
-    const x = Studio.hasPillar ? Studio.getPillarX() : Studio.hasStudio.getX(Math.floor(Studio.bikeCount) / 2);
-    const y = Studio.hasPillar ? Studio.getPillarY(pillarSize) : Studio.hasStudio.getY(Math.floor(Studio.bikeCount) / 2);
+    const x = Studio.hasPillar ? Studio.getPillarX() : Studio1.getX(Math.floor(Studio1.bikeCount / 2));
+    const y = Studio.hasPillar ? Studio.getPillarY(pillarSize) : Studio1.getY(Math.floor(Studio1.bikeCount / 2));
 
     selectAll('.bike-circle')
       .transition(transition('d').duration(600))
