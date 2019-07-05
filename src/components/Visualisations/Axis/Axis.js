@@ -137,11 +137,11 @@ export default class Axis extends React.PureComponent {
           transform={`translate(0, ${height})`}
           style={{ opacity: opacityX }}
         />
-        {/* <g
+        <g
           className="axis y"
           transform={`translate(${width}, 0)`}
           style={{ opacity: opacityY }}
-        /> */}
+        />
       </React.Fragment>
     );
   }
