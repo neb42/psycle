@@ -127,12 +127,13 @@ export default class Studio extends React.Component {
   }
 
   render() {
+    const { transform } = this.props;
     const { Studio } = this.state;
     const pillarX = Studio ? Studio.getPillarX() : Studio1.getPillarX();
     const pillarY = Studio? Studio.getPillarY(pillarSize) : Studio1.getPillarY(pillarSize);
     const pillarOpacity = Studio && Studio.hasPillar ? 1 : 0;
     return (
-      <g>
+      <g transform={transform}>
         {Array(Math.max(Studio1.bikeCount, Studio2.bikeCount)).fill(1).map((_, bikeIdx) => {
           const bikeNumber = bikeIdx + 1;
           const x = Studio ? Studio.getX(bikeNumber) : Studio1.getPillarX();

@@ -78,23 +78,34 @@ export default class StudioViz extends React.Component {
     return studio === 'studio2' && overlay === 'heatmap' ? 0.8 : 0;
   }
 
+  get groupTransform() {
+    const { width, height } = this.props;
+    const maxWidth = 588;
+    const maxHeight = 220;
+    const x = (width - maxWidth) / 2;
+    const y = (height - maxHeight) / 2;
+    return `translate(${x}, ${y})`;
+  }
+
   render() {
     const {
       studio1ContourDensity,
       studio2ContourDensity,
       contourDensityColorScale,
+      height,
+      width,
     } = this.props;
     const { studio } = this.state;
     return (
       // <Studio1 opacity={visible ? 1 : 0} />
       <React.Fragment>
-        <Studio studio={studio} />
-        <g opacity={this.heatmapStudio1Opacity}>
+        <Studio studio={studio} height={height} width={width} transform={this.groupTransform} />
+        <g opacity={this.heatmapStudio1Opacity} transform={this.groupTransform}>
           {studio1ContourDensity.map(d => (
             <path d={geoPath()(d)} fill={contourDensityColorScale(d.value)} />
           ))}
         </g>
-        <g opacity={this.heatmapStudio2Opacity}>
+        <g opacity={this.heatmapStudio2Opacity} transform={this.groupTransform}>
           {studio2ContourDensity.map(d => (
             <path d={geoPath()(d)} fill={contourDensityColorScale(d.value)} />
           ))}
