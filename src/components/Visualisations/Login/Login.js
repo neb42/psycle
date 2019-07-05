@@ -1,9 +1,9 @@
 // @flow
 
 import React from 'react';
+import axios from 'axios';
 import { Input, Button } from '@faculty/adler-web-components';
 
-import Request from '../../../helpers/Request';
 import { BookingHistoryConsumer } from '../../../context/BookingHistory';
 
 import * as Styles from './Login.styles';
@@ -38,18 +38,11 @@ export default class Login extends React.Component<Props, State> {
   };
 
   fetchBookingHistory = async (username: string, password: string) => {
-    const request = Request.get('/booking-history')
-      .setQueryParameters({
-         username: {
-           value: username,
-           type: Request.pass,
-         },
-         password: {
-           value: password,
-           type: Request.pass,
-         },
-       });
-    const { bookingHistory } = await request.send();
+    const { data: { bookingHistory }} = await axios.get(`/booking-history?username=${username}&password=${password}`, {
+      headers: {
+        'UserAPI-Key': 'qaZ6fkpjjwRgDl77PS4s8bd26IQ3EuZzCgyuAMdxO8SPpllbKo',
+      },
+    })
     return bookingHistory;
   }
 
