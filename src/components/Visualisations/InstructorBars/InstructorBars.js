@@ -98,7 +98,7 @@ export default class InstructorBars extends React.PureComponent {
             fill="white"
             opacity={visible ? 1 : 0}
             style={{
-              fontSize: '110px',
+              fontSize: yBarScale.bandwidth(),
               fontFamily: 'soin_sans_neueroman,sans-serif',
             }}
           >
