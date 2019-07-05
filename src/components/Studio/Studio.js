@@ -45,26 +45,12 @@ export default class Studio extends React.Component {
   transition = (Studio, PrevStudio) => {
     if (Studio.bikeCount > PrevStudio.bikeCount) {
       selectAll('.bike-circle')
-        .filter((_, i) => i >= PrevStudio.bikeCount)
         .transition(transition('a').duration(600))
         .attr('opacity', 1);
 
       selectAll('.bike-text')
-        .filter((_, i) => i >= PrevStudio.bikeCount)
         .transition(transition('aa').duration(600))
         .attr('opacity', 1);
-
-      selectAll('.bike-circle')
-        .filter((_, i) => i >= PrevStudio.bikeCount)
-        .transition(transition('b').duration(0))
-        .attr('x', (_, i) => Studio.getX(i + 1))
-        .attr('y', (_, i) => Studio.getY(i + 1));
-
-      selectAll('.bike-text')
-        .filter((_, i) => i >= PrevStudio.bikeCount)
-        .transition(transition('bb').duration(0))
-        .attr('x', (_, i) => Studio.getX(i + 1))
-        .attr('y', (_, i) => Studio.getY(i + 1));
     }
 
     if (Studio.bikeCount < PrevStudio.bikeCount) {
@@ -77,6 +63,16 @@ export default class Studio extends React.Component {
         .filter((_, i) => i >= Studio.bikeCount)
         .transition(transition('cc').duration(600))
         .attr('opacity', 0);
+
+      selectAll('.bike-circle')
+        .filter((_, i) => i < Studio.bikeCount)
+        .transition(transition('c').duration(600))
+        .attr('opacity', 1);
+
+      selectAll('.bike-text')
+        .filter((_, i) => i < Studio.bikeCount)
+        .transition(transition('cc').duration(600))
+        .attr('opacity', 1);
     }
 
     selectAll('.bike-circle')
