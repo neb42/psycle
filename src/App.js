@@ -28,6 +28,13 @@ export default class App extends React.Component<*, State> {
     this.setupScroller();
   }
 
+  componentDidUpdate(_, prevState) {
+    const { loaded } = this.state;
+    if (loaded !== prevState.loaded) {
+     this.scroller.scroll(selectAll('#step'));
+    }
+  }
+
   setupScroller = () => {
     // setup scroll functionality
     this.scroller = new Scroller();
