@@ -141,6 +141,8 @@ export default class Visualisations extends React.Component {
 
   render() {
     const { width, height, activeIndex, progress } = this.props;
+    const { loaded } = this.context;
+
     return (
       <Styles.Visualisations id="vis">
         <svg width={this.svgWidth} height={this.svgHeight}>
@@ -148,48 +150,52 @@ export default class Visualisations extends React.Component {
             <foreignObject  width={this.svgWidth} height={this.svgHeight}>
               <Login activeIndex={activeIndex} />
             </foreignObject>
-            <Axis
-              activeIndex={activeIndex}
-              height={height}
-              xBarScale={this.xBarScale}
-              xScatterScale={this.xScatterScale}
-              yScatterScale={this.yScatterScale}
-            />
-            <ClassCount
-              activeIndex={activeIndex}
-              width={this.svgWidth}
-              height={this.svgHeight}
-            />
-            <WeekScatter
-              activeIndex={activeIndex}
-              weeklyCount={this.weeklyCount}
-              yScatterScale={this.yScatterScale}
-              xScatterScale={this.xScatterScale}
-              scatterColorScale={this.scatterColorScale}
-              height={this.svgHeight}
-            />
-            <InstructorBars
-              activeIndex={activeIndex}
-              instructorCounts={this.instructorCounts}
-              yBarScale={this.yBarScale}
-              xBarScale={this.xBarScale}
-              barColorScale={this.barColorScale}
-            />
-            <foreignObject  width={this.svgWidth} height={this.svgHeight}>
-              <FavouriteInstructor
-                activeIndex={activeIndex}
-                height={this.svgHeight}
-                width={this.svgWidth}
-              />
-            </foreignObject>
-            <Studio
-              activeIndex={activeIndex}
-              width={this.svgWidth}
-              height={this.svgHeight}
-              contourDensityColorScale={this.contourDensityColorScale}
-              studio1ContourDensity={this.studio1ContourDensity}
-              studio2ContourDensity={this.studio2ContourDensity}
-            />
+            { loaded && (
+              <React.Fragment>
+                <Axis
+                  activeIndex={activeIndex}
+                  height={height}
+                  xBarScale={this.xBarScale}
+                  xScatterScale={this.xScatterScale}
+                  yScatterScale={this.yScatterScale}
+                />
+                <ClassCount
+                  activeIndex={activeIndex}
+                  width={this.svgWidth}
+                  height={this.svgHeight}
+                />
+                <WeekScatter
+                  activeIndex={activeIndex}
+                  weeklyCount={this.weeklyCount}
+                  yScatterScale={this.yScatterScale}
+                  xScatterScale={this.xScatterScale}
+                  scatterColorScale={this.scatterColorScale}
+                  height={this.svgHeight}
+                />
+                <InstructorBars
+                  activeIndex={activeIndex}
+                  instructorCounts={this.instructorCounts}
+                  yBarScale={this.yBarScale}
+                  xBarScale={this.xBarScale}
+                  barColorScale={this.barColorScale}
+                />
+                <foreignObject  width={this.svgWidth} height={this.svgHeight}>
+                  <FavouriteInstructor
+                    activeIndex={activeIndex}
+                    height={this.svgHeight}
+                    width={this.svgWidth}
+                  />
+                </foreignObject>
+                <Studio
+                  activeIndex={activeIndex}
+                  width={this.svgWidth}
+                  height={this.svgHeight}
+                  contourDensityColorScale={this.contourDensityColorScale}
+                  studio1ContourDensity={this.studio1ContourDensity}
+                  studio2ContourDensity={this.studio2ContourDensity}
+                />
+              </React.Fragment>
+            )}
           </g>
         </svg>
       </Styles.Visualisations>

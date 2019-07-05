@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { BookingHistoryConsumer } from '../../context/BookingHistory';
 import Step from '../Step';
 
 import * as Styles from './Sections.styles';
@@ -78,9 +79,13 @@ export default class Sections extends React.Component {
   render() {
     const { activeIndex } = this.props;
     return (
-      <Styles.Sections id="sections">
-        {steps.map((s, i) => <Step {...s} isActive={activeIndex === i} />)}
-      </Styles.Sections>
+      <BookingHistoryConsumer>
+        {({ loaded }) => (
+          <Styles.Sections id="sections">
+            {(loaded ? steps : [steps[0]]).map((s, i) => <Step {...s} isActive={activeIndex === i} />)}
+          </Styles.Sections>
+        )}
+      </BookingHistoryConsumer>
     );
   }
 }

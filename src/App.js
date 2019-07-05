@@ -251,7 +251,7 @@ export default class App extends React.Component<*, State> {
     const { bookingHistory, activeIndex, progress, loaded } = this.state;
 
     const context = {
-      bookingHistory: this.fakeBookingHistory,
+      bookingHistory,
       loaded,
       setBookingHistory: this.setBookingHistory,
     };
