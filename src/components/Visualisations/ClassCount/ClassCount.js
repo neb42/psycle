@@ -158,11 +158,17 @@ export default class ClassCount extends React.PureComponent {
   }
 
   render() {
+    const {
+      count,
+      monthCount,
+      averagePerMonth,
+    } = this.props;
+
     return (
       <React.Fragment>
-        <A className="class-count a" {...this.aProps}>14 classes</A>
-        <B className="class-count b" {...this.bProps}>4 months</B>
-        <C className="class-count c" {...this.cProps}>3.5 / month</C>
+        <A className="class-count a" {...this.aProps}>{count} classes</A>
+        <B className="class-count b" {...this.bProps}>{monthCount} months</B>
+        <C className="class-count c" {...this.cProps}>{averagePerMonth} / month</C>
       </React.Fragment>
     );
   }

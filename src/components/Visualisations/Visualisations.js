@@ -39,6 +39,21 @@ export default class Visualisations extends React.Component {
     return `translate(${left}, ${top})`;
   }
 
+  // Class clount
+
+  get classCountData() {
+    const { bookingHistory } = this.context;
+    const [ minDate, maxDate ] = extent(bookingHistory, d => d.date);
+    const count = bookingHistory.length;
+    const monthCount = Math.round(moment(maxDate).diff(moment(minDate), 'months', true));
+    const averagePerMonth = (count / monthCount).toFixed(1);
+    return {
+      count,
+      monthCount,
+      averagePerMonth,
+    };
+  }
+
   // Weekly scatter plot
 
   get weeklyCount() {
@@ -56,8 +71,8 @@ export default class Visualisations extends React.Component {
     const { height } = this.props;
     const countMax = max(this.weeklyCount, function (d) { return d.value;});
     return scaleLinear()
-      .domain([0, countMax])
-      .range([0, height - 50], 0.1, 0.1);
+      .domain([countMax, 0])
+      .range([50, height], 0.1, 0.1);
   }
 
   get xScatterScale() {
@@ -160,6 +175,7 @@ export default class Visualisations extends React.Component {
                   yScatterScale={this.yScatterScale}
                 />
                 <ClassCount
+                  {...this.classCountData}
                   activeIndex={activeIndex}
                   width={this.svgWidth}
                   height={this.svgHeight}
