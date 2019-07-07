@@ -139,7 +139,7 @@ export default class Visualisations extends React.Component {
       .x(function(d) { return Studio1.getX(d.bike); })
       .y(function(d) { return Studio1.getY(d.bike); })
       .size([this.svgWidth, this.svgHeight])
-      .bandwidth(20)(
+      .bandwidth(15)(
         bookingHistory.filter(d => d.studio === 'Studio 1')
       );
     return densityData;
@@ -152,7 +152,7 @@ export default class Visualisations extends React.Component {
       .x(function(d) { return Studio2.getX(d.bike); })
       .y(function(d) { return Studio2.getY(d.bike); })
       .size([this.svgWidth, this.svgHeight])
-      .bandwidth(20)(
+      .bandwidth(15)(
         bookingHistory.filter(d => d.studio === 'Studio 2')
       );
     return densityData;
@@ -160,8 +160,8 @@ export default class Visualisations extends React.Component {
 
   get contourDensityColorScale() {
     return scaleLinear()
-      .domain([0, 0.001]) // Points per square pixel.
-      .range(["white", "#69b3a2"]);
+      .domain([0, 0.0008]) // Points per square pixel.
+      .range(["white", "#a71b52"]);
   }
 
   render() {
