@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { BookingHistoryConsumer } from '../../context/BookingHistory';
+import { BookingHistoryContext } from '../../context/BookingHistory';
 import Step from '../Step';
 
 import * as Styles from './Sections.styles';
@@ -76,16 +76,18 @@ const steps = [
 ];
 
 export default class Sections extends React.Component {
+  static contextType = BookingHistoryContext;
+
   render() {
     const { activeIndex } = this.props;
+    const { loaded } = this.context;
+
+    const s = loaded ? steps : [steps[0]];
+
     return (
-      <BookingHistoryConsumer>
-        {({ loaded }) => (
-          <Styles.Sections id="sections">
-            {(loaded ? steps : [steps[0]]).map((s, i) => <Step {...s} isActive={activeIndex === i} />)}
-          </Styles.Sections>
-        )}
-      </BookingHistoryConsumer>
+      <Styles.Sections id="sections">
+        {s.map((s, i) => <Step {...s} isActive={activeIndex === i} />)}
+      </Styles.Sections>
     );
   }
 }

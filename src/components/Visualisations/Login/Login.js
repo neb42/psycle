@@ -4,7 +4,8 @@ import React from 'react';
 import axios from 'axios';
 import { Input, Button } from '@faculty/adler-web-components';
 
-import { BookingHistoryConsumer } from '../../../context/BookingHistory';
+import { BookingHistoryContext } from '../../../context/BookingHistory';
+import Spinner from '../../Spinner';
 
 import * as Styles from './Login.styles';
 
@@ -21,7 +22,10 @@ export default class Login extends React.Component<Props, State> {
   state: State = {
     username: '',
     password: '',
+    loading: false,
   };
+
+  static contextType = BookingHistoryContext;
 
   handleUsernameChange = (value: string) => {
     this.setState({ username: value });
@@ -31,10 +35,17 @@ export default class Login extends React.Component<Props, State> {
     this.setState({ password: value });
   }
 
-  handleSubmit = setBookingHistory => async () => {
+  handleSubmit = async () => {
     const { username, password } = this.state;
-    const bookingHistory = await this.fetchBookingHistory(username, password);
-    setBookingHistory(bookingHistory);
+    const { setData } = this.context;
+
+    this.setState({ loading: true });
+    const [ bookingHistory, instructors ] = await Promise.all([
+      this.fetchBookingHistory(username, password),
+      this.fetchInstructors(),
+    ]);
+    setData(bookingHistory, instructors);
+    this.setState({ loading: false });
   };
 
   fetchBookingHistory = async (username: string, password: string) => {
@@ -46,25 +57,44 @@ export default class Login extends React.Component<Props, State> {
     return bookingHistory;
   }
 
+  fetchInstructors = async () => {
+    const { data: { instructors }} = await axios.get('/instructors', {
+      headers: {
+        'UserAPI-Key': 'qaZ6fkpjjwRgDl77PS4s8bd26IQ3EuZzCgyuAMdxO8SPpllbKo',
+      },
+    })
+    return instructors; 
+  }
+
   render() {
     const { activeIndex } = this.props;
-    const { username, password } = this.state;
+    const { username, password, loading } = this.state;
+    const { loaded } = this.context;
+
+    if (loaded) {
+      return null;
+    }
+
+    if (loading) {
+      return (
+        <Styles.SpinnerWrapper> 
+          <Spinner size={26} thick />
+        </Styles.SpinnerWrapper>
+      );
+    }
+
     return (
-      <BookingHistoryConsumer>
-        {({ setBookingHistory })=> (
-          <Styles.Container visible={activeIndex === 0}>
-            <Input type="email" value={username} placeholder="username" onChange={this.handleUsernameChange} />
-            <Input type="password" value={password} placeholder="password" onChange={this.handlePasswordChange} />
-            <Button
-              text="login"
-              size={Button.sizes.medium}
-              style={Button.styles.filled}
-              color={Button.colors.primary}
-              onClick={this.handleSubmit(setBookingHistory)}
-            />
-          </Styles.Container>
-        )}
-      </BookingHistoryConsumer>
+      <Styles.Container visible={activeIndex === 0}>
+        <Input type="email" value={username} placeholder="username" onChange={this.handleUsernameChange} />
+        <Input type="password" value={password} placeholder="password" onChange={this.handlePasswordChange} />
+        <Button
+          text="login"
+          size={Button.sizes.medium}
+          style={Button.styles.filled}
+          color={Button.colors.primary}
+          onClick={this.handleSubmit}
+        />
+      </Styles.Container>
     );
   }
 }

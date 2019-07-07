@@ -7,8 +7,11 @@ import App from './App';
 
 const GlobalStyles = createGlobalStyle`
   body {
-    background-color: white;
+    background: linear-gradient(0deg, #12182b 0%, #2f3e70 100%);
     user-select: none;
+    & button {
+      outline-style: none !important;
+    }
   }
 `;
 

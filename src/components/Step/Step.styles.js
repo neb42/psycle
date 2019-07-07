@@ -8,7 +8,7 @@ export const Step = styled.section`
   font-family: soin_sans_neueroman,sans-serif;
   font-size: 16px;
   line-height: 23px;
-  color: #767678;
+  color: #fff;
   opacity: ${getOpacity};
 `;
 
@@ -17,6 +17,6 @@ export const Title = styled.div`
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 2px;
-  color: #262626;
+  color: #fff;
   line-height: 1.2em;
 `;

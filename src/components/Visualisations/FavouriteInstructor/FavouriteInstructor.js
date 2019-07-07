@@ -2,7 +2,20 @@
 
 import React from 'react';
 
-export default class FavouriteInstructor extends React.Component {
+import { BookingHistoryContext } from '../../../context/BookingHistory';
+
+export default class FavouriteInstructor extends React.PureComponent {
+  static contextType = BookingHistoryContext;
+
+  get photo() {
+    const { favouriteInstructorName } = this.props;
+    const { instructors } = this.context;
+    if (instructors && instructors[favouriteInstructorName]) {
+      return instructors[favouriteInstructorName].photo;
+    }
+    return '';
+  }
+
   render() {
     const { activeIndex, height } = this.props;
     return (
@@ -12,7 +25,7 @@ export default class FavouriteInstructor extends React.Component {
           opacity: activeIndex === 4 ? 1 : 0,
           transition: 'opacity 600ms',
         }}
-        src="https://psyclelondon.com/dynamic/thumbs/790x790e/1544127918Alana-Profile.jpg"
+        src={this.photo}
         width={height}
         height={height}
       />

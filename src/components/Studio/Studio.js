@@ -87,17 +87,22 @@ export default class Studio extends React.Component {
       .attr('y', (_, i) => Studio.getY(i + 1));
 
     if (Studio.hasPillar) {
-      selectAll('.pillar')
+      selectAll('.pillar-rect')
         .transition(transition('f').duration(0))
         .attr('x', Studio.getPillarX())
         .attr('y', Studio.getPillarY(pillarSize));
 
-      selectAll('.pillar')
+      selectAll('.pillar-rect, .pillar-text')
         .transition(transition('ff').duration(600))
         .attr('opacity', 1);
+
+      selectAll('.pillar-text')
+        .transition(transition('fff').duration(0))
+        .attr('x', Studio.getPillarX() + 15)
+        .attr('y', Studio.getPillarY(pillarSize) + 15);
     } else {
-      selectAll('.pillar')
-        .transition(transition('fff').duration(600))
+      selectAll('.pillar-rect, .pillar-text')
+        .transition(transition('ffff').duration(600))
         .attr('opacity', 0);
     }
   }
@@ -169,7 +174,7 @@ export default class Studio extends React.Component {
         })}
         <g>
           <rect
-            className="pillar"
+            className="pillar-rect"
             width={pillarSize}
             height={pillarSize}
             opacity={pillarOpacity}
@@ -178,23 +183,22 @@ export default class Studio extends React.Component {
             fill="#ccc"
           />
           <text
-            className="pillar"
-            x={pillarX}
-            y={pillarY}
+            className="pillar-text"
+            x={pillarX + 15}
+            y={pillarY + 15}
             opacity={pillarOpacity}
             fill="white"
-            // text-anchor="middle"
-            // alignment-baseline="middle"
+            text-anchor="middle"
+            alignment-baseline="middle"
             style={{
               fontSize: '15px',
               fontFamily: 'soin_sans_neueroman,sans-serif',
             }}
-            >
-              P
-            </text>
-          </g>
-        )}
+          >
+            P
+          </text>
+        </g>
       </g>
-      );
+    );
   }
 }

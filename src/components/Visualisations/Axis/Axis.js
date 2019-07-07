@@ -1,9 +1,23 @@
 import React from 'react';
+import styled from 'styled-components';
 import { select, selectAll } from 'd3-selection';
 import { axisBottom, axisLeft } from 'd3-axis';
 import { transition } from 'd3-transition';
 import { format } from 'd3-format';
 
+const StyledAxis = styled.g`
+  & line {
+    stroke: #fff;
+  }
+
+  & path {
+    stroke: #fff;
+  }
+ 
+  & text {
+    fill: #fff;
+  } 
+`;
 export default class Axis extends React.PureComponent {
   state = {
     opacityX: 0,
@@ -132,12 +146,12 @@ export default class Axis extends React.PureComponent {
     const { opacityX, opacityY } = this.state;
     return (
       <React.Fragment>
-        <g
+        <StyledAxis
           className="axis x"
           transform={`translate(0, ${height})`}
           style={{ opacity: opacityX }}
         />
-        <g
+        <StyledAxis
           className="axis y"
           transform={`translate(${width}, 0)`}
           style={{ opacity: opacityY }}

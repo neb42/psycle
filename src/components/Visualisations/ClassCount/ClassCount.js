@@ -4,18 +4,21 @@ import { transition } from 'd3-transition';
 import styled from 'styled-components';
 
 const A = styled.text`
+  fill: #fff;
   font-size: 95px;
   text-anchor: middle;
   font-family: soin_sans_neueroman,sans-serif;
 `;
 
 const B = styled.text`
+  fill: #fff;
   font-size: 55px;
   text-anchor: middle;
   font-family: soin_sans_neueroman,sans-serif;
 `;
 
 const C = styled.text`
+  fill: #fff;
   font-size: 55px;
   text-anchor: middle;
   font-family: soin_sans_neueroman,sans-serif;
@@ -90,11 +93,11 @@ export default class ClassCount extends React.PureComponent {
 
     select('.class-count.b')
       .transition(transition().duration(transitionSpeed).delay(transitionSpeed * 2))
-      .attr('x', (width / 5) + 30);
+      .attr('x', (width / 5) + 40);
 
     select('.class-count.c')
       .transition(transition().duration(transitionSpeed).delay(transitionSpeed * 2))
-      .attr('x', ((width * 4) / 5) - 30)
+      .attr('x', ((width * 4) / 5) - 40)
       .attr('opacity', 1)
       .on('end', () => this.setState({ state: 1 }));
   }

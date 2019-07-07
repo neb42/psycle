@@ -71,7 +71,7 @@ export default class WeekScatter extends React.PureComponent {
             r={5}
             fillOpacity={visible ? 1 : 0}
             // fill={scatterColorScale(datum.value)}
-            fill={'red'}
+            fill={'#fff'}
           />
         ))}
       </React.Fragment>

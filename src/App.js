@@ -18,6 +18,7 @@ type State = {
 export default class App extends React.Component<*, State> {
   state: State = {
     bookingHistory: [],
+    instructors: [],
     activeIndex: 0,
     progress: 0,
     loaded: false,
@@ -56,8 +57,8 @@ export default class App extends React.Component<*, State> {
     });
   }
 
-  setBookingHistory = bookingHistory => {
-    this.setState({ bookingHistory, loaded: true });
+  setData = (bookingHistory, instructors) => {
+    this.setState({ bookingHistory, instructors, loaded: true });
   }
 
   get fakeBookingHistory() {
@@ -255,12 +256,13 @@ export default class App extends React.Component<*, State> {
   }
 
   render() {
-    const { bookingHistory, activeIndex, progress, loaded } = this.state;
+    const { bookingHistory, instructors, activeIndex, progress, loaded } = this.state;
 
     const context = {
       bookingHistory,
+      instructors,
       loaded,
-      setBookingHistory: this.setBookingHistory,
+      setData: this.setData,
     };
 
     return (
@@ -274,9 +276,9 @@ export default class App extends React.Component<*, State> {
                 progress={progress}
                 width={600}
                 height={520}
-                margin={{ top: 0, left: 20, bottom: 40, right: 10 }}
+                margin={{ top: 0, left: 30, bottom: 40, right: 10 }}
               />
-              <Styles.ExtraSpace id="extra-space" />
+              {loaded && <Styles.ExtraSpace id="extra-space" />}
             </Styles.Graphic>
           </Styles.Container>
         </BookingHistoryProvider>

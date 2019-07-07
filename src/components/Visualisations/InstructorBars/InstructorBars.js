@@ -23,7 +23,7 @@ export default class InstructorBars extends React.PureComponent {
   handleActiveIndexChange = (activeIndex) => {
     if (activeIndex === 3) {
       this.show();
-    } else if (activeIndex === 2 || activeIndex === 4) {
+    } else  {
       this.hide();
     }
   }
@@ -54,7 +54,7 @@ export default class InstructorBars extends React.PureComponent {
 
   hide = () => {
     selectAll('.instructor-count-bar,.bar-text')
-      .transition(transition().duration(600))
+      .transition(transition('hide-bars').duration(600))
       .attr('width', 0)
       .on('end', () => this.setState({ visible: false }));
   }

@@ -26,19 +26,19 @@ export default class StudioViz extends React.Component {
       this.hideOverlay();
     } else if (activeIndex === 6) {
       this.showStudio1();
-      this.showHeatmap();
+      this.showHeatmap('studio-1');
     } else if (activeIndex === 7) {
       this.showStudio1();
-      this.showFavouriteBike();
+      this.showFavouriteBike('studio-1');
     } else if (activeIndex === 8) {
       this.showStudio2();
       this.hideOverlay();
     } else if (activeIndex === 9) {
       this.showStudio2();
-      this.showHeatmap();
+      this.showHeatmap('studio-2');
     } else if (activeIndex === 10) {
       this.showStudio2();
-      this.showFavouriteBike();
+      this.showFavouriteBike('studio-2');
     } else if (activeIndex === 4 || activeIndex === 11) {
       this.hide();
     }
@@ -52,20 +52,39 @@ export default class StudioViz extends React.Component {
     this.setState({ studio: 'studio2' });
   }
 
-  showHeatmap = () => {
-    this.setState({ overlay: 'heatmap' });
+  showHeatmap = studio => {
+    selectAll(`.heatmap-${studio}`)
+      .transition(transition().duration(600))
+      .attr('opacity', 0.8)
+      .on('end', () => this.setState({ overlay: 'heatmap' }));
   }
 
-  showFavouriteBike = () => {
-    this.setState({ overlay: 'favourite-bike' });
+  showFavouriteBike = studio => {
+    selectAll(`.heatmap-${studio}`)
+      .transition(transition().duration(600))
+      .attr('opacity', 0);
+
+    selectAll(`.favourite-bike-${studio}`)
+      .transition(transition().duration(600))
+      .attr('opacity', 1)
+      .on('end', () => this.setState({ overlay: 'favourite-bike' }));
   }
 
   hideOverlay = () => {
-    this.setState({ overlay: null });
+    selectAll(`
+      .heatmap-studio-1,
+      .favourite-bike-studio-1
+      .heatmap-studio-2,
+      .favourite-bike-studio-2
+    `)
+      .transition(transition().duration(600))
+      .attr('opacity', 0)
+      .on('end', () => this.setState({ overlay: null }));
   }
 
   hide = () => {
-    this.setState({ studio: null, overlay: null });
+    this.setState({ studio: null });
+    this.hideOverlay();
   }
 
   get heatmapStudio1Opacity() {
@@ -97,15 +116,14 @@ export default class StudioViz extends React.Component {
     } = this.props;
     const { studio } = this.state;
     return (
-      // <Studio1 opacity={visible ? 1 : 0} />
       <React.Fragment>
         <Studio studio={studio} height={height} width={width} transform={this.groupTransform} />
-        <g opacity={this.heatmapStudio1Opacity} transform={this.groupTransform}>
+        <g className="heatmap-studio-1" opacity={this.heatmapStudio1Opacity} transform={this.groupTransform}>
           {studio1ContourDensity.map(d => (
             <path d={geoPath()(d)} fill={contourDensityColorScale(d.value)} />
           ))}
         </g>
-        <g opacity={this.heatmapStudio2Opacity} transform={this.groupTransform}>
+        <g className="heatmap-studio-2" opacity={this.heatmapStudio2Opacity} transform={this.groupTransform}>
           {studio2ContourDensity.map(d => (
             <path d={geoPath()(d)} fill={contourDensityColorScale(d.value)} />
           ))}

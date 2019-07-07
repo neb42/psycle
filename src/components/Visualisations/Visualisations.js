@@ -120,6 +120,16 @@ export default class Visualisations extends React.Component {
       .interpolator(interpolatePuRd);
   }
 
+  // Favourite instructor
+
+  get favouriteInstructorName() {
+    const { bookingHistory } = this.context;
+    return bookingHistory.sort((a,b) =>
+      bookingHistory.filter(v => v.instructor === a.instructor).length
+      - bookingHistory.filter(v => v.instructor === b.instructor).length
+    )[bookingHistory.length - 1].instructor.toLowerCase();
+  }
+
   // Studio 1 contour density
 
   get studio1ContourDensity() {
@@ -130,7 +140,7 @@ export default class Visualisations extends React.Component {
       .y(function(d) { return Studio1.getY(d.bike); })
       .size([this.svgWidth, this.svgHeight])
       .bandwidth(20)(
-        bookingHistory
+        bookingHistory.filter(d => d.studio === 'Studio 1')
       );
     return densityData;
   }
@@ -143,7 +153,7 @@ export default class Visualisations extends React.Component {
       .y(function(d) { return Studio2.getY(d.bike); })
       .size([this.svgWidth, this.svgHeight])
       .bandwidth(20)(
-        bookingHistory
+        bookingHistory.filter(d => d.studio === 'Studio 2')
       );
     return densityData;
   }
@@ -165,7 +175,7 @@ export default class Visualisations extends React.Component {
             <foreignObject  width={this.svgWidth} height={this.svgHeight}>
               <Login activeIndex={activeIndex} />
             </foreignObject>
-            { loaded && (
+            {loaded && (
               <React.Fragment>
                 <Axis
                   activeIndex={activeIndex}
@@ -197,6 +207,7 @@ export default class Visualisations extends React.Component {
                 />
                 <foreignObject  width={this.svgWidth} height={this.svgHeight}>
                   <FavouriteInstructor
+                    favouriteInstructorName={this.favouriteInstructorName}
                     activeIndex={activeIndex}
                     height={this.svgHeight}
                     width={this.svgWidth}
