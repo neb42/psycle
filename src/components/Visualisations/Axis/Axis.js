@@ -18,6 +18,7 @@ const StyledAxis = styled.g`
     fill: #fff;
   } 
 `;
+
 export default class Axis extends React.PureComponent {
   state = {
     opacityX: 0,
@@ -82,8 +83,6 @@ export default class Axis extends React.PureComponent {
       })
       .scale(xScatterScale);
 
-    const axisY = axisLeft().scale(yScatterScale);
-
     select('.axis.x')
       .call(axisX)
       .transition(
@@ -92,15 +91,6 @@ export default class Axis extends React.PureComponent {
       )
       .style('opacity', 1)
       .on('end', () => this.setState({ opacityX: 1 }));
-
-    select('.axis.y')
-      .call(axisY)
-      .transition(
-        transition()
-          .duration(500)
-      )
-      .style('opacity', 1)
-      .on('end', () => this.setState({ opacityY: 1 }));
   }
 
   renderBarAxis = () => {
@@ -121,14 +111,6 @@ export default class Axis extends React.PureComponent {
       )
       .style('opacity', 1)
       .on('end', () => this.setState({ opacityX: 1 }));
-
-    select('.axis.y')
-      .transition(
-        transition()
-          .duration(500)
-      )
-      .style('opacity', 0)
-      .on('end', () => this.setState({ opacityY: 0 }));
   }
 
   hide = () => {
@@ -151,11 +133,11 @@ export default class Axis extends React.PureComponent {
           transform={`translate(0, ${height})`}
           style={{ opacity: opacityX }}
         />
-        <StyledAxis
+        {/* <StyledAxis
           className="axis y"
           transform={`translate(${width}, 0)`}
           style={{ opacity: opacityY }}
-        />
+        /> */}
       </React.Fragment>
     );
   }

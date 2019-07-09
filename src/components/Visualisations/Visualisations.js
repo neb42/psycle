@@ -197,6 +197,7 @@ export default class Visualisations extends React.Component {
                   xScatterScale={this.xScatterScale}
                   scatterColorScale={this.scatterColorScale}
                   height={this.svgHeight}
+                  width={this.svgWidth}
                 />
                 <InstructorBars
                   activeIndex={activeIndex}
