@@ -123,7 +123,7 @@ export default class Studio extends React.Component {
       .attr('y', y)
         .attr('opacity', 0);
 
-    selectAll('.pillar')
+    selectAll('.pillar-rect, .pillar-text')
       .transition(transition('dd').duration(600))
       .attr('x', x)
       .attr('y', y)
