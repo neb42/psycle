@@ -62,167 +62,175 @@ export default class App extends React.Component<*, State> {
   }
 
   get fakeBookingHistory() {
-   return [ 
-      {
-          "bike": 31,
-          "class_type": "RIDE 45",
-          "date": "2019-02-27T19:00:00",
-          "instructor": "AANYA",
-          "location": "MORTIMER ST",
-          "studio": "Studio 2"
-      },
-      {
-          "bike": 40,
-          "class_type": "RIDE 45",
-          "date": "2019-03-05T18:30:00",
-          "instructor": "ALANA",
-          "location": "MORTIMER ST",
-          "studio": "Studio 1 - Do not use"
-      },
-      {
-          "bike": 41,
-          "class_type": "RIDE 45",
-          "date": "2019-03-10T11:45:00",
-          "instructor": "ALANA",
-          "location": "MORTIMER ST",
-          "studio": "Studio 1 - Do not use"
-      },
-      {
-          "bike": 29,
-          "class_type": "RIDE 45",
-          "date": "2019-03-15T19:00:00",
-          "instructor": "ARIANNA",
-          "location": "MORTIMER ST",
-          "studio": "Studio 2"
-      },
-      {
-          "bike": 30,
-          "class_type": "RIDE 45",
-          "date": "2019-03-19T18:30:00",
-          "instructor": "ALANA",
-          "location": "MORTIMER ST",
-          "studio": "Studio 1 - Do not use"
-      },
-      {
-          "bike": 19,
-          "class_type": "RIDE 45",
-          "date": "2019-03-29T08:00:00",
-          "instructor": "FELIX",
-          "location": "MORTIMER ST",
-          "studio": "Studio 2"
-      },
-      {
-          "bike": 26,
-          "class_type": "RIDE 45",
-          "date": "2019-04-02T17:30:00",
-          "instructor": "ALANA",
-          "location": "MORTIMER ST",
-          "studio": "Studio 1 - Do not use"
-      },
-      {
-          "bike": 29,
-          "class_type": "RIDE 45",
-          "date": "2019-04-07T10:45:00",
-          "instructor": "ALANA",
-          "location": "MORTIMER ST",
-          "studio": "Studio 1"
-      },
-      {
-          "bike": 27,
-          "class_type": "RIDE 45",
-          "date": "2019-04-16T17:30:00",
-          "instructor": "ALANA",
-          "location": "MORTIMER ST",
-          "studio": "Studio 1"
-      },
-      {
-          "bike": 26,
-          "class_type": "RIDE 45",
-          "date": "2019-04-25T18:30:00",
-          "instructor": "ALANA",
-          "location": "MORTIMER ST",
-          "studio": "Studio 1"
-      },
-      {
-          "bike": 30,
-          "class_type": "RIDE 45",
-          "date": "2019-05-02T18:30:00",
-          "instructor": "ALANA",
-          "location": "MORTIMER ST",
-          "studio": "Studio 1"
-      },
-      {
-          "bike": 45,
-          "class_type": "RIDE 45",
-          "date": "2019-05-16T06:30:00",
-          "instructor": "MARION",
-          "location": "MORTIMER ST",
-          "studio": "Studio 1"
-      },
-      {
-          "bike": 30,
-          "class_type": "RIDE 45",
-          "date": "2019-05-21T17:30:00",
-          "instructor": "ALANA",
-          "location": "MORTIMER ST",
-          "studio": "Studio 1"
-      },
-      {
-          "bike": 44,
-          "class_type": "RIDE 45",
-          "date": "2019-05-30T17:30:00",
-          "instructor": "SUNNY",
-          "location": "MORTIMER ST",
-          "studio": "Studio 1"
-      },
-      {
-          "bike": 38,
-          "class_type": "RIDE 45",
-          "date": "2019-06-06T18:30:00",
-          "instructor": "ALANA",
-          "location": "MORTIMER ST",
-          "studio": "Studio 1"
-      },
-      {
-          "bike": 28,
-          "class_type": "RIDE 45",
-          "date": "2019-06-11T17:30:00",
-          "instructor": "ALANA",
-          "location": "MORTIMER ST",
-          "studio": "Studio 1"
-      },
-      {
-          "bike": 26,
-          "class_type": "RIDE 45",
-          "date": "2019-06-18T17:30:00",
-          "instructor": "ALANA",
-          "location": "MORTIMER ST",
-          "studio": "Studio 1"
-      },
-      {
-          "bike": 24,
-          "class_type": "RIDE 45",
-          "date": "2019-06-25T17:30:00",
-          "instructor": "ALANA",
-          "location": "MORTIMER ST",
-          "studio": "Studio 1"
-      },
-      {
-          "bike": 28,
-          "class_type": "RIDE 45",
-          "date": "2019-06-30T10:45:00",
-          "instructor": "ALANA",
-          "location": "MORTIMER ST",
-          "studio": "Studio 1"
-      },
-      {
-          "bike": 34,
-          "class_type": "RIDE 45",
-          "date": "2019-07-02T17:30:00",
-          "instructor": "ALANA",
-          "location": "MORTIMER ST",
-          "studio": "Studio 1"
-      }
+    return [
+        {
+            "bike": 31,
+            "class_type": "RIDE 45",
+            "date": "2019-02-27T19:00:00",
+            "instructor": "AANYA",
+            "location": "MORTIMER ST",
+            "studio": "Studio 2"
+        },
+        {
+            "bike": 40,
+            "class_type": "RIDE 45",
+            "date": "2019-03-05T18:30:00",
+            "instructor": "ALANA",
+            "location": "MORTIMER ST",
+            "studio": "Studio 1 - Do not use"
+        },
+        {
+            "bike": 41,
+            "class_type": "RIDE 45",
+            "date": "2019-03-10T11:45:00",
+            "instructor": "ALANA",
+            "location": "MORTIMER ST",
+            "studio": "Studio 1 - Do not use"
+        },
+        {
+            "bike": 29,
+            "class_type": "RIDE 45",
+            "date": "2019-03-15T19:00:00",
+            "instructor": "ARIANNA",
+            "location": "MORTIMER ST",
+            "studio": "Studio 2"
+        },
+        {
+            "bike": 30,
+            "class_type": "RIDE 45",
+            "date": "2019-03-19T18:30:00",
+            "instructor": "ALANA",
+            "location": "MORTIMER ST",
+            "studio": "Studio 1 - Do not use"
+        },
+        {
+            "bike": 19,
+            "class_type": "RIDE 45",
+            "date": "2019-03-29T08:00:00",
+            "instructor": "FELIX",
+            "location": "MORTIMER ST",
+            "studio": "Studio 2"
+        },
+        {
+            "bike": 26,
+            "class_type": "RIDE 45",
+            "date": "2019-04-02T18:30:00",
+            "instructor": "ALANA",
+            "location": "MORTIMER ST",
+            "studio": "Studio 1 - Do not use"
+        },
+        {
+            "bike": 29,
+            "class_type": "RIDE 45",
+            "date": "2019-04-07T11:45:00",
+            "instructor": "ALANA",
+            "location": "MORTIMER ST",
+            "studio": "Studio 1"
+        },
+        {
+            "bike": 27,
+            "class_type": "RIDE 45",
+            "date": "2019-04-16T18:30:00",
+            "instructor": "ALANA",
+            "location": "MORTIMER ST",
+            "studio": "Studio 1"
+        },
+        {
+            "bike": 26,
+            "class_type": "RIDE 45",
+            "date": "2019-04-25T19:30:00",
+            "instructor": "ALANA",
+            "location": "MORTIMER ST",
+            "studio": "Studio 1"
+        },
+        {
+            "bike": 30,
+            "class_type": "RIDE 45",
+            "date": "2019-05-02T19:30:00",
+            "instructor": "ALANA",
+            "location": "MORTIMER ST",
+            "studio": "Studio 1"
+        },
+        {
+            "bike": 45,
+            "class_type": "RIDE 45",
+            "date": "2019-05-16T07:30:00",
+            "instructor": "MARION",
+            "location": "MORTIMER ST",
+            "studio": "Studio 1"
+        },
+        {
+            "bike": 30,
+            "class_type": "RIDE 45",
+            "date": "2019-05-21T18:30:00",
+            "instructor": "ALANA",
+            "location": "MORTIMER ST",
+            "studio": "Studio 1"
+        },
+        {
+            "bike": 44,
+            "class_type": "RIDE 45",
+            "date": "2019-05-30T18:30:00",
+            "instructor": "SUNNY",
+            "location": "MORTIMER ST",
+            "studio": "Studio 1"
+        },
+        {
+            "bike": 38,
+            "class_type": "RIDE 45",
+            "date": "2019-06-06T19:30:00",
+            "instructor": "ALANA",
+            "location": "MORTIMER ST",
+            "studio": "Studio 1"
+        },
+        {
+            "bike": 28,
+            "class_type": "RIDE 45",
+            "date": "2019-06-11T18:30:00",
+            "instructor": "ALANA",
+            "location": "MORTIMER ST",
+            "studio": "Studio 1"
+        },
+        {
+            "bike": 26,
+            "class_type": "RIDE 45",
+            "date": "2019-06-18T18:30:00",
+            "instructor": "ALANA",
+            "location": "MORTIMER ST",
+            "studio": "Studio 1"
+        },
+        {
+            "bike": 24,
+            "class_type": "RIDE 45",
+            "date": "2019-06-25T18:30:00",
+            "instructor": "ALANA",
+            "location": "MORTIMER ST",
+            "studio": "Studio 1"
+        },
+        {
+            "bike": 28,
+            "class_type": "RIDE 45",
+            "date": "2019-06-30T11:45:00",
+            "instructor": "ALANA",
+            "location": "MORTIMER ST",
+            "studio": "Studio 1"
+        },
+        {
+            "bike": 34,
+            "class_type": "RIDE 45",
+            "date": "2019-07-02T18:30:00",
+            "instructor": "ALANA",
+            "location": "MORTIMER ST",
+            "studio": "Studio 1"
+        },
+        {
+            "bike": 26,
+            "class_type": "RIDE 45",
+            "date": "2019-07-09T18:30:00",
+            "instructor": "ALANA",
+            "location": "MORTIMER ST",
+            "studio": "Studio 1"
+        }
     ];
   }
 
