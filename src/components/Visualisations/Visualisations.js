@@ -59,11 +59,15 @@ export default class Visualisations extends React.Component {
   get weeklyCount() {
     const { bookingHistory } = this.context;
     return nest()
-      .key(function (d) {
+      .key(function(d) { 
         const m = moment(d.date);
-        return ((m.isoWeekday() - 1) * 1440) + (m.hour() * 60) + m.minute();
+        return `${m.isoWeekday()}-${m.hour()}-${m.minute()}`;
       })
-      .rollup(function (v) { return v.length; })
+      // .key(function (d) {
+      //   const m = moment(d.date);
+      //   return ((m.isoWeekday() - 1) * 1440) + (m.hour() * 60) + m.minute();
+      // })
+      .rollup(function (v) { return v.length * 10; })
       .entries(bookingHistory);
   }
 
@@ -80,10 +84,6 @@ export default class Visualisations extends React.Component {
     return scaleLinear()
      .domain([0, 10080])
      .range([0, width]);
-  }
-
-  get scatterColorScale() {
-    return null;
   }
 
   // Instructor bar plot
@@ -190,38 +190,43 @@ export default class Visualisations extends React.Component {
                   width={this.svgWidth}
                   height={this.svgHeight}
                 />
-                <WeekScatter
-                  activeIndex={activeIndex}
-                  weeklyCount={this.weeklyCount}
-                  yScatterScale={this.yScatterScale}
-                  xScatterScale={this.xScatterScale}
-                  scatterColorScale={this.scatterColorScale}
-                  height={this.svgHeight}
-                  width={this.svgWidth}
-                />
-                <InstructorBars
-                  activeIndex={activeIndex}
-                  instructorCounts={this.instructorCounts}
-                  yBarScale={this.yBarScale}
-                  xBarScale={this.xBarScale}
-                  barColorScale={this.barColorScale}
-                />
-                <foreignObject  width={this.svgWidth} height={this.svgHeight}>
+                <Styles.VisGroup index={2} activeIndex={activeIndex}> 
+                  <WeekScatter
+                    activeIndex={activeIndex}
+                    weeklyCount={this.weeklyCount}
+                    yScatterScale={this.yScatterScale}
+                    xScatterScale={this.xScatterScale}
+                    height={this.svgHeight}
+                    width={this.svgWidth}
+                  />
+                </Styles.VisGroup>
+                <Styles.VisGroup index={3} activeIndex={activeIndex}> 
+                  <InstructorBars
+                    activeIndex={activeIndex}
+                    instructorCounts={this.instructorCounts}
+                    yBarScale={this.yBarScale}
+                    xBarScale={this.xBarScale}
+                    barColorScale={this.barColorScale}
+                  />
+                </Styles.VisGroup>
+                <Styles.VisGroup index={4} activeIndex={activeIndex}> 
                   <FavouriteInstructor
                     favouriteInstructorName={this.favouriteInstructorName}
                     activeIndex={activeIndex}
                     height={this.svgHeight}
                     width={this.svgWidth}
                   />
-                </foreignObject>
-                <Studio
-                  activeIndex={activeIndex}
-                  width={this.svgWidth}
-                  height={this.svgHeight}
-                  contourDensityColorScale={this.contourDensityColorScale}
-                  studio1ContourDensity={this.studio1ContourDensity}
-                  studio2ContourDensity={this.studio2ContourDensity}
-                />
+                </Styles.VisGroup>
+                <Styles.VisGroup index={5} activeIndex={activeIndex}> 
+                  <Studio
+                    activeIndex={activeIndex}
+                    width={this.svgWidth}
+                    height={this.svgHeight}
+                    contourDensityColorScale={this.contourDensityColorScale}
+                    studio1ContourDensity={this.studio1ContourDensity}
+                    studio2ContourDensity={this.studio2ContourDensity}
+                  />
+                </Styles.VisGroup>
               </React.Fragment>
             )}
           </g>

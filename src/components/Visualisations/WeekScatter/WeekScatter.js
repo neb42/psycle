@@ -1,6 +1,18 @@
 import React from 'react';
 import { selectAll } from 'd3-selection';
 import { transition } from 'd3-transition';
+import styled from 'styled-components';
+
+const R = styled.rect`
+  & + text {
+    opacity: 0;
+  }
+  &:hover {
+    & + text {
+      opacity: 1;
+    }
+  }
+`;
 
 const range = (start, end, step = 1) => {
   const len = Math.floor((end - start) / step) + 1;
@@ -46,7 +58,7 @@ export default class WeekScatter extends React.PureComponent {
 
     selectAll('.week-scatter-point')
       .transition(transition('dsf').duration(600))
-      .attr('cx', d => xScatterScale(d.key))
+      .attr('cx', d => xScatterScale(this.timeInteger(d.key)))
       .attr('cy', d => yScatterScale(d.value) + this.yOffset)
       .attr('fill-opacity', 1)
       .on('end', () => this.setState({ visible: true }));
@@ -75,6 +87,12 @@ export default class WeekScatter extends React.PureComponent {
     return (height - 90) / (yScatterScale.domain()[0] - yScatterScale.domain()[1]);
   }
 
+  timeInteger = key => {
+    const [weekday, hour, minute] = key.split('-');
+    const ti =  ((Number(weekday) - 1) * 1440) + (Number(hour) * 60) + Number(minute);
+    return ti;
+  }
+
   render() {
     const  {
       yScatterScale,
@@ -91,17 +109,17 @@ export default class WeekScatter extends React.PureComponent {
           <React.Fragment>
             <line
               className="week-line"
-              x1={xScatterScale(datum.key)}
-              x2={xScatterScale(datum.key)}
+              x1={xScatterScale(this.timeInteger(datum.key))}
+              x2={xScatterScale(this.timeInteger(datum.key))}
               y1={yScatterScale(0)}
               y2={visible ? yScatterScale(datum.value) + this.yOffset : yScatterScale(0)}
               stroke="#fff"
             />
             <circle
               className="week-scatter-point"
-              cx={xScatterScale(datum.key)}
+              cx={xScatterScale(this.timeInteger(datum.key))}
               cy={visible ? yScatterScale(datum.value) + this.yOffset : height}
-              r={5}
+              r={Math.min(5, this.rectHeight)}
               fillOpacity={visible ? 1 : 0}
               fill={'#fff'}
             />
@@ -110,22 +128,22 @@ export default class WeekScatter extends React.PureComponent {
         <g>
           {range(yScatterScale.domain()[1], yScatterScale.domain()[0]).slice(1).reverse().map((v, i) => (
             <React.Fragment>
-              <rect
+              <R
                 height={this.rectHeight}
                 width={width} 
                 y={(i * this.rectHeight) + 50}
-                x={-20}
-                opacity={visible ? 0.3 * (v / (yScatterScale.domain()[0] - yScatterScale.domain()[1])) : 0}
+                x={0}
+                opacity={visible ? (yScatterScale.domain()[0] > 20 ? 0.2 : 0.3) * (v / (yScatterScale.domain()[0] - yScatterScale.domain()[1])) : 0}
                 fill="#fff"
               />
               <text
-                x={-15}
+                x={20}
                 y={(i * this.rectHeight) + 50 + this.yOffset + 8}
                 fill="white"
-                opacity={visible ? 1 : 0}
                 style={{
                   fontSize: 16,
                   fontFamily: 'soin_sans_neueroman,sans-serif',
+                  fillOpacity: 0.8,
                 }}
               >
                 {v}
