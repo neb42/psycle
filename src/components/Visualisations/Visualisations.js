@@ -111,9 +111,10 @@ export default class Visualisations extends React.Component {
 
   get barColorScale() {
     const countMax = max(this.instructorCounts, function (d) { return d.value;});
-    return scaleSequential()
+    return scaleLinear()
       .domain([0, countMax])
-      .interpolator(interpolatePuRd);
+      .range([0.2, 0.7]);
+      // .interpolator(interpolatePuRd);
   }
 
   // Favourite instructor
