@@ -73,6 +73,7 @@ export default class InstructorBars extends React.PureComponent {
       yBarScale,
       barColorScale,
       instructorCounts,
+      width,
     } = this.props;
     const { visible } = this.state;
 
@@ -91,11 +92,11 @@ export default class InstructorBars extends React.PureComponent {
         {instructorCounts.map((datum, i) => (
           <text
             className="bar-text"
-            x={0}
-            dx={15}
+            x={width - 50}
             y={yBarScale(i)}
             dy={yBarScale.bandwidth() / 1.2}
             fill="white"
+            textAnchor="end"
             opacity={visible ? 1 : 0}
             style={{
               fontSize: yBarScale.bandwidth(),
