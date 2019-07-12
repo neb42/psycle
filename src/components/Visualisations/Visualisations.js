@@ -63,11 +63,7 @@ export default class Visualisations extends React.Component {
         const m = moment(d.date);
         return `${m.isoWeekday()}-${m.hour()}-${m.minute()}`;
       })
-      // .key(function (d) {
-      //   const m = moment(d.date);
-      //   return ((m.isoWeekday() - 1) * 1440) + (m.hour() * 60) + m.minute();
-      // })
-      .rollup(function (v) { return v.length * 10; })
+      .rollup(function (v) { return v.length; })
       .entries(bookingHistory);
   }
 
@@ -75,7 +71,7 @@ export default class Visualisations extends React.Component {
     const { height } = this.props;
     const countMax = max(this.weeklyCount, function (d) { return d.value;});
     return scaleLinear()
-      .domain([countMax + countMax * 0.05, 0])
+      .domain([countMax + Math.round(countMax * 0.05), 0])
       .range([50, height], 0.1, 0.1);
   }
 
@@ -207,6 +203,7 @@ export default class Visualisations extends React.Component {
                     yBarScale={this.yBarScale}
                     xBarScale={this.xBarScale}
                     barColorScale={this.barColorScale}
+                    width={this.svgWidth}
                   />
                 </Styles.VisGroup>
                 <Styles.VisGroup index={4} activeIndex={activeIndex}> 

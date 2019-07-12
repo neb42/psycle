@@ -26,8 +26,10 @@ export default class WeekScatter extends React.PureComponent {
   };
 
   componentDidMount() {
-    selectAll('.week-scatter-point').data(this.props.weeklyCount);
-    selectAll('.week-line').data(this.props.weeklyCount);
+    const { weeklyCount } = this.props;
+    selectAll('.week-scatter-point').data(weeklyCount);
+    selectAll('.week-line').data(weeklyCount);
+    selectAll('.y-axis-rect').data(this.rectData);
   }
 
   componentDidUpdate(prevProps) {
@@ -51,7 +53,21 @@ export default class WeekScatter extends React.PureComponent {
     const  {
       yScatterScale,
       xScatterScale,
+      height,
     } = this.props;
+
+    selectAll('.y-axis-rect')
+      .transition(
+        transition()
+          .duration(600 /  yScatterScale.domain()[0])
+        )
+        .delay((d, i) => {
+          return ((yScatterScale.domain()[0] - 1 - i) / (yScatterScale.domain()[0] - 1)) * 600;
+        })
+      .attr('y', (d, i) => {
+        return (i * this.rectHeight) + 50;
+      })
+      .attr('height', this.rectHeight);
 
     selectAll('.week-line')
       .transition(transition().duration(600))
@@ -66,7 +82,20 @@ export default class WeekScatter extends React.PureComponent {
   }
 
   hide = () => {
-    const { yScatterScale } = this.props;
+    const { height, yScatterScale } = this.props;
+
+    selectAll('.y-axis-rect')
+      .transition(
+        transition()
+          .duration(600 /  yScatterScale.domain()[0])
+        )
+        .delay((d, i) => {
+          return (i / (yScatterScale.domain()[0] - 1)) * 600;
+        })
+      .attr('y', (d, i) => {
+        return ((i + 1) * this.rectHeight) + 50;
+      })
+      .attr('height', 0);
 
     selectAll('.week-line')
       .transition(transition().duration(600))
@@ -88,6 +117,11 @@ export default class WeekScatter extends React.PureComponent {
     return (height - 90) / (yScatterScale.domain()[0] - yScatterScale.domain()[1]);
   }
 
+  get rectData() {
+    const { yScatterScale } = this.props;
+    return range(yScatterScale.domain()[1], yScatterScale.domain()[0]).slice(1).reverse();
+  }
+
   timeInteger = key => {
     const [weekday, hour, minute] = key.split('-');
     const ti =  ((Number(weekday) - 1) * 1440) + (Number(hour) * 60) + Number(minute);
@@ -107,20 +141,21 @@ export default class WeekScatter extends React.PureComponent {
     return (
       <React.Fragment>
         <g>
-          {range(yScatterScale.domain()[1], yScatterScale.domain()[0]).slice(1).reverse().map((v, i) => (
+          {this.rectData.map((v, i) => (
             <React.Fragment>
               <R
-                height={this.rectHeight}
+                className="y-axis-rect"
+                height={visible ? this.rectHeight : 0}
                 width={width} 
-                y={(i * this.rectHeight) + 50}
+                y={visible ? (i * this.rectHeight) + 50 : ((i + 1) * this.rectHeight) + 50}
                 x={0}
-                opacity={visible ? (yScatterScale.domain()[0] > 20 ? 0.2 : 0.3) * (v / (yScatterScale.domain()[0] - yScatterScale.domain()[1])) : 0}
+                opacity={(yScatterScale.domain()[0] > 20 ? 0.2 : 0.3) * (v / (yScatterScale.domain()[0] - yScatterScale.domain()[1]))}
                 fill="#fff"
               />
               <text
                 className={`y-axis-text-${v}`}
                 x={20}
-                y={(i * this.rectHeight) + 50 + this.yOffset + 8}
+                y={(i * this.rectHeight) + 50 + this.yOffset +  8}
                 fill="white"
                 style={{
                   fontSize: 16,
@@ -165,6 +200,8 @@ export default class WeekScatter extends React.PureComponent {
 
                 select(`.y-axis-text-${datum.value}`).transition(transition().duration(300)).style('fill-opacity', 1).style('opacity', 1);
                 selectAll('.week-line, .week-scatter-point').filter(d => d.key !== datum.key).transition(transition().duration(300)).attr('opacity', 0.3);
+
+                selectAll('.y-axis-rect').transition(transition().duration(300)).attr('opacity', d => d === datum.value ? 0.3 : 0.05)
               }}
               onMouseLeave={() => {
                 select('.tooltip-rect').transition(transition('a').duration(300)).attr('opacity', 0);
@@ -175,6 +212,7 @@ export default class WeekScatter extends React.PureComponent {
 
                 select(`.y-axis-text-${datum.value}`).transition(transition().duration(300)).attr('fill-opacity', 0.6).style('opacity', null);
                 selectAll('.week-line, .week-scatter-point').filter(d => d.key !== datum.key).transition(transition('aa').duration(300)).attr('opacity', 1);
+                selectAll('.y-axis-rect').transition(transition().duration(300)).attr('opacity', d => (yScatterScale.domain()[0] > 20 ? 0.2 : 0.3) * (d / (yScatterScale.domain()[0] - yScatterScale.domain()[1])));
               }}
               fill={'#fff'}
             />
