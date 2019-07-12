@@ -75,7 +75,7 @@ export default class Visualisations extends React.Component {
     const { height } = this.props;
     const countMax = max(this.weeklyCount, function (d) { return d.value;});
     return scaleLinear()
-      .domain([countMax, 0])
+      .domain([countMax + countMax * 0.05, 0])
       .range([50, height], 0.1, 0.1);
   }
 
