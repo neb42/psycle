@@ -93,11 +93,11 @@ export default class ClassCount extends React.PureComponent {
 
     select('.class-count.b')
       .transition(transition().duration(transitionSpeed).delay(transitionSpeed * 2))
-      .attr('x', (width / 5) + 40);
+      .attr('x', (width / 5) + 45);
 
     select('.class-count.c')
       .transition(transition().duration(transitionSpeed).delay(transitionSpeed * 2))
-      .attr('x', ((width * 4) / 5) - 40)
+      .attr('x', ((width * 4) / 5) - 45)
       .attr('opacity', 1)
       .on('end', () => this.setState({ state: 1 }));
   }
@@ -144,7 +144,7 @@ export default class ClassCount extends React.PureComponent {
     const { width, height } = this.props;
     const { state } = this.state;
     return {
-      x: state === 0 ? width / 2 : ((width / 5) + 30),
+      x: state === 0 ? width / 2 : ((width / 5) + 45),
       y: (height / 3) + (height / 5),
       opacity: state === 1 ? 1 : 0,
     };
@@ -154,7 +154,7 @@ export default class ClassCount extends React.PureComponent {
     const { width, height } = this.props;
     const { state } = this.state;
     return {
-      x: state === 0 ? width / 2 : (((width * 4) / 5) - 30),
+      x: state === 0 ? width / 2 : (((width * 4) / 5) - 45),
       y: (height / 3) + (height / 5),
       opacity: state === 1 ? 1 : 0,
     };
