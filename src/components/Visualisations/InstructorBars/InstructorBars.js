@@ -53,8 +53,12 @@ export default class InstructorBars extends React.PureComponent {
   }
 
   hide = () => {
-    selectAll('.instructor-count-bar,.bar-text')
-      .transition(transition('hide-bars').duration(600))
+    selectAll('.bar-text')
+      .transition(transition().duration(600))
+      .attr('opacity', 0);
+
+    selectAll('.instructor-count-bar')
+      .transition(transition().duration(600))
       .attr('width', 0)
       .on('end', () => this.setState({ visible: false }));
   }
@@ -86,7 +90,9 @@ export default class InstructorBars extends React.PureComponent {
             height={yBarScale.bandwidth()}
             x={0}
             y={yBarScale(i)}
-            fill={barColorScale(datum.value)}
+            // fill={barColorScale(datum.value)}
+            fill="#fff"
+            opacity={barColorScale(datum.value)}
           />
         ))}
         {instructorCounts.map((datum, i) => (
@@ -95,7 +101,7 @@ export default class InstructorBars extends React.PureComponent {
             x={width - 50}
             y={yBarScale(i)}
             dy={yBarScale.bandwidth() / 1.2}
-            fill="white"
+            fill="#fff"
             textAnchor="end"
             opacity={visible ? 1 : 0}
             style={{
