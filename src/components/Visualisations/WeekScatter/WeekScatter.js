@@ -4,6 +4,8 @@ import { transition } from 'd3-transition';
 import styled from 'styled-components';
 import moment from 'moment';
 
+import { BookingHistoryContext } from '../../../context/BookingHistory';
+
 const R = styled.rect`
   & + text {
     opacity: 0;
@@ -25,8 +27,10 @@ export default class WeekScatter extends React.PureComponent {
     visible: this.props.activeIndex === 3,
   };
 
+  static contextType = BookingHistoryContext;
+
   componentDidMount() {
-    const { weeklyCount } = this.props;
+    const { weeklyLollipop: { weeklyCount }} = this.context;
     selectAll('.week-scatter-point').data(weeklyCount);
     selectAll('.week-line').data(weeklyCount);
     selectAll('.y-axis-rect').data(this.rectData);
@@ -50,19 +54,15 @@ export default class WeekScatter extends React.PureComponent {
   }
 
   show = () => {
-    const  {
-      yScatterScale,
-      xScatterScale,
-      height,
-    } = this.props;
+    const { weeklyLollipop: { yScale, xScale }} = this.context;
 
     selectAll('.y-axis-rect')
       .transition(
         transition()
-          .duration(600 /  yScatterScale.domain()[0])
+          .duration(600 /  yScale.domain()[0])
         )
         .delay((d, i) => {
-          return ((yScatterScale.domain()[0] - 1 - i) / (yScatterScale.domain()[0] - 1)) * 600;
+          return ((yScale.domain()[0] - 1 - i) / (yScale.domain()[0] - 1)) * 600;
         })
       .attr('y', (d, i) => {
         return (i * this.rectHeight) + 50;
@@ -71,26 +71,26 @@ export default class WeekScatter extends React.PureComponent {
 
     selectAll('.week-line')
       .transition(transition().duration(600))
-      .attr('y2', d => yScatterScale(d.value) + this.yOffset);
+      .attr('y2', d => yScale(d.value) + this.yOffset);
 
     selectAll('.week-scatter-point')
       .transition(transition('dsf').duration(600))
-      .attr('cx', d => xScatterScale(this.timeInteger(d.key)))
-      .attr('cy', d => yScatterScale(d.value) + this.yOffset)
+      .attr('cx', d => xScale(this.timeInteger(d.key)))
+      .attr('cy', d => yScale(d.value) + this.yOffset)
       .attr('fill-opacity', 1)
       .on('end', () => this.setState({ visible: true }));
   }
 
   hide = () => {
-    const { height, yScatterScale } = this.props;
+    const { weeklyLollipop: { yScale }} = this.context;
 
     selectAll('.y-axis-rect')
       .transition(
         transition()
-          .duration(600 /  yScatterScale.domain()[0])
+          .duration(600 /  yScale.domain()[0])
         )
         .delay((d, i) => {
-          return (i / (yScatterScale.domain()[0] - 1)) * 600;
+          return (i / (yScale.domain()[0] - 1)) * 600;
         })
       .attr('y', (d, i) => {
         return ((i + 1) * this.rectHeight) + 50;
@@ -99,11 +99,11 @@ export default class WeekScatter extends React.PureComponent {
 
     selectAll('.week-line')
       .transition(transition().duration(600))
-      .attr('y2', yScatterScale(0));
+      .attr('y2', yScale(0));
 
     selectAll('.week-scatter-point')
       .transition(transition().duration(600))
-      .attr('cy', yScatterScale(0))
+      .attr('cy', yScale(0))
       .attr('fill-opacity', 0)
       .on('end', () => this.setState({ visible: false }));
   }
@@ -113,13 +113,14 @@ export default class WeekScatter extends React.PureComponent {
   }
 
   get rectHeight() {
-    const { yScatterScale, height } = this.props
-    return (height - 90) / (yScatterScale.domain()[0] - yScatterScale.domain()[1]);
+    const { height } = this.props
+    const { weeklyLollipop: { yScale }} = this.context;
+    return (height - 90) / (yScale.domain()[0] - yScale.domain()[1]);
   }
 
   get rectData() {
-    const { yScatterScale } = this.props;
-    return range(yScatterScale.domain()[1], yScatterScale.domain()[0]).slice(1).reverse();
+    const { weeklyLollipop: { yScale }} = this.context;
+    return range(yScale.domain()[1], yScale.domain()[0]).slice(1).reverse();
   }
 
   timeInteger = key => {
@@ -129,14 +130,9 @@ export default class WeekScatter extends React.PureComponent {
   }
 
   render() {
-    const  {
-      yScatterScale,
-      xScatterScale,
-      weeklyCount,
-      height,
-      width,
-    } = this.props;
+    const  { height, width } = this.props;
     const { visible } = this.state;
+    const { weeklyLollipop: { weeklyCount, xScale, yScale }} = this.context;
 
     return (
       <React.Fragment>
@@ -149,7 +145,7 @@ export default class WeekScatter extends React.PureComponent {
                 width={width} 
                 y={visible ? (i * this.rectHeight) + 50 : ((i + 1) * this.rectHeight) + 50}
                 x={0}
-                opacity={(yScatterScale.domain()[0] > 20 ? 0.2 : 0.3) * (v / (yScatterScale.domain()[0] - yScatterScale.domain()[1]))}
+                opacity={(yScale.domain()[0] > 20 ? 0.2 : 0.3) * (v / (yScale.domain()[0] - yScale.domain()[1]))}
                 fill="#fff"
               />
               <text
@@ -172,23 +168,23 @@ export default class WeekScatter extends React.PureComponent {
           <React.Fragment>
             <line
               className="week-line"
-              x1={xScatterScale(this.timeInteger(datum.key))}
-              x2={xScatterScale(this.timeInteger(datum.key))}
-              y1={yScatterScale(0)}
-              y2={visible ? yScatterScale(datum.value) + this.yOffset + Math.min(5, this.rectHeight) : yScatterScale(0)}
+              x1={xScale(this.timeInteger(datum.key))}
+              x2={xScale(this.timeInteger(datum.key))}
+              y1={yScale(0)}
+              y2={visible ? yScale(datum.value) + this.yOffset + Math.min(5, this.rectHeight) : yScale(0)}
               stroke="#fff"
             />
             <circle
               className={`week-scatter-point circle-${datum.key}`}
-              cx={xScatterScale(this.timeInteger(datum.key))}
-              cy={visible ? yScatterScale(datum.value) + this.yOffset : height}
+              cx={xScale(this.timeInteger(datum.key))}
+              cy={visible ? yScale(datum.value) + this.yOffset : height}
               r={Math.min(5, this.rectHeight)}
               fillOpacity={visible ? 1 : 0}
               onMouseEnter={() => {
                 const w = 100;
                 const h = 60;
                 const x = this.timeInteger(datum.key) > 3 * 1440 ? 50 : 400;
-                const y = yScatterScale(datum.value) - h / 2;
+                const y = yScale(datum.value) - h / 2;
 
                 const [weekday, hour, minute] = datum.key.split('-');
 
@@ -212,7 +208,7 @@ export default class WeekScatter extends React.PureComponent {
 
                 select(`.y-axis-text-${datum.value}`).transition(transition().duration(300)).attr('fill-opacity', 0.6).style('opacity', null);
                 selectAll('.week-line, .week-scatter-point').filter(d => d.key !== datum.key).transition(transition('aa').duration(300)).attr('opacity', 1);
-                selectAll('.y-axis-rect').transition(transition().duration(300)).attr('opacity', d => (yScatterScale.domain()[0] > 20 ? 0.2 : 0.3) * (d / (yScatterScale.domain()[0] - yScatterScale.domain()[1])));
+                selectAll('.y-axis-rect').transition(transition().duration(300)).attr('opacity', d => (yScale.domain()[0] > 20 ? 0.2 : 0.3) * (d / (yScale.domain()[0] - yScale.domain()[1])));
               }}
               fill={'#fff'}
             />

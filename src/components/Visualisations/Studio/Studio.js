@@ -4,12 +4,15 @@ import { transition } from 'd3-transition';
 import { geoPath } from 'd3-geo';
 
 import Studio from '../../Studio';
+import { BookingHistoryContext } from '../../../context/BookingHistory';
 
 export default class StudioViz extends React.Component {
   state = {
     studio: null,
     overlay: null,
   };
+
+  static contextType = BookingHistoryContext;
   
   componentDidUpdate(prevProps) {
     const { activeIndex: prevIdx } = prevProps;
@@ -107,14 +110,13 @@ export default class StudioViz extends React.Component {
   }
 
   render() {
-    const {
+    const { height, width } = this.props;
+    const { studio } = this.state;
+    const { studio: {
       studio1ContourDensity,
       studio2ContourDensity,
       contourDensityColorScale,
-      height,
-      width,
-    } = this.props;
-    const { studio } = this.state;
+    }} = this.context;
     return (
       <React.Fragment>
         <Studio studio={studio} height={height} width={width} transform={this.groupTransform} />

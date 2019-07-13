@@ -3,6 +3,8 @@ import { select, selectAll } from 'd3-selection';
 import { transition } from 'd3-transition';
 import styled from 'styled-components';
 
+import { BookingHistoryContext } from '../../../context/BookingHistory';
+
 const A = styled.text`
   fill: #fff;
   font-size: 95px;
@@ -28,6 +30,8 @@ export default class ClassCount extends React.PureComponent {
   state = {
     visible: this.props.activeIndex === 1,
   };
+
+  static contextType = BookingHistoryContext;
 
   componentDidUpdate(prevProps) {
     const { activeIndex: prevIdx } = prevProps;
@@ -161,11 +165,13 @@ export default class ClassCount extends React.PureComponent {
   }
 
   render() {
+    console.log(this.context)
     const {
-      count,
-      monthCount,
-      averagePerMonth,
-    } = this.props;
+      classCount: {
+        count,
+        monthCount,
+        averagePerMonth,
+    }} = this.context;
 
     return (
       <React.Fragment>

@@ -2,13 +2,17 @@ import React from 'react';
 import { selectAll } from 'd3-selection';
 import { transition } from 'd3-transition';
 
+import { BookingHistoryContext } from '../../../context/BookingHistory';
+
 export default class InstructorBars extends React.PureComponent {
   state = {
     visible: this.props.activeIndex === 3,
   };
 
+  static contextType = BookingHistoryContext;
+
   componentDidMount() {
-    selectAll('.instructor-count-bar').data(this.props.instructorCounts);
+    selectAll('.instructor-count-bar').data(this.context.instructorBars.instructorCounts);
   }
 
   componentDidUpdate(prevProps) {
@@ -29,7 +33,7 @@ export default class InstructorBars extends React.PureComponent {
   }
 
   show = () => {
-    const { xBarScale } = this.props;
+    const { instructorBars: { xScale }} = this.context;
     selectAll('.instructor-count-bar')
       .transition(
         transition()
@@ -39,7 +43,7 @@ export default class InstructorBars extends React.PureComponent {
           })
       )
       .attr('width', function (d) {
-        return xBarScale(d.value);
+        return xScale(d.value);
       });
 
     selectAll('.bar-text')
@@ -64,21 +68,17 @@ export default class InstructorBars extends React.PureComponent {
   }
 
   rectWidth = (datum) => {
-    const { xBarScale } = this.props;
     const { visible } = this.state;
+    const { instructorBars: { xScale }} = this.context;
     if (visible) {
-      return xBarScale(datum.value);
+      return xScale(datum.value);
     }
     return 0;
   }
 
   render() {
-    const  {
-      yBarScale,
-      barColorScale,
-      instructorCounts,
-      width,
-    } = this.props;
+    const  { width } = this.props;
+    const { instructorBars: { instructorCounts, yScale, colorScale }} = this.context;
     const { visible } = this.state;
 
     return (
@@ -87,25 +87,25 @@ export default class InstructorBars extends React.PureComponent {
           <rect
             className="instructor-count-bar"
             width={this.rectWidth(datum)}
-            height={yBarScale.bandwidth()}
+            height={yScale.bandwidth()}
             x={0}
-            y={yBarScale(i)}
+            y={yScale(i)}
             // fill={barColorScale(datum.value)}
             fill="#fff"
-            opacity={barColorScale(datum.value)}
+            opacity={colorScale(datum.value)}
           />
         ))}
         {instructorCounts.map((datum, i) => (
           <text
             className="bar-text"
             x={width - 50}
-            y={yBarScale(i)}
-            dy={yBarScale.bandwidth() / 1.2}
+            y={yScale(i)}
+            dy={yScale.bandwidth() / 1.2}
             fill="#fff"
             textAnchor="end"
             opacity={visible ? 1 : 0}
             style={{
-              fontSize: yBarScale.bandwidth(),
+              fontSize: yScale.bandwidth(),
               fontFamily: 'soin_sans_neueroman,sans-serif',
             }}
           >

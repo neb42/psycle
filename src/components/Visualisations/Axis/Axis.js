@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { select, selectAll } from 'd3-selection';
-import { axisBottom, axisLeft } from 'd3-axis';
+import { axisBottom } from 'd3-axis';
 import { transition } from 'd3-transition';
-import { format } from 'd3-format';
+
+import { BookingHistoryContext } from '../../../context/BookingHistory';
 
 const StyledAxis = styled.g`
   & line {
@@ -24,6 +25,8 @@ export default class Axis extends React.PureComponent {
     opacityX: 0,
     opacityY: 0,
   };
+
+  static contextType = BookingHistoryContext;
 
   componentDidMount() {
     const { activeIndex } = this.props;
@@ -50,7 +53,7 @@ export default class Axis extends React.PureComponent {
   }
 
   renderScatterAxis = () => {
-    const { xScatterScale, yScatterScale } = this.props;
+    const { weeklyLollipop: { xScale }} = this.context;
     const axisX = axisBottom()
       .tickValues([
         0,
@@ -81,7 +84,7 @@ export default class Axis extends React.PureComponent {
             return '';
         }
       })
-      .scale(xScatterScale);
+      .scale(xScale);
 
     select('.axis.x')
       .call(axisX)
@@ -94,9 +97,9 @@ export default class Axis extends React.PureComponent {
   }
 
   renderBarAxis = () => {
-    const { xBarScale } = this.props;
+    const { instructorBars: { xScale }} = this.context;
     const axis = axisBottom()
-      .scale(xBarScale)
+      .scale(xScale)
       .tickFormat(function(e){
         if(Math.floor(e) !== e) {
           return;
@@ -124,8 +127,8 @@ export default class Axis extends React.PureComponent {
   }
 
   render() {
-    const { width, height } = this.props;
-    const { opacityX, opacityY } = this.state;
+    const { height } = this.props;
+    const { opacityX } = this.state;
     return (
       <React.Fragment>
         <StyledAxis
@@ -133,11 +136,6 @@ export default class Axis extends React.PureComponent {
           transform={`translate(0, ${height})`}
           style={{ opacity: opacityX }}
         />
-        {/* <StyledAxis
-          className="axis y"
-          transform={`translate(${width}, 0)`}
-          style={{ opacity: opacityY }}
-        /> */}
       </React.Fragment>
     );
   }

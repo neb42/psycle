@@ -8,8 +8,7 @@ export default class FavouriteInstructor extends React.PureComponent {
   static contextType = BookingHistoryContext;
 
   get photo() {
-    const { favouriteInstructorName } = this.props;
-    const { instructors } = this.context;
+    const { instructors, favouriteInstructor: { favouriteInstructorName }} = this.context;
     if (instructors && instructors[favouriteInstructorName]) {
       return instructors[favouriteInstructorName].photo;
     }
