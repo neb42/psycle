@@ -3,7 +3,7 @@ import { scaleLinear } from 'd3-scale';
 import { max } from 'd3-array';
 import moment from 'moment';
 
-export const weeklyCount = (bookingHistory) => {
+const weeklyCount = (bookingHistory) => {
   return nest()
     .key(function(d) { 
       const m = moment(d.date);
@@ -13,14 +13,14 @@ export const weeklyCount = (bookingHistory) => {
     .entries(bookingHistory);
 }
 
-export const yScale = (bookingHistory, height) => {
+const yScale = (bookingHistory, height) => {
   const countMax = max(weeklyCount(bookingHistory), function (d) { return d.value;});
   return scaleLinear()
     .domain([countMax + Math.round(countMax * 0.05), 0])
     .range([50, height], 0.1, 0.1);
 }
 
-export const xScale = (width) => {
+const xScale = (width) => {
   return scaleLinear()
     .domain([0, 10080])
     .range([0, width]);

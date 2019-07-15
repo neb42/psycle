@@ -165,7 +165,6 @@ export default class ClassCount extends React.PureComponent {
   }
 
   render() {
-    console.log(this.context)
     const {
       classCount: {
         count,
