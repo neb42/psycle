@@ -9,7 +9,8 @@ import { BookingHistoryContext } from '../../../context/BookingHistory';
 export default class StudioViz extends React.Component {
   state = {
     studio: null,
-    overlay: null,
+    heatmap: false,
+    favouriteBike: false,
   };
 
   static contextType = BookingHistoryContext;
@@ -58,19 +59,20 @@ export default class StudioViz extends React.Component {
   showHeatmap = studio => {
     selectAll(`.heatmap-${studio}`)
       .transition(transition().duration(600))
-      .attr('opacity', 0.8)
-      .on('end', () => this.setState({ overlay: 'heatmap' }));
+      .attr('opacity', 1)
+      .on('end', () => this.setState({ heatmap: true }));
   }
 
   showFavouriteBike = studio => {
     selectAll(`.heatmap-${studio}`)
       .transition(transition().duration(600))
-      .attr('opacity', 0);
+      .attr('opacity', 0)
+      .on('end', () => this.setState({ favouriteBike: true }));
 
     selectAll(`.favourite-bike-${studio}`)
       .transition(transition().duration(600))
-      .attr('opacity', 1)
-      .on('end', () => this.setState({ overlay: 'favourite-bike' }));
+      .attr('opacity', 1);
+      // .on('end', () => this.setState({ overlay: 'favourite-bike' }));
   }
 
   hideOverlay = () => {
@@ -82,7 +84,7 @@ export default class StudioViz extends React.Component {
     `)
       .transition(transition().duration(600))
       .attr('opacity', 0)
-      .on('end', () => this.setState({ overlay: null }));
+      .on('end', () => this.setState({ heatmap: false, favouriteBike: false }));
   }
 
   hide = () => {
@@ -91,13 +93,13 @@ export default class StudioViz extends React.Component {
   }
 
   get heatmapStudio1Opacity() {
-    const { studio, overlay } = this.state;
-    return studio === 'studio1' && overlay === 'heatmap' ? 1 : 0;
+    const { studio, heatmap } = this.state;
+    return studio === 'studio1' && heatmap ? 1 : 0;
   }
 
   get heatmapStudio2Opacity() {
-    const { studio, overlay } = this.state;
-    return studio === 'studio2' && overlay === 'heatmap' ? 1 : 0;
+    const { studio, heatmap } = this.state;
+    return studio === 'studio2' && heatmap ? 1 : 0;
   }
 
   get groupTransform() {
@@ -119,7 +121,13 @@ export default class StudioViz extends React.Component {
     }} = this.context;
     return (
       <React.Fragment>
-        <Studio showCircle studio={studio} height={height} width={width} transform={this.groupTransform} />
+        <Studio
+          showCircle
+          studio={studio}
+          height={height}
+          width={width}
+          transform={this.groupTransform}
+        />
         <g className="heatmap-studio-1" opacity={this.heatmapStudio1Opacity} transform={this.groupTransform}>
           {studio1ContourDensity.map(d => (
             <path d={geoPath()(d)} fill={contourDensityColorScale(d.value)} />

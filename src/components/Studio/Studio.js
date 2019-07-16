@@ -14,20 +14,31 @@ export default class Studio extends React.Component {
   };
 
   componentDidUpdate(prevProps) {
-    const { studio } = this.props;
-    const { studio: prevStudio } = prevProps;
-    if (prevStudio === 'studio1' && studio === 'studio2') {
-      this.transition(Studio2, Studio1);
-    } else if (prevStudio === 'studio2' && studio === 'studio1') {
-      this.transition(Studio1, Studio2);
-    } else if (prevStudio === null) {
-      if (studio === 'studio1') {
-        this.transition(Studio1, Studio2);
-      } else if (studio === 'studio2') {
+    const { studio, showFavouriteBikes } = this.props;
+    const { studio: prevStudio, showFavouriteBikes: prevShowFavouriteBikes } = prevProps;
+
+    if (studio !== prevStudio) {
+      if (prevStudio === 'studio1' && studio === 'studio2') {
         this.transition(Studio2, Studio1);
+      } else if (prevStudio === 'studio2' && studio === 'studio1') {
+        this.transition(Studio1, Studio2);
+      } else if (prevStudio === null) {
+        if (studio === 'studio1') {
+          this.transition(Studio1, Studio2);
+        } else if (studio === 'studio2') {
+          this.transition(Studio2, Studio1);
+        }
+      } else if (studio === null) {
+        this.hideStudio();
       }
-    } else if (studio === null) {
-      this.hideStudio();
+    }
+
+    if (showFavouriteBikes !== prevShowFavouriteBikes) {
+      if (showFavouriteBikes && !prevShowFavouriteBikes) {
+        this.showFavouriteBikes();
+      } else if (!showFavouriteBikes && prevShowFavouriteBikes) {
+        this.hideFavouriteBikes();
+      }
     }
   }
 
@@ -129,6 +140,20 @@ export default class Studio extends React.Component {
       .attr('y', y)
       .attr('opacity', 0)
       .on('end', () => this.setState({ Studio: null }));
+  }
+
+  showFavouriteBikes = () => {
+    const { favouriteBikes } = this.props;
+    select('.show-circle').selectAll('.bike-circle')
+      .filter((_, i) => favouriteBikes.includes(i + 1))
+      .transition(transition('c').duration(600))
+      .attr('fill', '#a71b52');
+  }
+
+  hideFavouriteBikes = () => {
+    select('.show-circle').selectAll('.bike-circle')
+      .transition(transition('c').duration(600))
+      .attr('fill', 'rgba(45,45,45,.9)');
   }
 
   render() {
