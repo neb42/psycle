@@ -29,18 +29,18 @@ export default class Login extends React.Component<Props, State> {
 
   handleUsernameChange = (value: string) => {
     this.setState({ username: value });
-  }
+  };
 
   handlePasswordChange = (value: string) => {
     this.setState({ password: value });
-  }
+  };
 
   handleSubmit = async () => {
     const { username, password } = this.state;
     const { setData } = this.context;
 
     this.setState({ loading: true });
-    const [ bookingHistory, instructors ] = await Promise.all([
+    const [bookingHistory, instructors] = await Promise.all([
       this.fetchBookingHistory(username, password),
       this.fetchInstructors(),
     ]);
@@ -49,22 +49,26 @@ export default class Login extends React.Component<Props, State> {
   };
 
   fetchBookingHistory = async (username: string, password: string) => {
-    const { data: { bookingHistory }} = await axios.get(`/booking-history?username=${username}&password=${password}`, {
+    const {
+      data: { bookingHistory },
+    } = await axios.get(`/booking-history?username=${username}&password=${password}`, {
       headers: {
         'UserAPI-Key': 'qaZ6fkpjjwRgDl77PS4s8bd26IQ3EuZzCgyuAMdxO8SPpllbKo',
       },
-    })
+    });
     return bookingHistory;
-  }
+  };
 
   fetchInstructors = async () => {
-    const { data: { instructors }} = await axios.get('/instructors', {
+    const {
+      data: { instructors },
+    } = await axios.get('/instructors', {
       headers: {
         'UserAPI-Key': 'qaZ6fkpjjwRgDl77PS4s8bd26IQ3EuZzCgyuAMdxO8SPpllbKo',
       },
-    })
-    return instructors; 
-  }
+    });
+    return instructors;
+  };
 
   render() {
     const { activeIndex } = this.props;
@@ -77,7 +81,7 @@ export default class Login extends React.Component<Props, State> {
 
     if (loading) {
       return (
-        <Styles.SpinnerWrapper> 
+        <Styles.SpinnerWrapper>
           <Spinner size={26} thick />
         </Styles.SpinnerWrapper>
       );
@@ -85,8 +89,18 @@ export default class Login extends React.Component<Props, State> {
 
     return (
       <Styles.Container visible={activeIndex === 0} onSubmit={this.handleSubmit}>
-        <Input type="email" value={username} placeholder="username" onChange={this.handleUsernameChange} />
-        <Input type="password" value={password} placeholder="password" onChange={this.handlePasswordChange} />
+        <Input
+          type="email"
+          value={username}
+          placeholder="username"
+          onChange={this.handleUsernameChange}
+        />
+        <Input
+          type="password"
+          value={password}
+          placeholder="password"
+          onChange={this.handlePasswordChange}
+        />
         <Button
           type="submit"
           text="login"

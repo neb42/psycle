@@ -3,22 +3,22 @@ import styled from 'styled-components';
 
 import { BookingHistoryContext } from '../../context/BookingHistory';
 import Step from '../Step';
-
-import * as Styles from './Sections.styles';
 import FavouriteInstructor from '../Visualisations/FavouriteInstructor';
 import InstructorBars from '../Visualisations/InstructorBars/InstructorBars';
 
+import * as Styles from './Sections.styles';
+
 const PsycleTitle = styled.span`
   font-size: 16px;
-  letter-spacing: .158em;
+  letter-spacing: 0.158em;
   text-transform: uppercase;
-  font-family: soin_sans_neueroman,sans-serif;
+  font-family: soin_sans_neueroman, sans-serif;
 `;
 
 export default class Sections extends React.Component {
   static contextType = BookingHistoryContext;
 
-  get steps(){
+  get steps() {
     const {
       loaded,
       classCount,
@@ -56,15 +56,17 @@ export default class Sections extends React.Component {
       },
       {
         title: `${this.context.favouriteInstructor.favouriteInstructorName} is your favourite instructor`,
-        content: this.context.instructors[this.context.favouriteInstructor.favouriteInstructorName].description.split('\n\n').map(paragraph => (
-          <React.Fragment>
-            <span>
-              {paragraph}
-            </span>
-            <br />
-            <br />
-          </React.Fragment>
-        )),
+        content: this.context.instructors[
+          this.context.favouriteInstructor.favouriteInstructorName
+        ].description
+          .split('\n\n')
+          .map(paragraph => (
+            <React.Fragment>
+              <span>{paragraph}</span>
+              <br />
+              <br />
+            </React.Fragment>
+          )),
       },
       {
         title: 'Studio 1',
@@ -102,7 +104,9 @@ export default class Sections extends React.Component {
 
     return (
       <Styles.Sections id="sections">
-        {this.steps.map((s, i) => <Step {...s} isActive={activeIndex === i} />)}
+        {this.steps.map((s, i) => (
+          <Step {...s} isActive={activeIndex === i} />
+        ))}
       </Styles.Sections>
     );
   }

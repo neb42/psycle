@@ -14,10 +14,10 @@ const StyledAxis = styled.g`
   & path {
     stroke: #fff;
   }
- 
+
   & text {
     fill: #fff;
-  } 
+  }
 `;
 
 export default class Axis extends React.PureComponent {
@@ -42,7 +42,7 @@ export default class Axis extends React.PureComponent {
     }
   }
 
-  handleActiveIndexChange = (activeIndex) => {
+  handleActiveIndexChange = activeIndex => {
     if (activeIndex === 2) {
       this.renderScatterAxis();
     } else if (activeIndex === 3) {
@@ -50,20 +50,14 @@ export default class Axis extends React.PureComponent {
     } else {
       this.hide();
     }
-  }
+  };
 
   renderScatterAxis = () => {
-    const { weeklyLollipop: { xScale }} = this.context;
+    const {
+      weeklyLollipop: { xScale },
+    } = this.context;
     const axisX = axisBottom()
-      .tickValues([
-        0,
-        1440,
-        2 * 1440,
-        3 * 1440,
-        4 * 1440,
-        5 * 1440,
-        6 * 1440,
-      ])
+      .tickValues([0, 1440, 2 * 1440, 3 * 1440, 4 * 1440, 5 * 1440, 6 * 1440])
       .tickFormat(e => {
         switch (e) {
           case 0:
@@ -88,43 +82,36 @@ export default class Axis extends React.PureComponent {
 
     select('.axis.x')
       .call(axisX)
-      .transition(
-        transition()
-          .duration(500)
-      )
+      .transition(transition().duration(500))
       .style('opacity', 1)
       .on('end', () => this.setState({ opacityX: 1 }));
-  }
+  };
 
   renderBarAxis = () => {
-    const { instructorBars: { xScale }} = this.context;
+    const {
+      instructorBars: { xScale },
+    } = this.context;
     const axis = axisBottom()
       .scale(xScale)
-      .tickFormat(function(e){
-        if(Math.floor(e) !== e) {
+      .tickFormat(function(e) {
+        if (Math.floor(e) !== e) {
           return;
         }
         return e;
       });
     select('.axis.x')
       .call(axis)
-      .transition(
-        transition()
-          .duration(500)
-      )
+      .transition(transition().duration(500))
       .style('opacity', 1)
       .on('end', () => this.setState({ opacityX: 1 }));
-  }
+  };
 
   hide = () => {
     selectAll('.axis')
-      .transition(
-        transition()
-          .duration(500)
-      )
+      .transition(transition().duration(500))
       .style('opacity', 0)
       .on('end', () => this.setState({ opacityX: 0, opacityY: 0 }));
-  }
+  };
 
   render() {
     const { height } = this.props;

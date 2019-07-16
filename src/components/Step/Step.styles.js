@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 
-const getOpacity = ({ isActive }) =>
-  isActive ? 1 : 0.1;
+const getOpacity = ({ isActive }) => (isActive ? 1 : 0.1);
 
 export const Step = styled.section`
   margin-bottom: 200px;
-  font-family: soin_sans_neueroman,sans-serif;
+  font-family: soin_sans_neueroman, sans-serif;
   font-size: 16px;
   line-height: 23px;
   color: #fff;
@@ -13,7 +12,7 @@ export const Step = styled.section`
 `;
 
 export const Title = styled.div`
-  font-family: soin_sans_neueroman,sans-serif;
+  font-family: soin_sans_neueroman, sans-serif;
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 2px;

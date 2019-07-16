@@ -16,11 +16,11 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 ReactDOM.render(
-  <ThemeProvider theme={defaultTokens} >
+  <ThemeProvider theme={defaultTokens}>
     <React.Fragment>
       <GlobalStyles />
-      <App/>
+      <App />
     </React.Fragment>
   </ThemeProvider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );

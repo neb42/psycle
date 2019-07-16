@@ -13,11 +13,17 @@ import { bisect } from 'd3-array';
 
 export default class Scroller {
   container;
+
   dispatch;
+
   sections;
+
   sectionPositions;
+
   currentIndex;
+
   containerStart;
+
   timer;
 
   constructor() {
@@ -48,7 +54,7 @@ export default class Scroller {
    *  elements that will be scrolled
    *  through by user.
    */
-  scroll = (els) => {
+  scroll = els => {
     this.sections = els;
 
     // when window is scrolled call
@@ -74,7 +80,7 @@ export default class Scroller {
       this.position();
       this.timer.stop();
     });
-  }
+  };
 
   /**
    * container - get/set the parent element
@@ -84,7 +90,7 @@ export default class Scroller {
    *
    * @param value - the new container value
    */
-  scrollContainer = (value) => {
+  scrollContainer = value => {
     // if (arguments.length === 0) {
     //   return container;
     // }
@@ -111,14 +117,14 @@ export default class Scroller {
     let startPos;
     const that = this;
     this.sections.each(function(d, i) {
-      var top = this.getBoundingClientRect().top;
+      const { top } = this.getBoundingClientRect();
       if (i === 0) {
         startPos = top;
       }
       that.sectionPositions.push(top - startPos);
     });
     this.containerStart = this.container.node().getBoundingClientRect().top + window.pageYOffset;
-  }
+  };
 
   /**
    * position - get current users position.
@@ -143,5 +149,5 @@ export default class Scroller {
     const progress = (pos - prevTop) / (this.sectionPositions[sectionIndex] - prevTop);
     // @v4 you now `.call` the dispatch callback
     this.dispatch.call('progress', this, this.currentIndex, progress);
-  }
+  };
 }

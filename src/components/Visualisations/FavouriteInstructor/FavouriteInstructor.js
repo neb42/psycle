@@ -8,7 +8,10 @@ export default class FavouriteInstructor extends React.PureComponent {
   static contextType = BookingHistoryContext;
 
   get photo() {
-    const { instructors, favouriteInstructor: { favouriteInstructorName }} = this.context;
+    const {
+      instructors,
+      favouriteInstructor: { favouriteInstructorName },
+    } = this.context;
     if (instructors && instructors[favouriteInstructorName]) {
       return instructors[favouriteInstructorName].photo;
     }
@@ -18,7 +21,7 @@ export default class FavouriteInstructor extends React.PureComponent {
   render() {
     const { activeIndex, height, width } = this.props;
     return (
-      <foreignObject width={width} height={height}> 
+      <foreignObject width={width} height={height}>
         <img
           alt=""
           style={{

@@ -9,7 +9,6 @@ import Visualisations from './components/Visualisations';
 import Scroller from './Scroller';
 import { BookingHistoryProvider } from './context/BookingHistory';
 import Data from './Data';
-
 import * as Styles from './App.styles';
 
 type State = {
@@ -24,10 +23,13 @@ export default class App extends React.Component<*, State> {
     progress: 0,
     loaded: false,
   };
+
   scroller: Scroller;
 
   width = 600;
+
   height = 520;
+
   margin = { top: 0, left: 30, bottom: 40, right: 10 };
 
   componentDidMount() {
@@ -37,7 +39,7 @@ export default class App extends React.Component<*, State> {
   componentDidUpdate(_, prevState) {
     const { loaded } = this.state;
     if (loaded !== prevState.loaded) {
-     this.scroller.scroll(selectAll('#step'));
+      this.scroller.scroll(selectAll('#step'));
     }
   }
 
@@ -60,7 +62,7 @@ export default class App extends React.Component<*, State> {
       // plot.update(index, progress);
       this.setState({ activeIndex: index, progress });
     });
-  }
+  };
 
   setData = (bookingHistory, instructors) => {
     this.setState({
@@ -72,7 +74,7 @@ export default class App extends React.Component<*, State> {
       instructors,
       loaded: true,
     });
-  }
+  };
 
   render() {
     const { data, instructors, activeIndex, progress, loaded } = this.state;

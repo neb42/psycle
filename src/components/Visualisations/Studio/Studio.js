@@ -14,17 +14,17 @@ export default class StudioViz extends React.Component {
   };
 
   static contextType = BookingHistoryContext;
-  
+
   componentDidUpdate(prevProps) {
     const { activeIndex: prevIdx } = prevProps;
     const { activeIndex } = this.props;
-  
+
     if (prevIdx !== activeIndex) {
       this.handleActiveIndexChange(activeIndex);
     }
   }
-  
-  handleActiveIndexChange = (activeIndex) => {
+
+  handleActiveIndexChange = activeIndex => {
     if (activeIndex === 5) {
       this.showStudio1();
       this.hideOverlay();
@@ -46,22 +46,22 @@ export default class StudioViz extends React.Component {
     } else if (activeIndex === 4 || activeIndex === 11) {
       this.hide();
     }
-  }
+  };
 
   showStudio1 = () => {
     this.setState({ studio: 'studio1' });
-  }
+  };
 
   showStudio2 = () => {
     this.setState({ studio: 'studio2' });
-  }
+  };
 
   showHeatmap = studio => {
     selectAll(`.heatmap-${studio}`)
       .transition(transition().duration(600))
       .attr('opacity', 1)
       .on('end', () => this.setState({ heatmap: true }));
-  }
+  };
 
   showFavouriteBike = studio => {
     selectAll(`.heatmap-${studio}`)
@@ -72,8 +72,8 @@ export default class StudioViz extends React.Component {
     selectAll(`.favourite-bike-${studio}`)
       .transition(transition().duration(600))
       .attr('opacity', 1);
-      // .on('end', () => this.setState({ overlay: 'favourite-bike' }));
-  }
+    // .on('end', () => this.setState({ overlay: 'favourite-bike' }));
+  };
 
   hideOverlay = () => {
     selectAll(`
@@ -85,12 +85,12 @@ export default class StudioViz extends React.Component {
       .transition(transition().duration(600))
       .attr('opacity', 0)
       .on('end', () => this.setState({ heatmap: false, favouriteBike: false }));
-  }
+  };
 
   hide = () => {
     this.setState({ studio: null });
     this.hideOverlay();
-  }
+  };
 
   get heatmapStudio1Opacity() {
     const { studio, heatmap } = this.state;
@@ -114,11 +114,9 @@ export default class StudioViz extends React.Component {
   render() {
     const { height, width } = this.props;
     const { studio } = this.state;
-    const { studio: {
-      studio1ContourDensity,
-      studio2ContourDensity,
-      contourDensityColorScale,
-    }} = this.context;
+    const {
+      studio: { studio1ContourDensity, studio2ContourDensity, contourDensityColorScale },
+    } = this.context;
     return (
       <React.Fragment>
         <Studio
@@ -128,17 +126,31 @@ export default class StudioViz extends React.Component {
           width={width}
           transform={this.groupTransform}
         />
-        <g className="heatmap-studio-1" opacity={this.heatmapStudio1Opacity} transform={this.groupTransform}>
+        <g
+          className="heatmap-studio-1"
+          opacity={this.heatmapStudio1Opacity}
+          transform={this.groupTransform}
+        >
           {studio1ContourDensity.map(d => (
             <path d={geoPath()(d)} fill={contourDensityColorScale(d.value)} />
           ))}
         </g>
-        <g className="heatmap-studio-2" opacity={this.heatmapStudio2Opacity} transform={this.groupTransform}>
+        <g
+          className="heatmap-studio-2"
+          opacity={this.heatmapStudio2Opacity}
+          transform={this.groupTransform}
+        >
           {studio2ContourDensity.map(d => (
             <path d={geoPath()(d)} fill={contourDensityColorScale(d.value)} />
           ))}
         </g>
-        <Studio showText studio={studio} height={height} width={width} transform={this.groupTransform} />
+        <Studio
+          showText
+          studio={studio}
+          height={height}
+          width={width}
+          transform={this.groupTransform}
+        />
       </React.Fragment>
     );
   }

@@ -32,7 +32,11 @@ export const getX = bikeNumber => {
 
   const gapSum = columnIdx * bikeGap;
   const previousBikeSum = columnIdx * bikeRadius * 2;
-  return gapSum + previousBikeSum + (spacePosition && bikeNumber >= spacePosition ? (bikeRadius * 2) + bikeGap  : 0);
+  return (
+    gapSum +
+    previousBikeSum +
+    (spacePosition && bikeNumber >= spacePosition ? bikeRadius * 2 + bikeGap : 0)
+  );
 };
 
 export const getY = bikeNumber => {

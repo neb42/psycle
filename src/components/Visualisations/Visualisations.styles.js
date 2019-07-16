@@ -18,13 +18,7 @@ export const Subtitle = styled.text`
   text-anchor: middle;
 `;
 
-const delay = ({
-  property,
-  startValue,
-  endValue,
-  time,
-  reverse,
-}: Props) => {
+const delay = ({ property, startValue, endValue, time, reverse }: Props) => {
   const keyframe = keyframes`
     0% {
       ${property}: ${reverse ? endValue : startValue};
@@ -34,14 +28,19 @@ const delay = ({
       ${property}: ${reverse ? startValue : endValue};
     }
   `;
-  return css`animation: ${keyframe} ${time}s forwards;`;
+  return css`
+    animation: ${keyframe} ${time}s forwards;
+  `;
 };
 
 export const VisGroup = styled.g`
-  ${({ activeIndex, index }) => activeIndex < index ? delay({
-    property: 'visibility',
-    startValue: 'visible',
-    endValue: 'hidden',
-    time: '0.7',
-  }) : ''}
+  ${({ activeIndex, index }) =>
+    activeIndex < index
+      ? delay({
+          property: 'visibility',
+          startValue: 'visible',
+          endValue: 'hidden',
+          time: '0.7',
+        })
+      : ''}
 `;

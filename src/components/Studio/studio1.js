@@ -50,8 +50,8 @@ export const getX = bikeNumber => {
 
   const gapSum = columnIdx * bikeGap;
   const previousBikeSum = columnIdx * bikeRadius * 2;
-  const pillarGap = (bikeGap * 2) + (bikeRadius * 3);
-  return gapSum + previousBikeSum + (afterPillar ? pillarGap : 0) + (inset * rows[rowIdx].inset);
+  const pillarGap = bikeGap * 2 + bikeRadius * 3;
+  return gapSum + previousBikeSum + (afterPillar ? pillarGap : 0) + inset * rows[rowIdx].inset;
 };
 
 export const getY = bikeNumber => {
@@ -72,7 +72,7 @@ export const getPillarX = () => {
 
   const gapSum = columnIdx * bikeGap;
   const previousBikeSum = columnIdx * bikeRadius * 2;
-  return gapSum + previousBikeSum + (inset * rows[rowIdx].inset);
+  return gapSum + previousBikeSum + inset * rows[rowIdx].inset;
 };
 
 export const getPillarY = () => {
@@ -80,5 +80,5 @@ export const getPillarY = () => {
 
   const gapSum = rowIdx * bikeGap;
   const previousBikeSum = bikeRadius * 2 * (rowIdx + 1);
-  return gapSum + previousBikeSum - (pillarSize / 2);
+  return gapSum + previousBikeSum - pillarSize / 2;
 };

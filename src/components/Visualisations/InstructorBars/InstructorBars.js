@@ -24,25 +24,27 @@ export default class InstructorBars extends React.PureComponent {
     }
   }
 
-  handleActiveIndexChange = (activeIndex) => {
+  handleActiveIndexChange = activeIndex => {
     if (activeIndex === 3) {
       this.show();
-    } else  {
+    } else {
       this.hide();
     }
-  }
+  };
 
   show = () => {
-    const { instructorBars: { xScale }} = this.context;
+    const {
+      instructorBars: { xScale },
+    } = this.context;
     selectAll('.instructor-count-bar')
       .transition(
         transition()
           .duration(600)
-          .delay(function (d, i) {
+          .delay(function(d, i) {
             return 300 * (i + 1);
-          })
+          }),
       )
-      .attr('width', function (d) {
+      .attr('width', function(d) {
         return xScale(d.value);
       });
 
@@ -50,11 +52,11 @@ export default class InstructorBars extends React.PureComponent {
       .transition(
         transition()
           .duration(600)
-          .delay(1200)
+          .delay(1200),
       )
       .attr('opacity', 1)
       .on('end', () => this.setState({ visible: true }));
-  }
+  };
 
   hide = () => {
     selectAll('.bar-text')
@@ -65,20 +67,24 @@ export default class InstructorBars extends React.PureComponent {
       .transition(transition().duration(600))
       .attr('width', 0)
       .on('end', () => this.setState({ visible: false }));
-  }
+  };
 
-  rectWidth = (datum) => {
+  rectWidth = datum => {
     const { visible } = this.state;
-    const { instructorBars: { xScale }} = this.context;
+    const {
+      instructorBars: { xScale },
+    } = this.context;
     if (visible) {
       return xScale(datum.value);
     }
     return 0;
-  }
+  };
 
   render() {
-    const  { width } = this.props;
-    const { instructorBars: { instructorCounts, yScale, colorScale }} = this.context;
+    const { width } = this.props;
+    const {
+      instructorBars: { instructorCounts, yScale, colorScale },
+    } = this.context;
     const { visible } = this.state;
 
     return (
