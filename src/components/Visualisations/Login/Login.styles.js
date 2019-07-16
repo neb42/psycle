@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const getOpacity = ({ visible }) => visible ? 1 : 0;
 
-export const Container = styled.div`
+export const Container = styled.form`
   opacity: ${getOpacity};
   transition: opacity 600ms;
 
@@ -18,6 +18,7 @@ export const Container = styled.div`
   input:-webkit-autofill:active  {
       color: #fff !important;
       transition: background-color 5000s ease-in-out 0s;
+      -webkit-text-fill-color: #fff;
   }
 `;
 

@@ -84,15 +84,15 @@ export default class Login extends React.Component<Props, State> {
     }
 
     return (
-      <Styles.Container visible={activeIndex === 0}>
+      <Styles.Container visible={activeIndex === 0} onSubmit={this.handleSubmit}>
         <Input type="email" value={username} placeholder="username" onChange={this.handleUsernameChange} />
         <Input type="password" value={password} placeholder="password" onChange={this.handlePasswordChange} />
         <Button
+          type="submit"
           text="login"
           size={Button.sizes.medium}
           style={Button.styles.filled}
           color={Button.colors.primary}
-          onClick={this.handleSubmit}
         />
       </Styles.Container>
     );
