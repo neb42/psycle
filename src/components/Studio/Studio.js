@@ -1,5 +1,5 @@
 import React from 'react';
-import { selectAll } from 'd3-selection';
+import { select, selectAll } from 'd3-selection';
 import { transition } from 'd3-transition';
 
 import * as Studio1 from './studio1';
@@ -44,7 +44,7 @@ export default class Studio extends React.Component {
 
   transition = (Studio, PrevStudio) => {
     if (Studio.bikeCount > PrevStudio.bikeCount) {
-      selectAll('.bike-circle')
+      select('.show-circle').selectAll('.bike-circle')
         .transition(transition('a').duration(600))
         .attr('opacity', 1);
 
@@ -54,7 +54,7 @@ export default class Studio extends React.Component {
     }
 
     if (Studio.bikeCount < PrevStudio.bikeCount) {
-      selectAll('.bike-circle')
+      select('.show-circle').selectAll('.bike-circle')
         .filter((_, i) => i >= Studio.bikeCount)
         .transition(transition('c').duration(600))
         .attr('opacity', 0);
@@ -64,7 +64,7 @@ export default class Studio extends React.Component {
         .transition(transition('cc').duration(600))
         .attr('opacity', 0);
 
-      selectAll('.bike-circle')
+        select('.show-circle').selectAll('.bike-circle')
         .filter((_, i) => i < Studio.bikeCount)
         .transition(transition('c').duration(600))
         .attr('opacity', 1);
@@ -132,13 +132,13 @@ export default class Studio extends React.Component {
   }
 
   render() {
-    const { transform } = this.props;
+    const { transform, showCircle, showText } = this.props;
     const { Studio } = this.state;
     const pillarX = Studio ? Studio.getPillarX() : Studio1.getPillarX();
     const pillarY = Studio? Studio.getPillarY(pillarSize) : Studio1.getPillarY(pillarSize);
     const pillarOpacity = Studio && Studio.hasPillar ? 1 : 0;
     return (
-      <g transform={transform}>
+      <g className={showCircle ? 'show-circle' : 'show-text'} transform={transform}>
         {Array(Math.max(Studio1.bikeCount, Studio2.bikeCount)).fill(1).map((_, bikeIdx) => {
           const bikeNumber = bikeIdx + 1;
           const x = Studio ? Studio.getX(bikeNumber) : Studio1.getPillarX();
@@ -152,9 +152,9 @@ export default class Studio extends React.Component {
                 cy={y}
                 r={bikeRadius}
                 fill="rgba(45,45,45,.9)"
-                opacity={bikeOpacity}
+                opacity={showCircle ? bikeOpacity : 0}
               />
-              <text
+              {showText && <text
                 className="bike-text"
                 x={x}
                 y={y}
@@ -168,11 +168,11 @@ export default class Studio extends React.Component {
                 }}
               >
                 {bikeNumber}
-              </text>
+              </text>}
             </g>
           );
         })}
-        <g>
+        {showCircle && <g>
           <rect
             className="pillar-rect"
             width={pillarSize}
@@ -197,7 +197,7 @@ export default class Studio extends React.Component {
           >
             P
           </text>
-        </g>
+        </g>}
       </g>
     );
   }

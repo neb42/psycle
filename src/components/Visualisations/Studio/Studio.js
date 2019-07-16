@@ -92,12 +92,12 @@ export default class StudioViz extends React.Component {
 
   get heatmapStudio1Opacity() {
     const { studio, overlay } = this.state;
-    return studio === 'studio1' && overlay === 'heatmap' ? 0.8 : 0;
+    return studio === 'studio1' && overlay === 'heatmap' ? 1 : 0;
   }
 
   get heatmapStudio2Opacity() {
     const { studio, overlay } = this.state;
-    return studio === 'studio2' && overlay === 'heatmap' ? 0.8 : 0;
+    return studio === 'studio2' && overlay === 'heatmap' ? 1 : 0;
   }
 
   get groupTransform() {
@@ -119,7 +119,7 @@ export default class StudioViz extends React.Component {
     }} = this.context;
     return (
       <React.Fragment>
-        <Studio studio={studio} height={height} width={width} transform={this.groupTransform} />
+        <Studio showCircle studio={studio} height={height} width={width} transform={this.groupTransform} />
         <g className="heatmap-studio-1" opacity={this.heatmapStudio1Opacity} transform={this.groupTransform}>
           {studio1ContourDensity.map(d => (
             <path d={geoPath()(d)} fill={contourDensityColorScale(d.value)} />
@@ -130,6 +130,7 @@ export default class StudioViz extends React.Component {
             <path d={geoPath()(d)} fill={contourDensityColorScale(d.value)} />
           ))}
         </g>
+        <Studio showText studio={studio} height={height} width={width} transform={this.groupTransform} />
       </React.Fragment>
     );
   }
