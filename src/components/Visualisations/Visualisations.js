@@ -1,18 +1,52 @@
 import React from 'react';
+import { select, selectAll } from 'd3-selection';
 
 import { BookingHistoryContext } from '../../context/BookingHistory';
+import Sections from '../Sections';
+import Scroller from '../../Scroller';
+import MortimerStreetRideVis from './MortimerStreetRideVis';
 
-import Login from '../Login';
-import Axis from './Axis';
-import ClassCount from './ClassCount';
-import WeekScatter from './WeekScatter';
-import InstructorBars from './InstructorBars';
-import FavouriteInstructor from './FavouriteInstructor';
-import Studio from './Studio';
 import * as Styles from './Visualisations.styles';
 
 export default class Visualisations extends React.Component {
   static contextType = BookingHistoryContext;
+
+  state: State = {
+    activeIndex: -1,
+    progress: 0,
+  };
+
+  componentDidMount() {
+    this.setupScroller();
+  }
+
+  // componentDidUpdate(_, prevState) {
+  //   const { loaded } = this.state;
+  //   if (loaded !== prevState.loaded) {
+  //     this.scroller.scroll(selectAll('#step'));
+  //   }
+  // }
+
+  setupScroller = () => {
+    // setup scroll functionality
+    this.scroller = new Scroller();
+    this.scroller.scrollContainer(select('#graphic'));
+
+    // pass in .step selection as the steps
+    this.scroller.scroll(selectAll('#step'));
+
+    // setup event handling
+    this.scroller.on('active', index => {
+      // activate current section
+      // plot.activate(index);
+      this.setState({ activeIndex: index });
+    });
+
+    this.scroller.on('progress', (index, progress) => {
+      // plot.update(index, progress);
+      this.setState({ activeIndex: index, progress });
+    });
+  };
 
   get svgWidth() {
     const {
@@ -38,56 +72,30 @@ export default class Visualisations extends React.Component {
   }
 
   render() {
-    const { width, height, activeIndex, progress } = this.props;
-    const { loaded } = this.context;
+    const { width, height } = this.props;
+    const { activeIndex, progress } = this.state;
 
     return (
-      <Styles.Visualisations id="vis">
-        <svg width={this.svgWidth} height={this.svgHeight}>
-          <g transform={this.groupTransform}>
-            <foreignObject width={this.svgWidth} height={this.svgHeight}>
-              <Login activeIndex={activeIndex} />
-            </foreignObject>
-            {loaded && (
-              <React.Fragment>
-                <Axis activeIndex={activeIndex} height={height} width={width} />
-                <ClassCount
+      <Styles.Container className="container">
+        <Styles.Graphic id="graphic">
+          <Sections activeIndex={activeIndex} progress={progress} />
+          <Styles.Visualisations id="vis">
+            <svg width={this.svgWidth} height={this.svgHeight}>
+              <g transform={this.groupTransform}>
+                <MortimerStreetRideVis
+                  width={width}
+                  height={height}
+                  svgWidth={this.svgWidth}
+                  svgHeight={this.svgHeight}
                   activeIndex={activeIndex}
-                  width={this.svgWidth}
-                  height={this.svgHeight}
+                  progress={progress}
                 />
-                <Styles.VisGroup index={2} activeIndex={activeIndex}>
-                  <WeekScatter
-                    activeIndex={activeIndex}
-                    height={this.svgHeight}
-                    width={this.svgWidth}
-                  />
-                </Styles.VisGroup>
-                <Styles.VisGroup index={3} activeIndex={activeIndex}>
-                  <InstructorBars
-                    activeIndex={activeIndex}
-                    instructorCounts={this.instructorCounts}
-                    yBarScale={this.yBarScale}
-                    xBarScale={this.xBarScale}
-                    barColorScale={this.barColorScale}
-                    width={this.svgWidth}
-                  />
-                </Styles.VisGroup>
-                <Styles.VisGroup index={4} activeIndex={activeIndex}>
-                  <FavouriteInstructor
-                    activeIndex={activeIndex}
-                    height={this.svgHeight}
-                    width={this.svgWidth}
-                  />
-                </Styles.VisGroup>
-                <Styles.VisGroup index={5} activeIndex={activeIndex}>
-                  <Studio activeIndex={activeIndex} width={this.svgWidth} height={this.svgHeight} />
-                </Styles.VisGroup>
-              </React.Fragment>
-            )}
-          </g>
-        </svg>
-      </Styles.Visualisations>
+              </g>
+            </svg>
+          </Styles.Visualisations>
+          <Styles.ExtraSpace id="extra-space" />
+        </Styles.Graphic>
+      </Styles.Container>
     );
   }
 }

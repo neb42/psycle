@@ -4,8 +4,8 @@ import React from 'react';
 import axios from 'axios';
 import { Input, Button } from '@faculty/adler-web-components';
 
-import { BookingHistoryContext } from '../../context/BookingHistory';
-import Spinner from '../Spinner';
+import { BookingHistoryContext } from '../../../context/BookingHistory';
+import Spinner from '../../Spinner';
 
 import * as Styles from './Login.styles';
 
@@ -23,6 +23,7 @@ export default class Login extends React.Component<Props, State> {
     username: '',
     password: '',
     loading: false,
+    error: false,
   };
 
   static contextType = BookingHistoryContext;
@@ -35,17 +36,23 @@ export default class Login extends React.Component<Props, State> {
     this.setState({ password: value });
   };
 
-  handleSubmit = async () => {
+  handleSubmit = async (event) => {
     const { username, password } = this.state;
     const { setData } = this.context;
 
-    this.setState({ loading: true });
-    const [bookingHistory, instructors] = await Promise.all([
-      this.fetchBookingHistory(username, password),
-      this.fetchInstructors(),
-    ]);
-    setData(bookingHistory, instructors);
-    this.setState({ loading: false });
+    event.preventDefault();
+
+    try {
+      this.setState({ loading: true });
+      const [bookingHistory, instructors] = await Promise.all([
+        this.fetchBookingHistory(username, password),
+        this.fetchInstructors(),
+      ]);
+      setData(bookingHistory, instructors);
+      this.setState({ loading: false });
+    } catch (error) {
+      this.setState({ loading: false, error: true });
+    }
   };
 
   fetchBookingHistory = async (username: string, password: string) => {
@@ -72,7 +79,7 @@ export default class Login extends React.Component<Props, State> {
 
   render() {
     const { activeIndex } = this.props;
-    const { username, password, loading } = this.state;
+    const { username, password, loading, error } = this.state;
     const { loaded } = this.context;
 
     if (loaded) {
@@ -108,6 +115,7 @@ export default class Login extends React.Component<Props, State> {
           style={Button.styles.filled}
           color={Button.colors.primary}
         />
+        {error && <span>error</span>}
       </Styles.Container>
     );
   }

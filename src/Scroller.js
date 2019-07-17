@@ -137,6 +137,7 @@ export default class Scroller {
     const pos = window.pageYOffset - 10 - this.containerStart;
     let sectionIndex = bisect(this.sectionPositions, pos);
     sectionIndex = Math.min(this.sections.size() - 1, sectionIndex);
+    sectionIndex = pos < -200 ? -1 : sectionIndex;
 
     if (this.currentIndex !== sectionIndex) {
       // @v4 you now `.call` the dispatch callback

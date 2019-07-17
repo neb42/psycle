@@ -1,9 +1,25 @@
 import styled, { keyframes, css } from 'styled-components';
 
+export const Container = styled.div`
+  width: 890px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+`;
+
+export const Graphic = styled.div`
+  padding-top: 120px;
+`;
+
+export const ExtraSpace = styled.div`
+  height: 300px;
+`;
+
 export const Visualisations = styled.div`
   display: inline-block;
   position: fixed;
-  top: 60px;
+  top: 120px;
   z-index: 1;
   margin-left: 0;
 `;

@@ -25,7 +25,7 @@ export default class FavouriteInstructor extends React.PureComponent {
         <img
           alt=""
           style={{
-            opacity: activeIndex === 4 ? 1 : 0,
+            opacity: activeIndex === 3 ? 1 : 0,
             transition: 'opacity 600ms',
           }}
           src={this.photo}

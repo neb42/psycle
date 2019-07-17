@@ -7,6 +7,7 @@ import App from './App';
 
 const GlobalStyles = createGlobalStyle`
   body {
+    margin: 0;
     background: linear-gradient(0deg, #12182b 0%, #2f3e70 100%);
     user-select: none;
     & button {

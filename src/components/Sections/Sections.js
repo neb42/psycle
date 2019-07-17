@@ -3,8 +3,6 @@ import styled from 'styled-components';
 
 import { BookingHistoryContext } from '../../context/BookingHistory';
 import Step from '../Step';
-import FavouriteInstructor from '../Visualisations/FavouriteInstructor';
-import InstructorBars from '../Visualisations/InstructorBars/InstructorBars';
 
 import * as Styles from './Sections.styles';
 
@@ -28,20 +26,7 @@ export default class Sections extends React.Component {
       weeklyLollipop,
     } = this.context;
 
-    if (!loaded) {
-      return [
-        {
-          title: <PsycleTitle>psycle</PsycleTitle>,
-          content: 'Just Ride',
-        },
-      ];
-    }
-
     return [
-      {
-        title: <PsycleTitle>psycle</PsycleTitle>,
-        content: 'Just Ride',
-      },
       {
         title: 'Class count',
         content: `Well done! You've been going to Psycle for ${classCount.monthCount} months and completed ${classCount.count} classes. Keep going.`,

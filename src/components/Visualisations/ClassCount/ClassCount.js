@@ -28,7 +28,7 @@ const C = styled.text`
 
 export default class ClassCount extends React.PureComponent {
   state = {
-    visible: this.props.activeIndex === 1,
+    visible: this.props.activeIndex === 0,
   };
 
   static contextType = BookingHistoryContext;
@@ -43,13 +43,13 @@ export default class ClassCount extends React.PureComponent {
   }
 
   handleActiveIndexChange = (activeIndex, prevIdx) => {
-    if (activeIndex === 0) {
+    if (activeIndex < 0) {
       this.hideFromTop();
-    } else if (activeIndex === 1 && prevIdx === 0) {
+    } else if (activeIndex === 0) {
       this.showFromTop();
-    } else if (activeIndex === 1 && prevIdx === 2) {
+    } else if (activeIndex === 0 && prevIdx === 1) {
       this.showFromTop();
-    } else if (activeIndex === 2) {
+    } else if (activeIndex === 1) {
       this.hideFromBottom();
     }
   };

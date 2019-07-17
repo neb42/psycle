@@ -6,7 +6,7 @@ import { BookingHistoryContext } from '../../../context/BookingHistory';
 
 export default class InstructorBars extends React.PureComponent {
   state = {
-    visible: this.props.activeIndex === 3,
+    visible: this.props.activeIndex === 2,
   };
 
   static contextType = BookingHistoryContext;
@@ -25,7 +25,7 @@ export default class InstructorBars extends React.PureComponent {
   }
 
   handleActiveIndexChange = activeIndex => {
-    if (activeIndex === 3) {
+    if (activeIndex === 2) {
       this.show();
     } else {
       this.hide();
