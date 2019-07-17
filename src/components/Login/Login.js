@@ -4,8 +4,8 @@ import React from 'react';
 import axios from 'axios';
 import { Input, Button } from '@faculty/adler-web-components';
 
-import { BookingHistoryContext } from '../../../context/BookingHistory';
-import Spinner from '../../Spinner';
+import { BookingHistoryContext } from '../../context/BookingHistory';
+import Spinner from '../Spinner';
 
 import * as Styles from './Login.styles';
 

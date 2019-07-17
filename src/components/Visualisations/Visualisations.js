@@ -2,7 +2,7 @@ import React from 'react';
 
 import { BookingHistoryContext } from '../../context/BookingHistory';
 
-import Login from './Login';
+import Login from '../Login';
 import Axis from './Axis';
 import ClassCount from './ClassCount';
 import WeekScatter from './WeekScatter';
