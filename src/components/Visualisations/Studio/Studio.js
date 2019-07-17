@@ -57,6 +57,7 @@ export default class StudioViz extends React.Component {
   };
 
   showHeatmap = studio => {
+    this.setState({ favouriteBike: false });
     selectAll(`.heatmap-${studio}`)
       .transition(transition().duration(600))
       .attr('opacity', 1)
@@ -64,27 +65,22 @@ export default class StudioViz extends React.Component {
   };
 
   showFavouriteBike = studio => {
+    this.setState({ favouriteBike: true });
     selectAll(`.heatmap-${studio}`)
       .transition(transition().duration(600))
       .attr('opacity', 0)
-      .on('end', () => this.setState({ favouriteBike: true }));
-
-    selectAll(`.favourite-bike-${studio}`)
-      .transition(transition().duration(600))
-      .attr('opacity', 1);
-    // .on('end', () => this.setState({ overlay: 'favourite-bike' }));
+      .on('end', () => this.setState({ heatmap: false }));
   };
 
   hideOverlay = () => {
+    this.setState({ favouriteBike: false });
     selectAll(`
       .heatmap-studio-1,
-      .favourite-bike-studio-1
-      .heatmap-studio-2,
-      .favourite-bike-studio-2
+      .heatmap-studio-2
     `)
       .transition(transition().duration(600))
       .attr('opacity', 0)
-      .on('end', () => this.setState({ heatmap: false, favouriteBike: false }));
+      .on('end', () => this.setState({ heatmap: false }));
   };
 
   hide = () => {
@@ -113,14 +109,21 @@ export default class StudioViz extends React.Component {
 
   render() {
     const { height, width } = this.props;
-    const { studio } = this.state;
+    const { studio, favouriteBike } = this.state;
     const {
-      studio: { studio1ContourDensity, studio2ContourDensity, contourDensityColorScale },
+      studio: {
+        studio1ContourDensity,
+        studio2ContourDensity,
+        contourDensityColorScale,
+        favouriteBikes,
+      },
     } = this.context;
     return (
       <React.Fragment>
         <Studio
           showCircle
+          showFavouriteBikes={favouriteBike}
+          favouriteBikes={favouriteBikes}
           studio={studio}
           height={height}
           width={width}
