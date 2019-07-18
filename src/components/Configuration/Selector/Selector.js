@@ -44,8 +44,6 @@ export default class Selector extends React.Component {
         <Styles.Locations> 
           {locations.map(l => (
             <Styles.Button
-              hasTooltip={l !== 'mortimer st'}
-              data-tip="Currently unavailable"
               disabled={l !== 'mortimer st'}
               active={l === currentLocation}
             >
@@ -56,8 +54,6 @@ export default class Selector extends React.Component {
         <Styles.ClassTypes>
           {classTypes.map(c => (
             <Styles.Button
-              hasTooltip={c !== 'ride'}
-              data-tip="Currently unavailable"
               disabled={c !== 'ride'}
               active={c === currentClassType}
             >
