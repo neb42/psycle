@@ -5,7 +5,7 @@ import { ThemeProvider, defaultTokens } from '@faculty/adler-tokens';
 
 import Banner from './components/Banner';
 import Visualisations from './components/Visualisations';
-import { BookingHistoryProvider } from './context/BookingHistory';
+import { BookingHistoryProvider, BookingHistoryConsumer } from './context/BookingHistory';
 import Data from './Data';
 
 type State = {
@@ -14,8 +14,12 @@ type State = {
 
 export default class App extends React.Component<*, State> {
   state: State = {
-    data: {},
+    bookingHistory: [],
     instructors: [],
+    filters: {
+      location: 'mortimer st',
+      classType: 'ride',
+    },
     activeIndex: 0,
     progress: 0,
     loaded: false,
@@ -31,37 +35,67 @@ export default class App extends React.Component<*, State> {
 
   setData = (bookingHistory, instructors) => {
     this.setState({
-      data: Data({
-        bookingHistory,
-        height: this.height, // - this.margin.top - this.margin.bottom,
-        width: this.width, // - this.margin.left - this.margin.right,
-      }),
+      bookingHistory,
       instructors,
       loaded: true,
     });
   };
 
+  setLocationFilter = (location) => {
+    this.setState(prevState => ({
+      filters: {
+        ...prevState.filters,
+        location,
+      },
+    }));
+  }
+
+  setClassTypeFilter = (classType) => {
+    this.setState(prevState => ({
+      filters: {
+        ...prevState.filters,
+        classType,
+      },
+    }));
+  }
+
   render() {
-    const { data, instructors, loaded } = this.state;
+    const { instructors, bookingHistory, filters, loaded } = this.state;
 
     const context = {
-      ...data,
+      ...Data({
+        bookingHistory: bookingHistory.filter(bh => 
+          (filters.location === 'all' || filters.location === bh.location)
+          && (filters.classType === 'all' || filters.classType === bh.classType)
+        ),
+        height: this.height, // - this.margin.top - this.margin.bottom,
+        width: this.width, // - this.margin.left - this.margin.right,
+      }),
+      filters,
       instructors,
       loaded,
       setData: this.setData,
+      setLocationFilter: this.setLocationFilter,
+      setClassTypeFilter: this.setClassTypeFilter,
     };
 
     return (
       <ThemeProvider theme={defaultTokens}>
         <BookingHistoryProvider value={context}>
-          <Banner />
-          {loaded && (
-            <Visualisations
-              width={this.width}
-              height={this.height}
-              margin={this.margin}
-            />
-          )}
+          <BookingHistoryConsumer>
+            {({ loaded: l }) => (
+              <React.Fragment>
+                <Banner />
+                {l && (
+                  <Visualisations
+                    width={this.width}
+                    height={this.height}
+                    margin={this.margin}
+                  />
+                )}
+              </React.Fragment>
+            )}
+          </BookingHistoryConsumer>
         </BookingHistoryProvider>
       </ThemeProvider>
     );

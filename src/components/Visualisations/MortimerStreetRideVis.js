@@ -15,11 +15,13 @@ export default class MortimerStreetRideVis extends React.Component {
     return (
       <React.Fragment>
         <Axis activeIndex={activeIndex} height={height} width={width} />
-        <ClassCount
-          activeIndex={activeIndex}
-          width={svgWidth}
-          height={svgHeight}
-        />
+        <Styles.VisGroup index={0} activeIndex={activeIndex}>
+          <ClassCount
+            activeIndex={activeIndex}
+            width={svgWidth}
+            height={svgHeight}
+          />
+        </Styles.VisGroup>
         <Styles.VisGroup index={1} activeIndex={activeIndex}>
           <WeekScatter
             activeIndex={activeIndex}

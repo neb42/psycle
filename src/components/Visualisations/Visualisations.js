@@ -79,20 +79,22 @@ export default class Visualisations extends React.Component {
       <Styles.Container className="container">
         <Styles.Graphic id="graphic">
           <Sections activeIndex={activeIndex} progress={progress} />
-          <Styles.Visualisations id="vis">
-            <svg width={this.svgWidth} height={this.svgHeight}>
-              <g transform={this.groupTransform}>
-                <MortimerStreetRideVis
-                  width={width}
-                  height={height}
-                  svgWidth={this.svgWidth}
-                  svgHeight={this.svgHeight}
-                  activeIndex={activeIndex}
-                  progress={progress}
-                />
-              </g>
-            </svg>
-          </Styles.Visualisations>
+          <Styles.VisGroup index={0} activeIndex={activeIndex}>
+            <Styles.Visualisations id="vis">
+              <svg width={this.svgWidth} height={this.svgHeight}>
+                <g transform={this.groupTransform}>
+                  <MortimerStreetRideVis
+                    width={width}
+                    height={height}
+                    svgWidth={this.svgWidth}
+                    svgHeight={this.svgHeight}
+                    activeIndex={activeIndex}
+                    progress={progress}
+                  />
+                </g>
+              </svg>
+            </Styles.Visualisations>
+          </Styles.VisGroup>
           <Styles.ExtraSpace id="extra-space" />
         </Styles.Graphic>
       </Styles.Container>
