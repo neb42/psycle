@@ -9,10 +9,10 @@ import * as Studio2 from '../components/Studio/studio2';
 const studio1ContourDensity = (bookingHistory, width, height) => {
   const densityData = contourDensity()
     .x(function(d) {
-      return Studio1.getX(d.bike);
+      return Studio1.getX(d.spot);
     })
     .y(function(d) {
-      return Studio1.getY(d.bike);
+      return Studio1.getY(d.spot);
     })
     .size([width, height])
     .bandwidth(15)(bookingHistory.filter(d => d.studio === 'Studio 1'));
@@ -22,10 +22,10 @@ const studio1ContourDensity = (bookingHistory, width, height) => {
 const studio2ContourDensity = (bookingHistory, width, height) => {
   const densityData = contourDensity()
     .x(function(d) {
-      return Studio2.getX(d.bike);
+      return Studio2.getX(d.spot);
     })
     .y(function(d) {
-      return Studio2.getY(d.bike);
+      return Studio2.getY(d.spot);
     })
     .size([width, height])
     .bandwidth(15)(bookingHistory.filter(d => d.studio === 'Studio 2'));
@@ -41,7 +41,7 @@ const contourDensityColorScale = () => {
 const favouriteBikes = (bookingHistory) => {
   const bikeCount = nest()
     .key(function(d) {
-      return d.bike;
+      return d.spot;
     })
     .rollup(function(v) {
       return v.length;
