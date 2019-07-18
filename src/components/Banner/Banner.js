@@ -10,7 +10,6 @@ const Banner = () => (
     <Styles.Content>
       <Styles.Text> 
         <Styles.Title>Psycle Data Exploration</Styles.Title>
-        <Styles.Subtitle>A subitle</Styles.Subtitle>
       </Styles.Text>
       <Configuration />
     </Styles.Content>

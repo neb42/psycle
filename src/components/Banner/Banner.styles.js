@@ -12,7 +12,7 @@ export const Image = styled.img`
 
 export const Content = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-around;
   position: relative;
   bottom: 70%;

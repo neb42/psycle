@@ -3,6 +3,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.form`
+  min-width: 380px;
+
   & input {
     color: #fff !important;
   }
