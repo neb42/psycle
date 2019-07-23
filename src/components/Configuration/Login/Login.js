@@ -6,6 +6,7 @@ import { Input, Button } from '@faculty/adler-web-components';
 
 import { BookingHistoryContext } from '../../../context/BookingHistory';
 import Spinner from '../../Spinner';
+import { fakeBookingHistory, fakeInstructors } from '../../../Data/fakeData';
 
 import * as Styles from './Login.styles';
 
@@ -54,6 +55,13 @@ export default class Login extends React.Component<Props, State> {
       this.setState({ loading: false, error: true });
     }
   };
+
+  handleFakeData = (event) => {
+    event.preventDefault();
+
+    const { setData } = this.context;
+    setData(fakeBookingHistory, fakeInstructors);
+  }
 
   fetchBookingHistory = async (username: string, password: string) => {
     const {
@@ -114,6 +122,13 @@ export default class Login extends React.Component<Props, State> {
           size={Button.sizes.medium}
           style={Button.styles.filled}
           color={Button.colors.primary}
+        />
+        <Button
+          text="use fake data"
+          size={Button.sizes.medium}
+          style={Button.styles.naked}
+          color={Button.colors.inverse}
+          onClick={this.handleFakeData}
         />
         {error && <span>error</span>}
       </Styles.Container>

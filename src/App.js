@@ -62,18 +62,20 @@ export default class App extends React.Component<*, State> {
   render() {
     const { instructors, bookingHistory, filters, loaded } = this.state;
 
+    const filteredBookingHistory = bookingHistory.filter(bh => 
+      (filters.location === 'all' || filters.location === bh.location)
+      && (filters.classType === 'all' || filters.classType === bh.classType)
+    )
     const context = {
       ...Data({
-        bookingHistory: bookingHistory.filter(bh => 
-          (filters.location === 'all' || filters.location === bh.location)
-          && (filters.classType === 'all' || filters.classType === bh.classType)
-        ),
+        bookingHistory: filteredBookingHistory,
         height: this.height, // - this.margin.top - this.margin.bottom,
         width: this.width, // - this.margin.left - this.margin.right,
       }),
       filters,
       instructors,
       loaded,
+      bookingHistory: filteredBookingHistory,
       setData: this.setData,
       setLocationFilter: this.setLocationFilter,
       setClassTypeFilter: this.setClassTypeFilter,
