@@ -25,7 +25,8 @@ export default class InstructorBars extends React.PureComponent {
   }
 
   handleActiveIndexChange = activeIndex => {
-    if (activeIndex === 2) {
+    const { startIndex } = this.props;
+    if (activeIndex === startIndex) {
       this.show();
     } else {
       this.hide();

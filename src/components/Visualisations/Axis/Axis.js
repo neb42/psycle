@@ -43,9 +43,10 @@ export default class Axis extends React.PureComponent {
   }
 
   handleActiveIndexChange = activeIndex => {
-    if (activeIndex === 1) {
+    const { barIndex, scatterIndex } = this.props;
+    if (activeIndex === scatterIndex) {
       this.renderScatterAxis();
-    } else if (activeIndex === 2) {
+    } else if (activeIndex === barIndex) {
       this.renderBarAxis();
     } else {
       this.hide();

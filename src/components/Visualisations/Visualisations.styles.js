@@ -50,8 +50,8 @@ const delay = ({ property, startValue, endValue, time, reverse }: Props) => {
 };
 
 export const VisGroup = styled.g`
-  ${({ activeIndex, index }) =>
-    activeIndex < index
+  ${({ activeIndex, startIndex }) =>
+    activeIndex < startIndex
       ? delay({
           property: 'visibility',
           startValue: 'visible',

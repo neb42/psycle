@@ -25,25 +25,26 @@ export default class StudioViz extends React.Component {
   }
 
   handleActiveIndexChange = activeIndex => {
-    if (activeIndex === 4) {
+    const { startIndex } = this.props;
+    if (activeIndex === startIndex) {
       this.showStudio1();
       this.hideOverlay();
-    } else if (activeIndex === 5) {
+    } else if (activeIndex === startIndex + 1) {
       this.showStudio1();
       this.showHeatmap('studio-1');
-    } else if (activeIndex === 6) {
+    } else if (activeIndex === startIndex + 2) {
       this.showStudio1();
       this.showFavouriteBike('studio-1');
-    } else if (activeIndex === 7) {
+    } else if (activeIndex === startIndex + 3) {
       this.showStudio2();
       this.hideOverlay();
-    } else if (activeIndex === 8) {
+    } else if (activeIndex === startIndex + 4) {
       this.showStudio2();
       this.showHeatmap('studio-2');
-    } else if (activeIndex === 9) {
+    } else if (activeIndex === startIndex + 5) {
       this.showStudio2();
       this.showFavouriteBike('studio-2');
-    } else if (activeIndex === 3 || activeIndex === 10) {
+    } else if (activeIndex === startIndex - 1 || activeIndex === startIndex + 6) {
       this.hide();
     }
   };

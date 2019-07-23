@@ -26,7 +26,7 @@ const range = (start, end, step = 1) => {
 
 export default class WeekScatter extends React.PureComponent {
   state = {
-    visible: this.props.activeIndex === 2,
+    visible: this.props.activeIndex === this.props.startIndex,
   };
 
   static contextType = BookingHistoryContext;
@@ -50,9 +50,10 @@ export default class WeekScatter extends React.PureComponent {
   }
 
   handleActiveIndexChange = activeIndex => {
-    if (activeIndex === 1) {
+    const { startIndex } = this.props;
+    if (activeIndex === startIndex) {
       this.show();
-    } else if (activeIndex === 0 || activeIndex === 2) {
+    } else if (activeIndex === startIndex - 1 || activeIndex === startIndex + 1) {
       this.hide();
     }
   };

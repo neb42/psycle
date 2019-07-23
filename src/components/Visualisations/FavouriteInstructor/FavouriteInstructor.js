@@ -19,13 +19,13 @@ export default class FavouriteInstructor extends React.PureComponent {
   }
 
   render() {
-    const { activeIndex, height, width } = this.props;
+    const { activeIndex, height, width, startIndex } = this.props;
     return (
       <foreignObject width={width} height={height}>
         <img
           alt=""
           style={{
-            opacity: activeIndex === 3 ? 1 : 0,
+            opacity: activeIndex === startIndex ? 1 : 0,
             transition: 'opacity 600ms',
           }}
           src={this.photo}
