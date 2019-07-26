@@ -10,6 +10,7 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     background: linear-gradient(0deg, #12182b 0%, #2f3e70 100%);
     user-select: none;
+    font-family: soin_sans_neueroman, sans-serif;
     & button {
       outline-style: none !important;
     }
