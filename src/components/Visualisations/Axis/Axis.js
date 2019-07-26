@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { select, selectAll } from 'd3-selection';
-import { axisBottom } from 'd3-axis';
+import { axisBottom, axisLeft } from 'd3-axis';
 import { transition } from 'd3-transition';
 
 import { BookingHistoryContext } from '../../../context/BookingHistory';
@@ -43,15 +43,44 @@ export default class Axis extends React.PureComponent {
   }
 
   handleActiveIndexChange = activeIndex => {
-    const { barIndex, scatterIndex } = this.props;
+    const { barIndex, scatterIndex, movingAverageIndex } = this.props;
     if (activeIndex === scatterIndex) {
       this.renderScatterAxis();
     } else if (activeIndex === barIndex) {
       this.renderBarAxis();
+    } else if (activeIndex === movingAverageIndex) {
+      this.renderMovingAverageAxis();
     } else {
       this.hide();
     }
   };
+
+  renderMovingAverageAxis = () => {
+    const {
+      movingAverage: { xScale, yScale },
+    } = this.context;
+    const axisX = axisBottom().scale(xScale);
+    const axisY = axisLeft()
+      .scale(yScale)
+      .tickFormat(function(e) {
+        if (Math.floor(e) !== e) {
+          return;
+        }
+        return e;
+      });
+
+    select('.axis.x')
+      .call(axisX)
+      .transition(transition().duration(600))
+      .style('opacity', 1)
+      .on('end', () => this.setState({ opacityX: 1 }));
+
+    select('.axis.y')
+      .call(axisY)
+      .transition(transition().duration(600))
+      .style('opacity', 1)
+      .on('end', () => this.setState({ opacityY: 1 }));
+  }
 
   renderScatterAxis = () => {
     const {
@@ -86,12 +115,18 @@ export default class Axis extends React.PureComponent {
       .transition(transition().duration(500))
       .style('opacity', 1)
       .on('end', () => this.setState({ opacityX: 1 }));
+
+    selectAll('.axis.y')
+      .transition(transition().duration(500))
+      .style('opacity', 0)
+      .on('end', () => this.setState({ opacityY: 0 }));
   };
 
   renderBarAxis = () => {
     const {
       instructorBars: { xScale },
     } = this.context;
+
     const axis = axisBottom()
       .scale(xScale)
       .tickFormat(function(e) {
@@ -100,11 +135,17 @@ export default class Axis extends React.PureComponent {
         }
         return e;
       });
+      
     select('.axis.x')
       .call(axis)
       .transition(transition().duration(500))
       .style('opacity', 1)
       .on('end', () => this.setState({ opacityX: 1 }));
+
+    selectAll('.axis.y')
+      .transition(transition().duration(500))
+      .style('opacity', 0)
+      .on('end', () => this.setState({ opacityY: 0 }));
   };
 
   hide = () => {
@@ -116,13 +157,17 @@ export default class Axis extends React.PureComponent {
 
   render() {
     const { height } = this.props;
-    const { opacityX } = this.state;
+    const { opacityX, opacityY } = this.state;
     return (
       <React.Fragment>
         <StyledAxis
           className="axis x"
           transform={`translate(0, ${height})`}
           style={{ opacity: opacityX }}
+        />
+        <StyledAxis
+          className="axis y"
+          style={{ opacity: opacityY }}
         />
       </React.Fragment>
     );
