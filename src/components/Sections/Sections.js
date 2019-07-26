@@ -1,82 +1,27 @@
 import React from 'react';
-import styled from 'styled-components';
 
-import { BookingHistoryContext } from '../../context/BookingHistory';
 import Step from '../Step';
+import { BookingHistoryContext } from '../../context/BookingHistory';
+import { calendarText } from '../Charts/Calendar';
+import { movingAverageText } from '../Charts/MovingAverage';
+import { weeklyLollipopText } from '../Charts/WeeklyLollipop';
+import { instructorBarsText } from '../Charts/InstructorBars';
+import { favouriteInstructorText } from '../Charts/FavouriteInstructor';
+import { studioText } from '../Charts/Studio';
 
 import * as Styles from './Sections.styles';
-
-const PsycleTitle = styled.span`
-  font-size: 16px;
-  letter-spacing: 0.158em;
-  text-transform: uppercase;
-  font-family: soin_sans_neueroman, sans-serif;
-`;
 
 export default class Sections extends React.Component {
   static contextType = BookingHistoryContext;
 
   get steps() {
-    const {
-      loaded,
-      classCount,
-      favouriteInstructor,
-      instructorBars,
-      studio,
-      weeklyLollipop,
-    } = this.context;
-
     return [
-      {
-        title: 'Class count',
-        content: `Well done! You've been going to Psycle for ${classCount.monthCount} months and completed ${classCount.count} classes. Keep going.`,
-      },
-      {
-        title: 'Favourite day',
-        content: 'Your fave time to go is Tuesday evenings',
-      },
-      {
-        title: 'Instructors',
-        content: 'Blah blah blah',
-      },
-      {
-        title: `${this.context.favouriteInstructor.favouriteInstructorName} is your favourite instructor`,
-        content: this.context.instructors[
-          this.context.favouriteInstructor.favouriteInstructorName
-        ].description
-          .split('\n\n')
-          .map(paragraph => (
-            <React.Fragment>
-              <span>{paragraph}</span>
-              <br />
-              <br />
-            </React.Fragment>
-          )),
-      },
-      {
-        title: 'Studio 1',
-        content: 'Blah blah',
-      },
-      {
-        title: 'Studio 1 heatmap',
-        content: 'Blah blah',
-      },
-      {
-        title: 'Studio 1 favourite',
-        content: 'Blah blah',
-      },
-      {
-        title: 'Studio 2',
-        content: 'Blah blah',
-      },
-      {
-        title: 'Studio 2 heatmap',
-        content: 'Blah blah',
-      },
-      {
-        title: 'Studio 2 favourite',
-        content: 'Blah blah',
-      },
+      calendarText(this.context),
+      movingAverageText(this.context),
+      weeklyLollipopText(this.context),
+      instructorBarsText(this.context),
+      favouriteInstructorText(this.context),
+      ...studioText(this.context),
       {
         title: 'End?',
         content: 'Blah blah',

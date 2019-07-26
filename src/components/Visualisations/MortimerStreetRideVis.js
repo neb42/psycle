@@ -1,13 +1,12 @@
 import React from 'react';
 
-import Axis from './Axis';
-import ClassCount from './ClassCount';
-import Calendar from './Calendar';
-import WeekScatter from './WeekScatter';
-import InstructorBars from './InstructorBars';
-import FavouriteInstructor from './FavouriteInstructor';
-import Studio from './Studio';
-import MovingAverage from './MovingAverage';
+import Axis from '../Charts/Axis';
+import { Calendar } from '../Charts/Calendar';
+import { MovingAverage } from '../Charts/MovingAverage';
+import { WeeklyLollipop } from '../Charts/WeeklyLollipop';
+import { InstructorBars } from '../Charts/InstructorBars';
+import { FavouriteInstructor } from '../Charts/FavouriteInstructor';
+import { Studio } from '../Charts/Studio';
 
 import * as Styles from './Visualisations.styles';
 
@@ -48,7 +47,7 @@ export default class MortimerStreetRideVis extends React.Component {
           />
         </Styles.VisGroup>
         <Styles.VisGroup startIndex={WEEKLY_LOLLIPOP_START_INDEX} activeIndex={activeIndex}>
-          <WeekScatter
+          <WeeklyLollipop
             startIndex={WEEKLY_LOLLIPOP_START_INDEX}
             activeIndex={activeIndex}
             height={svgHeight}

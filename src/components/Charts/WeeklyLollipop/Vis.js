@@ -24,7 +24,7 @@ const range = (start, end, step = 1) => {
     .map((_, idx) => start + idx * step);
 };
 
-export default class WeekScatter extends React.PureComponent {
+export default class WeeklyLollipop extends React.PureComponent {
   state = {
     visible: this.props.activeIndex === this.props.startIndex,
   };
