@@ -17,20 +17,21 @@ const MovingAverage = ({
   const { movingAverage: { dataByMonth, xScale, yScale }} = useContext(BookingHistoryContext);
 
   const show = () => {
-    select('.moving-average-path')
-      .attr('stroke', 'transparent');
-
-    select('.moving-average-path')
+    const totalLength = select('.moving-average-path').node().getTotalLength();
+    selectAll('.moving-average-path')
+      .attr('stroke-dasharray', totalLength + ' ' + totalLength)
+      .attr('stroke-dashoffset', totalLength)
       .transition()
-      .duration(600)
-      .attr('stroke', '#fff');
+      .duration(2000)
+      .attr('stroke-dashoffset', 0);
   };
 
   const hide = () => {
-    select('.moving-average-path')
+    const totalLength = select('.moving-average-path').node().getTotalLength();
+    selectAll('.moving-average-path')
       .transition()
       .duration(600)
-      .attr('stroke', 'transparent');
+      .attr('stroke-dashoffset', totalLength);
   };
 
   useChartTransition({ [startIndex]: show }, hide, activeIndex);
@@ -40,9 +41,16 @@ const MovingAverage = ({
     .y(d => yScale(d.value))
     .curve(curveBasis);
        
-  return  (
-    <path className="moving-average-path" d={movingAverageLine(dataByMonth)} stroke="#fff" fill="transparent" />
+  return (
+    <path
+      className="moving-average-path"
+      d={movingAverageLine(dataByMonth)}
+      stroke="#fff"
+      strokeWidth="4px"
+      strokeLinecap="round"
+      fill="transparent"
+    />
   );
 };
 
-export default MovingAverage;
+export default React.memo(MovingAverage);
