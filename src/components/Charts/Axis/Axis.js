@@ -3,20 +3,25 @@ import styled from 'styled-components';
 import { select, selectAll } from 'd3-selection';
 import { axisBottom, axisLeft } from 'd3-axis';
 import { transition } from 'd3-transition';
+import { timeFormat } from 'd3-time-format';
+import { timeYear } from 'd3-time';
 
 import { BookingHistoryContext } from '../../../context/BookingHistory';
 
 const StyledAxis = styled.g`
   & line {
     stroke: #fff;
+    stroke-width: 2px;
   }
 
   & path {
     stroke: #fff;
+    stroke-width: 3px;
   }
 
   & text {
     fill: #fff;
+    font-size: 14px;
   }
 `;
 
@@ -59,7 +64,15 @@ export default class Axis extends React.PureComponent {
     const {
       movingAverage: { xScale, yScale },
     } = this.context;
-    const axisX = axisBottom().scale(xScale);
+    const axisX = axisBottom()
+      .scale(xScale)
+      .tickFormat(d => {
+        if (timeYear(d) < d) {
+          return timeFormat('%b')(d);
+        } else {
+          return timeFormat('%Y')(d);
+        }
+     });
     const axisY = axisLeft()
       .scale(yScale)
       .tickFormat(function(e) {
@@ -72,14 +85,14 @@ export default class Axis extends React.PureComponent {
     select('.axis.x')
       .call(axisX)
       .transition(transition().duration(600))
-      .style('opacity', 1)
-      .on('end', () => this.setState({ opacityX: 1 }));
+      .style('opacity', 0.7)
+      .on('end', () => this.setState({ opacityX: 0.7 }));
 
     select('.axis.y')
       .call(axisY)
       .transition(transition().duration(600))
-      .style('opacity', 1)
-      .on('end', () => this.setState({ opacityY: 1 }));
+      .style('opacity', 0.7)
+      .on('end', () => this.setState({ opacityY: 0.7 }));
   }
 
   renderScatterAxis = () => {
@@ -91,19 +104,19 @@ export default class Axis extends React.PureComponent {
       .tickFormat(e => {
         switch (e) {
           case 0:
-            return 'Monday';
+            return 'Mon';
           case 1440:
-            return 'Tuesday';
+            return 'Tues';
           case 2 * 1440:
-            return 'Wednesday';
+            return 'Wed';
           case 3 * 1440:
-            return 'Thursday';
+            return 'Thur';
           case 4 * 1440:
-            return 'Friday';
+            return 'Fri';
           case 5 * 1440:
-            return 'Saturday';
+            return 'Sat';
           case 6 * 1440:
-            return 'Sunday';
+            return 'Sun';
           default:
             return '';
         }
@@ -112,12 +125,12 @@ export default class Axis extends React.PureComponent {
 
     select('.axis.x')
       .call(axisX)
-      .transition(transition().duration(500))
+      .transition(transition().duration(600))
       .style('opacity', 1)
       .on('end', () => this.setState({ opacityX: 1 }));
 
     selectAll('.axis.y')
-      .transition(transition().duration(500))
+      .transition(transition().duration(600))
       .style('opacity', 0)
       .on('end', () => this.setState({ opacityY: 0 }));
   };
@@ -138,19 +151,19 @@ export default class Axis extends React.PureComponent {
       
     select('.axis.x')
       .call(axis)
-      .transition(transition().duration(500))
+      .transition(transition().duration(600))
       .style('opacity', 1)
       .on('end', () => this.setState({ opacityX: 1 }));
 
     selectAll('.axis.y')
-      .transition(transition().duration(500))
+      .transition(transition().duration(600))
       .style('opacity', 0)
       .on('end', () => this.setState({ opacityY: 0 }));
   };
 
   hide = () => {
     selectAll('.axis')
-      .transition(transition().duration(500))
+      .transition(transition().duration(600))
       .style('opacity', 0)
       .on('end', () => this.setState({ opacityX: 0, opacityY: 0 }));
   };
