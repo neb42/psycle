@@ -38,23 +38,19 @@ export default class InstructorBars extends React.PureComponent {
       instructorBars: { xScale },
     } = this.context;
     selectAll('.instructor-count-bar')
-      .transition(
-        transition()
-          .duration(600)
-          .delay(function(d, i) {
-            return 300 * (i + 1);
-          }),
-      )
+      .transition()
+      .duration(600)
+      .delay(function(d, i) {
+        return 300 * (i + 1);
+      })
       .attr('width', function(d) {
         return xScale(d.value);
       });
 
     selectAll('.bar-text')
-      .transition(
-        transition()
-          .duration(600)
-          .delay(1200),
-      )
+      .transition()
+      .delay((_, i) => 300 * (i + 2))
+      .duration(600)
       .attr('opacity', 1)
       .on('end', () => this.setState({ visible: true }));
   };
