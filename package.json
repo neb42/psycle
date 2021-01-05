@@ -6,7 +6,7 @@
   "dependencies": {
     "@faculty/adler-tokens": "^0.0.19",
     "@faculty/adler-web-components": "^0.0.19",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "d3-array": "^2.2.0",
     "d3-axis": "^1.0.12",
     "d3-collection": "^1.0.7",
