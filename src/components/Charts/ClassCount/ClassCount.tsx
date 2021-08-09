@@ -26,14 +26,21 @@ const C = styled.text`
   font-family: soin_sans_neueroman, sans-serif;
 `;
 
-export default class ClassCount extends React.PureComponent {
+type State = any;
+
+export default class ClassCount extends React.PureComponent<{}, State> {
   state = {
     visible: this.props.activeIndex === this.props.startIndex,
   };
 
   static contextType = BookingHistoryContext;
 
-  componentDidUpdate(prevProps) {
+  context: any;
+  props: any;
+  setState: any;
+
+  componentDidUpdate(prevProps: {}) {
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'activeIndex' does not exist on type '{}'... Remove this comment to see the full error message
     const { activeIndex: prevIdx } = prevProps;
     const { activeIndex } = this.props;
 
@@ -42,7 +49,7 @@ export default class ClassCount extends React.PureComponent {
     }
   }
 
-  handleActiveIndexChange = (activeIndex, prevIdx) => {
+  handleActiveIndexChange = (activeIndex: any, prevIdx: any) => {
     const { startIndex } = this.props;
     if (activeIndex < startIndex) {
       this.hideFromTop();
@@ -153,6 +160,7 @@ export default class ClassCount extends React.PureComponent {
 
   get aProps(): Object {
     const { width, height } = this.props;
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'state' does not exist on type '{ visible... Remove this comment to see the full error message
     const { state } = this.state;
     return {
       x: width / 2,
@@ -163,6 +171,7 @@ export default class ClassCount extends React.PureComponent {
 
   get bProps(): Object {
     const { width, height } = this.props;
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'state' does not exist on type '{ visible... Remove this comment to see the full error message
     const { state } = this.state;
     return {
       x: state === 0 ? width / 2 : width / 5 + 45,
@@ -173,6 +182,7 @@ export default class ClassCount extends React.PureComponent {
 
   get cProps(): Object {
     const { width, height } = this.props;
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'state' does not exist on type '{ visible... Remove this comment to see the full error message
     const { state } = this.state;
     return {
       x: state === 0 ? width / 2 : (width * 4) / 5 - 45,

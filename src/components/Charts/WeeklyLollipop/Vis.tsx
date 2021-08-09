@@ -17,19 +17,26 @@ const R = styled.rect`
   }
 `;
 
-const range = (start, end, step = 1) => {
+const range = (start: any, end: any, step = 1) => {
   const len = Math.floor((end - start) / step) + 1;
   return Array(len)
-    .fill()
+    .fill(1)
     .map((_, idx) => start + idx * step);
 };
 
-export default class WeeklyLollipop extends React.PureComponent {
+type Props = any;
+type State = any;
+
+export default class WeeklyLollipop extends React.PureComponent<Props, State> {
   state = {
     visible: this.props.activeIndex === this.props.startIndex,
   };
 
   static contextType = BookingHistoryContext;
+
+  context: any;
+  props: Props;
+  setState: any;
 
   componentDidMount() {
     const {
@@ -40,7 +47,7 @@ export default class WeeklyLollipop extends React.PureComponent {
     selectAll('.y-axis-rect').data(this.rectData);
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     const { activeIndex: prevIdx } = prevProps;
     const { activeIndex } = this.props;
 
@@ -49,7 +56,7 @@ export default class WeeklyLollipop extends React.PureComponent {
     }
   }
 
-  handleActiveIndexChange = activeIndex => {
+  handleActiveIndexChange = (activeIndex: any) => {
     const { startIndex } = this.props;
     if (activeIndex === startIndex) {
       this.show();
@@ -65,22 +72,22 @@ export default class WeeklyLollipop extends React.PureComponent {
 
     selectAll('.y-axis-rect')
       .transition(transition().duration(600 / yScale.domain()[0]))
-      .delay((d, i) => {
+      .delay((d: any, i: any) => {
         return ((yScale.domain()[0] - 1 - i) / (yScale.domain()[0] - 1)) * 600;
       })
-      .attr('y', (d, i) => {
+      .attr('y', (d: any, i: any) => {
         return i * this.rectHeight + 50;
       })
       .attr('height', this.rectHeight);
 
     selectAll('.week-line')
       .transition(transition().duration(600))
-      .attr('y2', d => yScale(d.value) + this.yOffset);
+      .attr('y2', (d: any) => yScale(d.value) + this.yOffset);
 
     selectAll('.week-scatter-point')
       .transition(transition('dsf').duration(600))
-      .attr('cx', d => xScale(this.timeInteger(d.key)))
-      .attr('cy', d => yScale(d.value) + this.yOffset)
+      .attr('cx', (d: any) => xScale(this.timeInteger(d.key)))
+      .attr('cy', (d: any) => yScale(d.value) + this.yOffset)
       .attr('fill-opacity', 1)
       .on('end', () => this.setState({ visible: true }));
   };
@@ -92,10 +99,10 @@ export default class WeeklyLollipop extends React.PureComponent {
 
     selectAll('.y-axis-rect')
       .transition(transition().duration(600 / yScale.domain()[0]))
-      .delay((d, i) => {
+      .delay((d: any, i: any) => {
         return (i / (yScale.domain()[0] - 1)) * 600;
       })
-      .attr('y', (d, i) => {
+      .attr('y', (d: any, i: any) => {
         return (i + 1) * this.rectHeight + 50;
       })
       .attr('height', 0);
@@ -132,7 +139,7 @@ export default class WeeklyLollipop extends React.PureComponent {
       .reverse();
   }
 
-  timeInteger = key => {
+  timeInteger = (key: any) => {
     const [weekday, hour, minute] = key.split('-');
     const ti = (Number(weekday) - 1) * 1440 + Number(hour) * 60 + Number(minute);
     return ti;
@@ -178,7 +185,7 @@ export default class WeeklyLollipop extends React.PureComponent {
             </React.Fragment>
           ))}
         </g>
-        {weeklyCount.map((datum, i) => (
+        {weeklyCount.map((datum: any, i: any) => (
           <React.Fragment>
             <line
               className="week-line"
@@ -243,13 +250,13 @@ export default class WeeklyLollipop extends React.PureComponent {
                   .style('fill-opacity', 1)
                   .style('opacity', 1);
                 selectAll('.week-line, .week-scatter-point')
-                  .filter(d => d.key !== datum.key)
+                  .filter((d: any) => d.key !== datum.key)
                   .transition(transition().duration(300))
                   .attr('opacity', 0.3);
 
                 selectAll('.y-axis-rect')
                   .transition(transition().duration(300))
-                  .attr('opacity', d => (d === datum.value ? 0.3 : 0.05));
+                  .attr('opacity', (d: any) => d === datum.value ? 0.3 : 0.05);
               }}
               onMouseLeave={() => {
                 select('.tooltip-rect')
@@ -292,16 +299,15 @@ export default class WeeklyLollipop extends React.PureComponent {
                   .attr('fill-opacity', 0.6)
                   .style('opacity', null);
                 selectAll('.week-line, .week-scatter-point')
-                  .filter(d => d.key !== datum.key)
+                  .filter((d: any) => d.key !== datum.key)
                   .transition(transition('aa').duration(300))
                   .attr('opacity', 1);
                 selectAll('.y-axis-rect')
                   .transition(transition().duration(300))
                   .attr(
                     'opacity',
-                    d =>
-                      (yScale.domain()[0] > 20 ? 0.2 : 0.3) *
-                      (d / (yScale.domain()[0] - yScale.domain()[1])),
+                    (d: any) => (yScale.domain()[0] > 20 ? 0.2 : 0.3) *
+                    (d / (yScale.domain()[0] - yScale.domain()[1])),
                   );
               }}
               fill="#fff"

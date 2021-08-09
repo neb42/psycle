@@ -7,6 +7,9 @@ import { BookingHistoryContext } from '../../../context/BookingHistory';
 export default class FavouriteInstructor extends React.PureComponent {
   static contextType = BookingHistoryContext;
 
+  context: any;
+  props: any;
+
   get photo() {
     const {
       instructors,

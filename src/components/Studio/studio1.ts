@@ -38,7 +38,7 @@ export const bikeCount = 56;
 
 export const hasPillar = true;
 
-export const getX = bikeNumber => {
+export const getX = (bikeNumber: any) => {
   if (bikeNumber > bikeCount) {
     return 0;
   }
@@ -54,7 +54,7 @@ export const getX = bikeNumber => {
   return gapSum + previousBikeSum + (afterPillar ? pillarGap : 0) + inset * rows[rowIdx].inset;
 };
 
-export const getY = bikeNumber => {
+export const getY = (bikeNumber: any) => {
   if (bikeNumber > bikeCount) {
     return 0;
   }

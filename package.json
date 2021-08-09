@@ -4,8 +4,6 @@
   "private": true,
   "proxy": "https://psycle.api.cloud.my.faculty.ai",
   "dependencies": {
-    "@faculty/adler-tokens": "^0.0.19",
-    "@faculty/adler-web-components": "^0.0.19",
     "axios": "^0.19.0",
     "d3-array": "^2.2.0",
     "d3-axis": "^1.0.12",
@@ -25,23 +23,19 @@
     "d3-transition": "^1.2.0",
     "hex-to-rgba": "^2.0.0",
     "moment": "^2.24.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
+    "react-scripts": "4.0.3",
     "sleep-promise": "^8.0.1",
-    "styled-components": "^4.2.0"
+    "styled-components": "^5.3.0"
   },
   "scripts": {
+    "lint": "eslint 'src/**/*.{js,ts,tsx}' --quiet --fix",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "i": "nps-i",
-    "scripts": "nps -s"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "eject": "react-scripts eject"
   },
   "browserslist": {
     "production": [
@@ -56,27 +50,40 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^5.7.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-prettier": "^4.2.0",
-    "eslint-import-resolver-webpack": "^0.11.1",
-    "eslint-plugin-flowtype": "^3.0.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jest": "^21.26.0",
-    "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-prettier": "^3.0.1",
-    "eslint-plugin-react": "^7.11.1",
-    "flow-bin": "^0.83.0",
-    "nps": "^5.9.5",
-    "nps-i": "^1.0.2",
-    "nps-utils": "^1.7.0",
-    "prettier": "^1.17.0",
-    "prettier-eslint": "^8.8.2",
+    "@types/d3-array": "^3.0.1",
+    "@types/d3-axis": "^3.0.1",
+    "@types/d3-collection": "^1.0.10",
+    "@types/d3-contour": "^3.0.1",
+    "@types/d3-dispatch": "^3.0.1",
+    "@types/d3-scale": "^4.0.1",
+    "@types/d3-selection": "^3.0.1",
+    "@types/d3-time": "^3.0.0",
+    "@types/d3-time-format": "^4.0.0",
+    "@types/d3-timer": "^3.0.0",
+    "@types/d3-transition": "^3.0.1",
+    "@types/react": "^17.0.16",
+    "@types/react-dom": "^17.0.9",
+    "@types/styled-components": "^5.1.12",
+    "@typescript-eslint/eslint-plugin": "^4.23.0",
+    "eslint": "^7.26.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.3.0",
+    "eslint-import-resolver-webpack": "^0.13.0",
+    "eslint-plugin-flowtype": "^5.7.2",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^24.3.6",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.5",
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "prettier": "^2.0.5",
+    "prettier-eslint": "^12.0.0",
     "prettycli": "^1.4.3",
     "stylelint": "^10.0.1",
     "stylelint-config-recommended": "^2.2.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.7.0",
-    "ts-migrate": "^0.1.21"
+    "typescript": "^4.3.5"
   }
 }

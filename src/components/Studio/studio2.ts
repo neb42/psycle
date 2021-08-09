@@ -21,7 +21,8 @@ export const bikeCount = 32;
 
 export const hasPillar = false;
 
-export const getX = bikeNumber => {
+// @ts-expect-error ts-migrate(7024) FIXME: Function implicitly has return type 'any' because ... Remove this comment to see the full error message
+export const getX = (bikeNumber: any) => {
   if (bikeNumber > bikeCount) {
     return getX(bikeCount);
   }
@@ -39,7 +40,8 @@ export const getX = bikeNumber => {
   );
 };
 
-export const getY = bikeNumber => {
+// @ts-expect-error ts-migrate(7024) FIXME: Function implicitly has return type 'any' because ... Remove this comment to see the full error message
+export const getY = (bikeNumber: any) => {
   if (bikeNumber > bikeCount) {
     return getY(bikeCount);
   }

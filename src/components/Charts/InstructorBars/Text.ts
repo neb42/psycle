@@ -1,4 +1,4 @@
-const instructorBarsText = context => {
+const instructorBarsText = (context: any) => {
   const title = 'Intructor bars';
   const content = 'Instructor bars content';
 

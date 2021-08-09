@@ -25,7 +25,21 @@ const StyledAxis = styled.g`
   }
 `;
 
-export default class Axis extends React.PureComponent {
+type Props = {
+  activeIndex: number;
+  height: number;
+  width: number;
+  barIndex: number;
+  scatterIndex: number;
+  movingAverageIndex: number;
+};
+
+type State = {
+  opacityX: number;
+  opacityY: number;
+};
+
+export default class Axis extends React.PureComponent<Props, State> {
   state = {
     opacityX: 0,
     opacityY: 0,
@@ -33,12 +47,16 @@ export default class Axis extends React.PureComponent {
 
   static contextType = BookingHistoryContext;
 
+  context: any;
+  props: any;
+  setState: any;
+
   componentDidMount() {
     const { activeIndex } = this.props;
     this.handleActiveIndexChange(activeIndex);
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     const { activeIndex: prevIdx } = prevProps;
     const { activeIndex } = this.props;
 
@@ -47,7 +65,7 @@ export default class Axis extends React.PureComponent {
     }
   }
 
-  handleActiveIndexChange = activeIndex => {
+  handleActiveIndexChange = (activeIndex: any) => {
     const { barIndex, scatterIndex, movingAverageIndex } = this.props;
     if (activeIndex === scatterIndex) {
       this.renderScatterAxis();
@@ -66,16 +84,16 @@ export default class Axis extends React.PureComponent {
     } = this.context;
     const axisX = axisBottom()
       .scale(xScale)
-      .tickFormat(d => {
+      .tickFormat((d: any) => {
         if (timeYear(d) < d) {
           return timeFormat('%b')(d);
         } else {
           return timeFormat('%Y')(d);
         }
-     });
+      });
     const axisY = axisLeft()
       .scale(yScale)
-      .tickFormat(function(e) {
+      .tickFormat(function(e: any) {
         if (Math.floor(e) !== e) {
           return;
         }
@@ -93,7 +111,7 @@ export default class Axis extends React.PureComponent {
       .transition(transition().duration(600))
       .style('opacity', 0.7)
       .on('end', () => this.setState({ opacityY: 0.7 }));
-  }
+  };
 
   renderScatterAxis = () => {
     const {
@@ -101,7 +119,7 @@ export default class Axis extends React.PureComponent {
     } = this.context;
     const axisX = axisBottom()
       .tickValues([0, 1440, 2 * 1440, 3 * 1440, 4 * 1440, 5 * 1440, 6 * 1440])
-      .tickFormat(e => {
+      .tickFormat((e: any) => {
         switch (e) {
           case 0:
             return 'Mon';
@@ -142,13 +160,13 @@ export default class Axis extends React.PureComponent {
 
     const axis = axisBottom()
       .scale(xScale)
-      .tickFormat(function(e) {
+      .tickFormat(function(e: any) {
         if (Math.floor(e) !== e) {
           return;
         }
         return e;
       });
-      
+
     select('.axis.x')
       .call(axis)
       .transition(transition().duration(600))
@@ -172,17 +190,14 @@ export default class Axis extends React.PureComponent {
     const { height } = this.props;
     const { opacityX, opacityY } = this.state;
     return (
-      <React.Fragment>
+      <>
         <StyledAxis
           className="axis x"
           transform={`translate(0, ${height})`}
           style={{ opacity: opacityX }}
         />
-        <StyledAxis
-          className="axis y"
-          style={{ opacity: opacityY }}
-        />
-      </React.Fragment>
+        <StyledAxis className="axis y" style={{ opacity: opacityY }} />
+      </>
     );
   }
 }

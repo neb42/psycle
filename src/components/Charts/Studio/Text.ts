@@ -1,4 +1,4 @@
-const studioText = context => {
+const studioText = (context: any) => {
   return [
     {
       title: 'Studio 1',

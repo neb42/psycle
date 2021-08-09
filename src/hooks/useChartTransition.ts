@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const useChartTransition = (indexToTransition, hide, activeIndex) => {
+const useChartTransition = (indexToTransition: any, hide: any, activeIndex: any) => {
   useEffect(() => {
     if (indexToTransition[activeIndex]) {
       indexToTransition[activeIndex]();

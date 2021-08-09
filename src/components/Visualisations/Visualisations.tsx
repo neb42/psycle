@@ -8,9 +8,16 @@ import MortimerStreetRideVis from './MortimerStreetRideVis';
 
 import * as Styles from './Visualisations.styles';
 
-export default class Visualisations extends React.Component {
+type State1 = any;
+
+export default class Visualisations extends React.Component<{}, State1> {
   static contextType = BookingHistoryContext;
 
+  props: any;
+  scroller: any;
+  setState: any;
+
+  // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'State'.
   state: State = {
     activeIndex: -1,
     progress: 0,
@@ -36,13 +43,13 @@ export default class Visualisations extends React.Component {
     this.scroller.scroll(selectAll('#step'));
 
     // setup event handling
-    this.scroller.on('active', index => {
+    this.scroller.on('active', (index: any) => {
       // activate current section
       // plot.activate(index);
       this.setState({ activeIndex: index });
     });
 
-    this.scroller.on('progress', (index, progress) => {
+    this.scroller.on('progress', (index: any, progress: any) => {
       // plot.update(index, progress);
       this.setState({ activeIndex: index, progress });
     });

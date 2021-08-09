@@ -14,6 +14,9 @@ import * as Styles from './Sections.styles';
 export default class Sections extends React.Component {
   static contextType = BookingHistoryContext;
 
+  context: any;
+  props: any;
+
   get steps() {
     return [
       calendarText(this.context),

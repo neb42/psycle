@@ -9,6 +9,8 @@ import * as Styles from './Configuration.styles';
 export default class Configuration extends React.Component {
   static contextType = BookingHistoryContext;
 
+  context: any;
+
   render() {
     const { loaded } = this.context;
     if (loaded) {

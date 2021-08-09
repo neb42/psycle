@@ -1,7 +1,11 @@
 import React, { useContext, useEffect, useCallback } from 'react';
+// @ts-expect-error ts-migrate(7016) FIXME: Could not find a declaration file for module 'd3-s... Remove this comment to see the full error message
 import { line, curveBasis } from 'd3-shape';
+// @ts-expect-error ts-migrate(7016) FIXME: Could not find a declaration file for module 'd3-s... Remove this comment to see the full error message
 import { selectAll, select } from 'd3-selection';
+// @ts-expect-error ts-migrate(7016) FIXME: Could not find a declaration file for module 'd3-t... Remove this comment to see the full error message
 import { transition } from 'd3-transition';
+// @ts-expect-error ts-migrate(7016) FIXME: Could not find a declaration file for module 'd3-t... Remove this comment to see the full error message
 import { isoParse } from 'd3-time-format';
 
 import { BookingHistoryContext } from '../../../context/BookingHistory';
@@ -12,8 +16,8 @@ const MovingAverage = ({
   height,
   activeIndex,
   progress,
-  startIndex,
-}) => {
+  startIndex
+}: any) => {
   const { movingAverage: { dataByMonth, xScale, yScale }} = useContext(BookingHistoryContext);
 
   const show = () => {
@@ -37,11 +41,12 @@ const MovingAverage = ({
   useChartTransition({ [startIndex]: show }, hide, activeIndex);
       
   const movingAverageLine = line()
-    .x(d => xScale(isoParse(d.key)))
-    .y(d => yScale(d.value))
+    .x((d: any) => xScale(isoParse(d.key)))
+    .y((d: any) => yScale(d.value))
     .curve(curveBasis);
        
   return (
+    // @ts-expect-error ts-migrate(7026) FIXME: JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message
     <path
       className="moving-average-path"
       d={movingAverageLine(dataByMonth)}

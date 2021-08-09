@@ -23,12 +23,14 @@ const classTypes = [
 export default class Selector extends React.Component {
   static contextType = BookingHistoryContext;
 
-  handleLocationChange = location => () => {
+  context: any;
+
+  handleLocationChange = (location: any) => () => {
    const { setLocationFilter } = this.context; 
    setLocationFilter(location);
   }
 
-  handleClassTypeChange = classType => () => {
+  handleClassTypeChange = (classType: any) => () => {
    const { setClassTypeFilter } = this.context; 
    setClassTypeFilter(classType);
   }

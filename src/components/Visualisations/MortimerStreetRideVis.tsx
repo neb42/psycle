@@ -18,6 +18,7 @@ const FAVOURITE_INSTRUCTOR_START_INDEX = 4;
 const STUDIO_START_INDEX = 5;
 
 export default class MortimerStreetRideVis extends React.Component {
+  props: any;
   render() {
     const { width, height, svgWidth, svgHeight, activeIndex, progress } = this.props;
     return (

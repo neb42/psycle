@@ -2,29 +2,29 @@ import { nest } from 'd3-collection';
 import { scaleBand, scaleLinear } from 'd3-scale';
 import { max } from 'd3-array';
 
-export const instructorCounts = bookingHistory => {
+export const instructorCounts = (bookingHistory: any) => {
   return nest()
-    .key(function(d) {
+    .key(function(d: any) {
       return d.instructor;
     })
-    .rollup(function(v) {
+    .rollup(function(v: any) {
       return v.length;
     })
     .entries(bookingHistory)
-    .sort(function(a, b) {
+    .sort(function(a: any, b: any) {
       return b.value - a.value;
     });
 };
 
-export const yScale = (bookingHistory, height) => {
+export const yScale = (bookingHistory: any, height: any) => {
   return scaleBand()
     .paddingInner(0.08)
-    .domain(instructorCounts(bookingHistory).map((_, i) => i))
+    .domain(instructorCounts(bookingHistory).map((_: any, i: any) => i))
     .range([0, height - 50], 0.1, 0.1);
 };
 
-export const xScale = (bookingHistory, width) => {
-  const countMax = max(instructorCounts(bookingHistory), function(d) {
+export const xScale = (bookingHistory: any, width: any) => {
+  const countMax = max(instructorCounts(bookingHistory), function(d: any) {
     return d.value;
   });
   return scaleLinear()
@@ -32,8 +32,8 @@ export const xScale = (bookingHistory, width) => {
     .domain([0, countMax]);
 };
 
-export const colorScale = bookingHistory => {
-  const countMax = max(instructorCounts(bookingHistory), function(d) {
+export const colorScale = (bookingHistory: any) => {
+  const countMax = max(instructorCounts(bookingHistory), function(d: any) {
     return d.value;
   });
   return scaleLinear()
@@ -41,7 +41,11 @@ export const colorScale = bookingHistory => {
     .range([0.2, 0.7]);
 };
 
-const data = ({ bookingHistory, width, height }) => ({
+const data = ({
+  bookingHistory,
+  width,
+  height
+}: any) => ({
   instructorCounts: instructorCounts(bookingHistory),
   yScale: yScale(bookingHistory, height),
   xScale: xScale(bookingHistory, width),

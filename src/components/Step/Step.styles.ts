@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-const getOpacity = ({ isActive }) => (isActive ? 1 : 0.1);
+const getOpacity = ({
+  isActive
+}: any) => (isActive ? 1 : 0.1);
 
 export const Step = styled.section`
   margin-bottom: 200px;

@@ -1,4 +1,4 @@
-const calendarText = context => {
+const calendarText = (context: any) => {
   const {
     classCount: {
       count,

@@ -24,7 +24,7 @@ export const Wrapper = styled.div`
   position: relative;
 `;
 
-const getBorder = (thick, opaque) => {
+const getBorder = (thick: any, opaque: any) => {
   const baseColor = '#fff';
   const color = opaque ? hexToRgba(baseColor, 0.35) : baseColor;
   const thickness = thick ? 5 : 1;
@@ -38,17 +38,29 @@ export const Spinner = styled.div`
   justify-content: cetner;
   position: relative;
   text-indent: -9999em;
-  border-top: ${({ thick }) => getBorder(thick, true)};
-  border-right: ${({ thick }) => getBorder(thick, true)};
-  border-bottom: ${({ thick }) => getBorder(thick, true)};
-  border-left: ${({ thick }) => getBorder(thick, false)};
+  border-top: ${({
+  thick
+}: any) => getBorder(thick, true)};
+  border-right: ${({
+  thick
+}: any) => getBorder(thick, true)};
+  border-bottom: ${({
+  thick
+}: any) => getBorder(thick, true)};
+  border-left: ${({
+  thick
+}: any) => getBorder(thick, false)};
   transform: translateZ(0);
   animation: ${rotateKeyframe} 0.5s infinite linear;
 
   &,
   &::after {
     border-radius: 50%;
-    width: ${({ size }) => size}px;
-    height: ${({ size }) => size}px;
+    width: ${({
+  size
+}: any) => size}px;
+    height: ${({
+  size
+}: any) => size}px;
   }
 `;

@@ -1,8 +1,5 @@
-// @flow
-
 import React from 'react';
 import axios from 'axios';
-import { Input, Button } from '@faculty/adler-web-components';
 
 import { BookingHistoryContext } from '../../../context/BookingHistory';
 import Spinner from '../../Spinner';
@@ -23,11 +20,16 @@ export default class Login extends React.Component<Props, State> {
   state: State = {
     username: '',
     password: '',
+    // @ts-expect-error ts-migrate(2322) FIXME: Type '{ username: string; password: string; loadin... Remove this comment to see the full error message
     loading: false,
     error: false,
   };
 
   static contextType = BookingHistoryContext;
+
+  context: any;
+  props: any;
+  setState: any;
 
   handleUsernameChange = (value: string) => {
     this.setState({ username: value });
@@ -37,7 +39,7 @@ export default class Login extends React.Component<Props, State> {
     this.setState({ password: value });
   };
 
-  handleSubmit = async (event) => {
+  handleSubmit = async (event: any) => {
     const { username, password } = this.state;
     const { setData } = this.context;
 
@@ -56,7 +58,7 @@ export default class Login extends React.Component<Props, State> {
     }
   };
 
-  handleFakeData = (event) => {
+  handleFakeData = (event: any) => {
     event.preventDefault();
 
     const { setData } = this.context;
@@ -87,6 +89,7 @@ export default class Login extends React.Component<Props, State> {
 
   render() {
     const { activeIndex } = this.props;
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'loading' does not exist on type 'State'.
     const { username, password, loading, error } = this.state;
     const { loaded } = this.context;
 

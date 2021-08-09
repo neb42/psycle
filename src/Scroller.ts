@@ -16,15 +16,15 @@ export default class Scroller {
 
   dispatch;
 
-  sections;
+  sections: any;
 
-  sectionPositions;
+  sectionPositions: any;
 
   currentIndex;
 
   containerStart;
 
-  timer;
+  timer: any;
 
   constructor() {
     this.container = select('body');
@@ -54,7 +54,7 @@ export default class Scroller {
    *  elements that will be scrolled
    *  through by user.
    */
-  scroll = els => {
+  scroll = (els: any) => {
     this.sections = els;
 
     // when window is scrolled call
@@ -90,7 +90,7 @@ export default class Scroller {
    *
    * @param value - the new container value
    */
-  scrollContainer = value => {
+  scrollContainer = (value: any) => {
     // if (arguments.length === 0) {
     //   return container;
     // }
@@ -99,7 +99,7 @@ export default class Scroller {
 
   // @v4 There is now no d3.rebind, so this implements
   // a .on method to pass in a callback to the dispatcher.
-  on = (action, callback) => {
+  on = (action: any, callback: any) => {
     this.dispatch.on(action, callback);
   };
 
@@ -114,9 +114,9 @@ export default class Scroller {
     // starting position relative to the top
     // of the first section.
     this.sectionPositions = [];
-    let startPos;
+    let startPos: any;
     const that = this;
-    this.sections.each(function(d, i) {
+    this.sections.each(function(this: any, d: any, i: any) {
       const { top } = this.getBoundingClientRect();
       if (i === 0) {
         startPos = top;

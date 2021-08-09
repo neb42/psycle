@@ -16,9 +16,15 @@ export const ClassTypes = styled.div`
   justify-content: center;
 `;
 
-const getCursor = ({ disabled }) => disabled ? 'not-allowed' : 'pointer';
-const getColor = ({ active }) => active ? '#a71b52' : '#fff';
-const getOpacity = ({ disabled }) => disabled ? 0.4 : 1;
+const getCursor = ({
+  disabled
+}: any) => disabled ? 'not-allowed' : 'pointer';
+const getColor = ({
+  active
+}: any) => active ? '#a71b52' : '#fff';
+const getOpacity = ({
+  disabled
+}: any) => disabled ? 0.4 : 1;
 export const Button = styled.button`
   height: 30px;
   font-size: 16px;

@@ -6,29 +6,29 @@ import { max } from 'd3-array';
 import * as Studio1 from '../components/Studio/studio1';
 import * as Studio2 from '../components/Studio/studio2';
 
-const studio1ContourDensity = (bookingHistory, width, height) => {
+const studio1ContourDensity = (bookingHistory: any, width: any, height: any) => {
   const densityData = contourDensity()
-    .x(function(d) {
+    .x(function(d: any) {
       return Studio1.getX(d.spot);
     })
-    .y(function(d) {
+    .y(function(d: any) {
       return Studio1.getY(d.spot);
     })
     .size([width, height])
-    .bandwidth(15)(bookingHistory.filter(d => d.studio === 'Studio 1'));
+    .bandwidth(15)(bookingHistory.filter((d: any) => d.studio === 'Studio 1'));
   return densityData;
 };
 
-const studio2ContourDensity = (bookingHistory, width, height) => {
+const studio2ContourDensity = (bookingHistory: any, width: any, height: any) => {
   const densityData = contourDensity()
-    .x(function(d) {
+    .x(function(d: any) {
       return Studio2.getX(d.spot);
     })
-    .y(function(d) {
+    .y(function(d: any) {
       return Studio2.getY(d.spot);
     })
     .size([width, height])
-    .bandwidth(15)(bookingHistory.filter(d => d.studio === 'Studio 2'));
+    .bandwidth(15)(bookingHistory.filter((d: any) => d.studio === 'Studio 2'));
   return densityData;
 };
 
@@ -38,22 +38,30 @@ const contourDensityColorScale = () => {
     .range(['white', '#a71b52']);
 };
 
-const favouriteBikes = (bookingHistory) => {
+const favouriteBikes = (bookingHistory: any) => {
   const bikeCount = nest()
-    .key(function(d) {
+    .key(function(d: any) {
       return d.spot;
     })
-    .rollup(function(v) {
+    .rollup(function(v: any) {
       return v.length;
     })
     .entries(bookingHistory);
-  const maxBikeValue = max(bikeCount, d => d.value);
+  const maxBikeValue = max(bikeCount, (d: any) => d.value);
   return bikeCount
-    .filter(({ value }) => value === maxBikeValue)
-    .map(({ key }) => Number(key));
+    .filter(({
+    value
+  }: any) => value === maxBikeValue)
+    .map(({
+    key
+  }: any) => Number(key));
 };
 
-const data = ({ bookingHistory, width, height }) => ({
+const data = ({
+  bookingHistory,
+  width,
+  height
+}: any) => ({
   studio1ContourDensity: studio1ContourDensity(bookingHistory, width, height),
   studio2ContourDensity: studio2ContourDensity(bookingHistory, width, height),
   contourDensityColorScale: contourDensityColorScale(),
