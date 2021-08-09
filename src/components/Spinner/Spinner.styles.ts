@@ -31,36 +31,24 @@ const getBorder = (thick: any, opaque: any) => {
   return `${thickness}px solid ${color}`;
 };
 
-export const Spinner = styled.div`
+export const Spinner = styled.div<{ size: number; thick: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: cetner;
   position: relative;
   text-indent: -9999em;
-  border-top: ${({
-  thick
-}: any) => getBorder(thick, true)};
-  border-right: ${({
-  thick
-}: any) => getBorder(thick, true)};
-  border-bottom: ${({
-  thick
-}: any) => getBorder(thick, true)};
-  border-left: ${({
-  thick
-}: any) => getBorder(thick, false)};
+  border-top: ${({ thick }: any) => getBorder(thick, true)};
+  border-right: ${({ thick }: any) => getBorder(thick, true)};
+  border-bottom: ${({ thick }: any) => getBorder(thick, true)};
+  border-left: ${({ thick }: any) => getBorder(thick, false)};
   transform: translateZ(0);
   animation: ${rotateKeyframe} 0.5s infinite linear;
 
   &,
   &::after {
     border-radius: 50%;
-    width: ${({
-  size
-}: any) => size}px;
-    height: ${({
-  size
-}: any) => size}px;
+    width: ${({ size }: any) => size}px;
+    height: ${({ size }: any) => size}px;
   }
 `;

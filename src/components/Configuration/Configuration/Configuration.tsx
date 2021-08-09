@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { BookingHistoryContext } from '../../../context/BookingHistory';
+import { DataContext } from '../../../context/DataContext';
 import Login from '../Login';
 import Selector from '../Selector';
 
 import * as Styles from './Configuration.styles';
 
 export default class Configuration extends React.Component {
-  static contextType = BookingHistoryContext;
+  static contextType = DataContext;
 
   context: any;
 
@@ -20,4 +20,3 @@ export default class Configuration extends React.Component {
     return <Login />;
   }
 }
-

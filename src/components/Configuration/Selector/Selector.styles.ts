@@ -16,16 +16,10 @@ export const ClassTypes = styled.div`
   justify-content: center;
 `;
 
-const getCursor = ({
-  disabled
-}: any) => disabled ? 'not-allowed' : 'pointer';
-const getColor = ({
-  active
-}: any) => active ? '#a71b52' : '#fff';
-const getOpacity = ({
-  disabled
-}: any) => disabled ? 0.4 : 1;
-export const Button = styled.button`
+const getCursor = ({ disabled }: any) => (disabled ? 'not-allowed' : 'pointer');
+const getColor = ({ active }: any) => (active ? '#a71b52' : '#fff');
+const getOpacity = ({ disabled }: any) => (disabled ? 0.4 : 1);
+export const Button = styled.button<{ active: boolean; disabled: boolean }>`
   height: 30px;
   font-size: 16px;
   border: 1px solid ${getColor};

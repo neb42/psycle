@@ -2,11 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { select, selectAll } from 'd3-selection';
 import { axisBottom, axisLeft } from 'd3-axis';
-import { transition } from 'd3-transition';
 import { timeFormat } from 'd3-time-format';
 import { timeYear } from 'd3-time';
 
-import { BookingHistoryContext } from '../../../context/BookingHistory';
+import { DataContext } from '../../../context/DataContext';
 
 const StyledAxis = styled.g`
   & line {
@@ -40,15 +39,17 @@ type State = {
 };
 
 export default class Axis extends React.PureComponent<Props, State> {
-  state = {
+  state: State = {
     opacityX: 0,
     opacityY: 0,
   };
 
-  static contextType = BookingHistoryContext;
+  static contextType = DataContext;
 
   context: any;
+
   props: any;
+
   setState: any;
 
   componentDidMount() {
@@ -82,33 +83,32 @@ export default class Axis extends React.PureComponent<Props, State> {
     const {
       movingAverage: { xScale, yScale },
     } = this.context;
-    const axisX = axisBottom()
-      .scale(xScale)
-      .tickFormat((d: any) => {
-        if (timeYear(d) < d) {
-          return timeFormat('%b')(d);
-        } else {
-          return timeFormat('%Y')(d);
-        }
-      });
-    const axisY = axisLeft()
-      .scale(yScale)
-      .tickFormat(function(e: any) {
-        if (Math.floor(e) !== e) {
-          return;
-        }
-        return e;
-      });
+    const axisX = axisBottom(xScale).tickFormat((d: any) => {
+      if (timeYear(d) < d) {
+        return timeFormat('%b')(d);
+      }
+      return timeFormat('%Y')(d);
+    });
+    const axisY = axisLeft(yScale).tickFormat(function(e: any) {
+      if (Math.floor(e) !== e) {
+        return;
+      }
+      return e;
+    });
 
     select('.axis.x')
+      .append('g')
       .call(axisX)
-      .transition(transition().duration(600))
+      .transition()
+      .duration(600)
       .style('opacity', 0.7)
       .on('end', () => this.setState({ opacityX: 0.7 }));
 
     select('.axis.y')
+      .append('g')
       .call(axisY)
-      .transition(transition().duration(600))
+      .transition()
+      .duration(600)
       .style('opacity', 0.7)
       .on('end', () => this.setState({ opacityY: 0.7 }));
   };
@@ -117,7 +117,7 @@ export default class Axis extends React.PureComponent<Props, State> {
     const {
       weeklyLollipop: { xScale },
     } = this.context;
-    const axisX = axisBottom()
+    const axisX = axisBottom(xScale)
       .tickValues([0, 1440, 2 * 1440, 3 * 1440, 4 * 1440, 5 * 1440, 6 * 1440])
       .tickFormat((e: any) => {
         switch (e) {
@@ -138,17 +138,19 @@ export default class Axis extends React.PureComponent<Props, State> {
           default:
             return '';
         }
-      })
-      .scale(xScale);
+      });
 
     select('.axis.x')
+      .append('g')
       .call(axisX)
-      .transition(transition().duration(600))
+      .transition()
+      .duration(600)
       .style('opacity', 1)
       .on('end', () => this.setState({ opacityX: 1 }));
 
     selectAll('.axis.y')
-      .transition(transition().duration(600))
+      .transition()
+      .duration(600)
       .style('opacity', 0)
       .on('end', () => this.setState({ opacityY: 0 }));
   };
@@ -158,30 +160,32 @@ export default class Axis extends React.PureComponent<Props, State> {
       instructorBars: { xScale },
     } = this.context;
 
-    const axis = axisBottom()
-      .scale(xScale)
-      .tickFormat(function(e: any) {
-        if (Math.floor(e) !== e) {
-          return;
-        }
-        return e;
-      });
+    const axis = axisBottom(xScale).tickFormat(function(e: any) {
+      if (Math.floor(e) !== e) {
+        return;
+      }
+      return e;
+    });
 
     select('.axis.x')
+      .append('g')
       .call(axis)
-      .transition(transition().duration(600))
+      .transition()
+      .duration(600)
       .style('opacity', 1)
       .on('end', () => this.setState({ opacityX: 1 }));
 
     selectAll('.axis.y')
-      .transition(transition().duration(600))
+      .transition()
+      .duration(600)
       .style('opacity', 0)
       .on('end', () => this.setState({ opacityY: 0 }));
   };
 
   hide = () => {
     selectAll('.axis')
-      .transition(transition().duration(600))
+      .transition()
+      .duration(600)
       .style('opacity', 0)
       .on('end', () => this.setState({ opacityX: 0, opacityY: 0 }));
   };

@@ -1,13 +1,12 @@
-// @flow
-
 import React from 'react';
 
-import { BookingHistoryContext } from '../../../context/BookingHistory';
+import { DataContext } from '../../../context/DataContext';
 
 export default class FavouriteInstructor extends React.PureComponent {
-  static contextType = BookingHistoryContext;
+  static contextType = DataContext;
 
   context: any;
+
   props: any;
 
   get photo() {

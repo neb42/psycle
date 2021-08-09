@@ -8,10 +8,10 @@ import * as Studio2 from '../components/Studio/studio2';
 
 const studio1ContourDensity = (bookingHistory: any, width: any, height: any) => {
   const densityData = contourDensity()
-    .x(function(d: any) {
+    .x(function (d: any) {
       return Studio1.getX(d.spot);
     })
-    .y(function(d: any) {
+    .y(function (d: any) {
       return Studio1.getY(d.spot);
     })
     .size([width, height])
@@ -21,10 +21,10 @@ const studio1ContourDensity = (bookingHistory: any, width: any, height: any) => 
 
 const studio2ContourDensity = (bookingHistory: any, width: any, height: any) => {
   const densityData = contourDensity()
-    .x(function(d: any) {
+    .x(function (d: any) {
       return Studio2.getX(d.spot);
     })
-    .y(function(d: any) {
+    .y(function (d: any) {
       return Studio2.getY(d.spot);
     })
     .size([width, height])
@@ -33,35 +33,27 @@ const studio2ContourDensity = (bookingHistory: any, width: any, height: any) => 
 };
 
 const contourDensityColorScale = () => {
-  return scaleLinear()
+  return scaleLinear<string>()
     .domain([0, 0.0008]) // Points per square pixel.
     .range(['white', '#a71b52']);
 };
 
 const favouriteBikes = (bookingHistory: any) => {
   const bikeCount = nest()
-    .key(function(d: any) {
+    .key(function (d: any) {
       return d.spot;
     })
-    .rollup(function(v: any) {
+    .rollup(function (v: any) {
       return v.length;
     })
     .entries(bookingHistory);
   const maxBikeValue = max(bikeCount, (d: any) => d.value);
   return bikeCount
-    .filter(({
-    value
-  }: any) => value === maxBikeValue)
-    .map(({
-    key
-  }: any) => Number(key));
+    .filter(({ value }: any) => value === maxBikeValue)
+    .map(({ key }: any) => Number(key));
 };
 
-const data = ({
-  bookingHistory,
-  width,
-  height
-}: any) => ({
+const data = ({ bookingHistory, width, height }: any) => ({
   studio1ContourDensity: studio1ContourDensity(bookingHistory, width, height),
   studio2ContourDensity: studio2ContourDensity(bookingHistory, width, height),
   contourDensityColorScale: contourDensityColorScale(),

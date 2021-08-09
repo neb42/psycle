@@ -5,7 +5,7 @@ const weeklyLollipopText = (context: any) => {
   return {
     title,
     content,
-  };  
-}
+  };
+};
 
 export default weeklyLollipopText;

@@ -562,3 +562,4580 @@ export const fakeInstructors = {
     photo: 'https://psyclelondon.com/dynamic/thumbs/790x790e/1544128705Zoe-Profile.jpg',
   },
 };
+
+export const fakeRawData = {
+  data: [
+    {
+      id: 3514523,
+      event_id: 78508,
+      slot: 29,
+      booked_at: '2021-07-19T11:00:47.000000Z',
+      cancelled_at: null,
+      refundable_until: '2021-07-27T17:30:00.000000Z',
+      can_cancel: false,
+      credits_used: [
+        {
+          id: 2355827,
+          credit_type_id: 1,
+          bundle_id: 412,
+          payment_method_id: 1,
+          voucher_id: null,
+          location_restriction_id: null,
+          purchased_at_location_id: null,
+          added_by_customer: true,
+          added_by_user: false,
+          used_for_booking_id: 3514523,
+          expires_at: '2021-08-24T10:52:28.000000Z',
+          created_at: '2021-05-17T10:52:28.000000Z',
+        },
+      ],
+      subscription_used: null,
+      booked_by_customer: true,
+      cancelled_by_customer: false,
+      booked_by_user: false,
+      cancelled_by_user: false,
+      zoom_join_url: false,
+    },
+    {
+      id: 3511144,
+      event_id: 78097,
+      slot: 33,
+      booked_at: '2021-07-16T11:14:07.000000Z',
+      cancelled_at: null,
+      refundable_until: '2021-07-18T09:00:00.000000Z',
+      can_cancel: false,
+      credits_used: [
+        {
+          id: 2355828,
+          credit_type_id: 1,
+          bundle_id: 412,
+          payment_method_id: 1,
+          voucher_id: null,
+          location_restriction_id: null,
+          purchased_at_location_id: null,
+          added_by_customer: true,
+          added_by_user: false,
+          used_for_booking_id: 3511144,
+          expires_at: '2021-08-24T10:52:28.000000Z',
+          created_at: '2021-05-17T10:52:28.000000Z',
+        },
+      ],
+      subscription_used: null,
+      booked_by_customer: true,
+      cancelled_by_customer: false,
+      booked_by_user: false,
+      cancelled_by_user: false,
+      zoom_join_url: false,
+    },
+    {
+      id: 3482127,
+      event_id: 77705,
+      slot: 25,
+      booked_at: '2021-07-05T11:00:52.000000Z',
+      cancelled_at: null,
+      refundable_until: '2021-07-13T17:30:00.000000Z',
+      can_cancel: false,
+      credits_used: [
+        {
+          id: 2355825,
+          credit_type_id: 1,
+          bundle_id: 412,
+          payment_method_id: 1,
+          voucher_id: null,
+          location_restriction_id: null,
+          purchased_at_location_id: null,
+          added_by_customer: true,
+          added_by_user: false,
+          used_for_booking_id: 3482127,
+          expires_at: '2021-08-24T10:52:28.000000Z',
+          created_at: '2021-05-17T10:52:28.000000Z',
+        },
+      ],
+      subscription_used: null,
+      booked_by_customer: true,
+      cancelled_by_customer: false,
+      booked_by_user: false,
+      cancelled_by_user: false,
+      zoom_join_url: false,
+    },
+    {
+      id: 3464865,
+      event_id: 77450,
+      slot: 24,
+      booked_at: '2021-06-28T11:00:23.000000Z',
+      cancelled_at: null,
+      refundable_until: '2021-07-06T17:30:00.000000Z',
+      can_cancel: false,
+      credits_used: [
+        {
+          id: 2355824,
+          credit_type_id: 1,
+          bundle_id: 412,
+          payment_method_id: 1,
+          voucher_id: null,
+          location_restriction_id: null,
+          purchased_at_location_id: null,
+          added_by_customer: true,
+          added_by_user: false,
+          used_for_booking_id: 3464865,
+          expires_at: '2021-08-24T10:52:28.000000Z',
+          created_at: '2021-05-17T10:52:28.000000Z',
+        },
+      ],
+      subscription_used: null,
+      booked_by_customer: true,
+      cancelled_by_customer: false,
+      booked_by_user: false,
+      cancelled_by_user: false,
+      zoom_join_url: false,
+    },
+    {
+      id: 3414159,
+      event_id: 76649,
+      slot: 34,
+      booked_at: '2021-06-07T11:03:10.000000Z',
+      cancelled_at: null,
+      refundable_until: '2021-06-15T17:30:00.000000Z',
+      can_cancel: false,
+      credits_used: [
+        {
+          id: 2355823,
+          credit_type_id: 1,
+          bundle_id: 412,
+          payment_method_id: 1,
+          voucher_id: null,
+          location_restriction_id: null,
+          purchased_at_location_id: null,
+          added_by_customer: true,
+          added_by_user: false,
+          used_for_booking_id: 3414159,
+          expires_at: '2021-08-24T10:52:28.000000Z',
+          created_at: '2021-05-17T10:52:28.000000Z',
+        },
+      ],
+      subscription_used: null,
+      booked_by_customer: true,
+      cancelled_by_customer: false,
+      booked_by_user: false,
+      cancelled_by_user: false,
+      zoom_join_url: false,
+    },
+  ],
+  links: {
+    first: 'https://psycle.codexfit.com/api/v1/customer/bookings?page=1',
+    last: 'https://psycle.codexfit.com/api/v1/customer/bookings?page=14',
+    prev: null,
+    next: 'https://psycle.codexfit.com/api/v1/customer/bookings?page=2',
+  },
+  meta: {
+    current_page: 1,
+    from: 1,
+    last_page: 14,
+    links: [
+      {
+        url: null,
+        label: '&laquo; Previous',
+        active: false,
+      },
+      {
+        url: 'https://psycle.codexfit.com/api/v1/customer/bookings?page=1',
+        label: '1',
+        active: true,
+      },
+      {
+        url: 'https://psycle.codexfit.com/api/v1/customer/bookings?page=2',
+        label: '2',
+        active: false,
+      },
+      {
+        url: 'https://psycle.codexfit.com/api/v1/customer/bookings?page=3',
+        label: '3',
+        active: false,
+      },
+      {
+        url: 'https://psycle.codexfit.com/api/v1/customer/bookings?page=4',
+        label: '4',
+        active: false,
+      },
+      {
+        url: 'https://psycle.codexfit.com/api/v1/customer/bookings?page=5',
+        label: '5',
+        active: false,
+      },
+      {
+        url: 'https://psycle.codexfit.com/api/v1/customer/bookings?page=6',
+        label: '6',
+        active: false,
+      },
+      {
+        url: 'https://psycle.codexfit.com/api/v1/customer/bookings?page=7',
+        label: '7',
+        active: false,
+      },
+      {
+        url: 'https://psycle.codexfit.com/api/v1/customer/bookings?page=8',
+        label: '8',
+        active: false,
+      },
+      {
+        url: 'https://psycle.codexfit.com/api/v1/customer/bookings?page=9',
+        label: '9',
+        active: false,
+      },
+      {
+        url: 'https://psycle.codexfit.com/api/v1/customer/bookings?page=10',
+        label: '10',
+        active: false,
+      },
+      {
+        url: null,
+        label: '...',
+        active: false,
+      },
+      {
+        url: 'https://psycle.codexfit.com/api/v1/customer/bookings?page=13',
+        label: '13',
+        active: false,
+      },
+      {
+        url: 'https://psycle.codexfit.com/api/v1/customer/bookings?page=14',
+        label: '14',
+        active: false,
+      },
+      {
+        url: 'https://psycle.codexfit.com/api/v1/customer/bookings?page=2',
+        label: 'Next &raquo;',
+        active: false,
+      },
+    ],
+    path: 'https://psycle.codexfit.com/api/v1/customer/bookings',
+    per_page: '5',
+    to: 5,
+    total: 70,
+  },
+  message: null,
+  relations: {
+    events: [
+      {
+        id: 78508,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 91,
+        start_at: '2021-07-27T17:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2021-07-27T18:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 8,
+          },
+        ],
+        accepted_plans: [
+          {
+            plan_id: 1,
+          },
+          {
+            plan_id: 2,
+          },
+          {
+            plan_id: 3,
+          },
+          {
+            plan_id: 4,
+          },
+          {
+            plan_id: 8,
+          },
+          {
+            plan_id: 48,
+          },
+          {
+            plan_id: 49,
+          },
+          {
+            plan_id: 51,
+          },
+          {
+            plan_id: 50,
+          },
+          {
+            plan_id: 52,
+          },
+        ],
+        accepted_credits: [
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 8,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: null,
+        tags: [],
+      },
+      {
+        id: 78097,
+        event_type_id: 1,
+        instructor_id: 213,
+        studio_id: 65,
+        start_at: '2021-07-18T09:00:00.000000Z',
+        duration: 45,
+        bookable_until: '2021-07-18T09:45:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 8,
+          },
+        ],
+        accepted_plans: [
+          {
+            plan_id: 1,
+          },
+          {
+            plan_id: 2,
+          },
+          {
+            plan_id: 3,
+          },
+          {
+            plan_id: 4,
+          },
+          {
+            plan_id: 8,
+          },
+          {
+            plan_id: 49,
+          },
+          {
+            plan_id: 48,
+          },
+          {
+            plan_id: 50,
+          },
+          {
+            plan_id: 52,
+          },
+          {
+            plan_id: 51,
+          },
+        ],
+        accepted_credits: [
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 8,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: null,
+        tags: [],
+      },
+      {
+        id: 77705,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 68,
+        start_at: '2021-07-13T17:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2021-07-13T18:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 8,
+          },
+        ],
+        accepted_plans: [
+          {
+            plan_id: 2,
+          },
+          {
+            plan_id: 1,
+          },
+          {
+            plan_id: 3,
+          },
+          {
+            plan_id: 4,
+          },
+          {
+            plan_id: 8,
+          },
+          {
+            plan_id: 48,
+          },
+          {
+            plan_id: 49,
+          },
+          {
+            plan_id: 50,
+          },
+          {
+            plan_id: 51,
+          },
+          {
+            plan_id: 52,
+          },
+        ],
+        accepted_credits: [
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 8,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: null,
+        tags: [],
+      },
+      {
+        id: 77450,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 68,
+        start_at: '2021-07-06T17:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2021-07-06T18:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 8,
+          },
+        ],
+        accepted_plans: [
+          {
+            plan_id: 1,
+          },
+          {
+            plan_id: 2,
+          },
+          {
+            plan_id: 3,
+          },
+          {
+            plan_id: 4,
+          },
+          {
+            plan_id: 8,
+          },
+          {
+            plan_id: 48,
+          },
+          {
+            plan_id: 49,
+          },
+          {
+            plan_id: 50,
+          },
+          {
+            plan_id: 51,
+          },
+          {
+            plan_id: 52,
+          },
+        ],
+        accepted_credits: [
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 8,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: null,
+        tags: [],
+      },
+      {
+        id: 76649,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 68,
+        start_at: '2021-06-15T17:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2021-06-15T18:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 8,
+          },
+        ],
+        accepted_plans: [
+          {
+            plan_id: 1,
+          },
+          {
+            plan_id: 2,
+          },
+          {
+            plan_id: 3,
+          },
+          {
+            plan_id: 4,
+          },
+          {
+            plan_id: 8,
+          },
+          {
+            plan_id: 48,
+          },
+          {
+            plan_id: 49,
+          },
+          {
+            plan_id: 50,
+          },
+          {
+            plan_id: 51,
+          },
+          {
+            plan_id: 52,
+          },
+        ],
+        accepted_credits: [
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 8,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: null,
+        tags: [],
+      },
+      {
+        id: 75903,
+        event_type_id: 1,
+        instructor_id: 199,
+        studio_id: 65,
+        start_at: '2021-06-06T09:00:00.000000Z',
+        duration: 45,
+        bookable_until: '2021-06-06T09:45:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 8,
+          },
+        ],
+        accepted_plans: [
+          {
+            plan_id: 1,
+          },
+          {
+            plan_id: 2,
+          },
+          {
+            plan_id: 3,
+          },
+          {
+            plan_id: 4,
+          },
+          {
+            plan_id: 8,
+          },
+          {
+            plan_id: 48,
+          },
+          {
+            plan_id: 49,
+          },
+          {
+            plan_id: 50,
+          },
+          {
+            plan_id: 51,
+          },
+          {
+            plan_id: 52,
+          },
+        ],
+        accepted_credits: [
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 8,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: null,
+        tags: [],
+      },
+      {
+        id: 75498,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 68,
+        start_at: '2021-06-01T17:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2021-06-01T18:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 8,
+          },
+        ],
+        accepted_plans: [
+          {
+            plan_id: 1,
+          },
+          {
+            plan_id: 2,
+          },
+          {
+            plan_id: 3,
+          },
+          {
+            plan_id: 4,
+          },
+          {
+            plan_id: 8,
+          },
+          {
+            plan_id: 49,
+          },
+          {
+            plan_id: 48,
+          },
+          {
+            plan_id: 50,
+          },
+          {
+            plan_id: 51,
+          },
+          {
+            plan_id: 52,
+          },
+        ],
+        accepted_credits: [
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 8,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: null,
+        tags: [],
+      },
+      {
+        id: 75018,
+        event_type_id: 1,
+        instructor_id: 15,
+        studio_id: 68,
+        start_at: '2021-05-18T17:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2021-05-18T18:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 8,
+          },
+        ],
+        accepted_plans: [
+          {
+            plan_id: 1,
+          },
+          {
+            plan_id: 2,
+          },
+          {
+            plan_id: 3,
+          },
+          {
+            plan_id: 4,
+          },
+          {
+            plan_id: 8,
+          },
+          {
+            plan_id: 48,
+          },
+          {
+            plan_id: 49,
+          },
+          {
+            plan_id: 50,
+          },
+          {
+            plan_id: 51,
+          },
+          {
+            plan_id: 52,
+          },
+        ],
+        accepted_credits: [
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 8,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: true,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: {
+          workshop_url: null,
+          is_zoom_meeting: false,
+        },
+        tags: [],
+      },
+      {
+        id: 73219,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 68,
+        start_at: '2020-12-15T18:15:00.000000Z',
+        duration: 45,
+        bookable_until: '2020-12-15T19:00:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 8,
+          },
+        ],
+        accepted_plans: [
+          {
+            plan_id: 1,
+          },
+          {
+            plan_id: 2,
+          },
+          {
+            plan_id: 3,
+          },
+          {
+            plan_id: 4,
+          },
+          {
+            plan_id: 8,
+          },
+        ],
+        accepted_credits: [
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 8,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: null,
+        tags: [],
+      },
+      {
+        id: 72965,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 68,
+        start_at: '2020-12-08T18:15:00.000000Z',
+        duration: 45,
+        bookable_until: '2020-12-08T19:00:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 8,
+          },
+        ],
+        accepted_plans: [
+          {
+            plan_id: 1,
+          },
+          {
+            plan_id: 2,
+          },
+          {
+            plan_id: 3,
+          },
+          {
+            plan_id: 4,
+          },
+          {
+            plan_id: 8,
+          },
+        ],
+        accepted_credits: [
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 8,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: null,
+        tags: [],
+      },
+      {
+        id: 66395,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 47,
+        start_at: '2020-03-08T11:45:00.000000Z',
+        duration: 45,
+        bookable_until: '2020-03-08T12:30:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 65519,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 47,
+        start_at: '2020-02-25T18:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2020-02-25T19:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 65945,
+        event_type_id: 1,
+        instructor_id: 61,
+        studio_id: 55,
+        start_at: '2020-02-23T11:00:00.000000Z',
+        duration: 45,
+        bookable_until: '2020-02-23T11:45:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 65012,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 47,
+        start_at: '2020-02-18T18:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2020-02-18T19:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 64927,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 47,
+        start_at: '2020-02-13T19:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2020-02-13T20:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 65043,
+        event_type_id: 1,
+        instructor_id: 61,
+        studio_id: 55,
+        start_at: '2020-02-09T11:00:00.000000Z',
+        duration: 45,
+        bookable_until: '2020-02-09T11:45:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 64131,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 47,
+        start_at: '2020-02-04T18:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2020-02-04T19:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 64365,
+        event_type_id: 1,
+        instructor_id: 61,
+        studio_id: 55,
+        start_at: '2020-02-02T11:00:00.000000Z',
+        duration: 45,
+        bookable_until: '2020-02-02T11:45:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 63496,
+        event_type_id: 1,
+        instructor_id: 104,
+        studio_id: 55,
+        start_at: '2020-01-18T11:00:00.000000Z',
+        duration: 45,
+        bookable_until: '2020-01-18T11:45:00.000000Z',
+        description: '',
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 63128,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 47,
+        start_at: '2020-01-14T18:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2020-01-14T19:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 62752,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 47,
+        start_at: '2020-01-07T18:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2020-01-07T19:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 62679,
+        event_type_id: 1,
+        instructor_id: 61,
+        studio_id: 47,
+        start_at: '2020-01-03T10:00:00.000000Z',
+        duration: 45,
+        bookable_until: '2020-01-03T10:45:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 61575,
+        event_type_id: 1,
+        instructor_id: 146,
+        studio_id: 35,
+        start_at: '2019-12-07T10:00:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-12-07T10:45:00.000000Z',
+        description: '',
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 61170,
+        event_type_id: 1,
+        instructor_id: 23,
+        studio_id: 47,
+        start_at: '2019-12-03T18:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-12-03T19:15:00.000000Z',
+        description: '',
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 61098,
+        event_type_id: 1,
+        instructor_id: 146,
+        studio_id: 35,
+        start_at: '2019-11-29T08:00:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-11-29T08:45:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 60621,
+        event_type_id: 1,
+        instructor_id: 146,
+        studio_id: 35,
+        start_at: '2019-11-15T08:00:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-11-15T08:45:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 60299,
+        event_type_id: 1,
+        instructor_id: 146,
+        studio_id: 35,
+        start_at: '2019-11-08T08:00:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-11-08T08:45:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 59318,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 47,
+        start_at: '2019-10-27T11:45:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-10-27T12:30:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 59286,
+        event_type_id: 1,
+        instructor_id: 146,
+        studio_id: 35,
+        start_at: '2019-10-25T07:00:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-10-25T07:45:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 59246,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 47,
+        start_at: '2019-10-22T17:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-10-22T18:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 59201,
+        event_type_id: 1,
+        instructor_id: 146,
+        studio_id: 47,
+        start_at: '2019-10-19T14:00:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-10-19T14:45:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 58556,
+        event_type_id: 1,
+        instructor_id: 146,
+        studio_id: 35,
+        start_at: '2019-10-11T07:00:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-10-11T07:45:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 58339,
+        event_type_id: 1,
+        instructor_id: 23,
+        studio_id: 47,
+        start_at: '2019-10-06T10:45:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-10-06T11:30:00.000000Z',
+        description: '',
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 57954,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 47,
+        start_at: '2019-10-01T17:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-10-01T18:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 57634,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 47,
+        start_at: '2019-09-24T17:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-09-24T18:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 57187,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 47,
+        start_at: '2019-09-10T17:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-09-10T18:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 56844,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 47,
+        start_at: '2019-09-03T17:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-09-03T18:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 56773,
+        event_type_id: 1,
+        instructor_id: 146,
+        studio_id: 35,
+        start_at: '2019-08-30T07:00:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-08-30T07:45:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 56529,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 47,
+        start_at: '2019-08-27T17:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-08-27T18:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 56470,
+        event_type_id: 1,
+        instructor_id: 146,
+        studio_id: 35,
+        start_at: '2019-08-23T07:00:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-08-23T07:45:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 56116,
+        event_type_id: 1,
+        instructor_id: 146,
+        studio_id: 35,
+        start_at: '2019-08-16T07:00:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-08-16T07:45:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 55715,
+        event_type_id: 1,
+        instructor_id: 61,
+        studio_id: 55,
+        start_at: '2019-08-11T10:00:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-08-11T10:45:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 55404,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 47,
+        start_at: '2019-08-06T17:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-08-06T18:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 55217,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 47,
+        start_at: '2019-07-30T17:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-07-30T18:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 55122,
+        event_type_id: 1,
+        instructor_id: 122,
+        studio_id: 35,
+        start_at: '2019-07-24T17:00:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-07-24T17:45:00.000000Z',
+        description: '',
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 54488,
+        event_type_id: 5,
+        instructor_id: 170,
+        studio_id: 47,
+        start_at: '2019-07-17T17:30:00.000000Z',
+        duration: 60,
+        bookable_until: '2019-07-17T18:30:00.000000Z',
+        description: '',
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 54122,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 47,
+        start_at: '2019-07-14T10:45:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-07-14T11:30:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 53670,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 47,
+        start_at: '2019-07-09T17:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-07-09T18:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 53254,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 47,
+        start_at: '2019-07-02T17:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-07-02T18:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 53215,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 47,
+        start_at: '2019-06-30T10:45:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-06-30T11:30:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 53141,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 47,
+        start_at: '2019-06-25T17:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-06-25T18:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 52804,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 47,
+        start_at: '2019-06-18T17:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-06-18T18:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 52516,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 47,
+        start_at: '2019-06-11T17:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-06-11T18:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 52440,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 47,
+        start_at: '2019-06-06T18:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-06-06T19:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 51936,
+        event_type_id: 1,
+        instructor_id: 170,
+        studio_id: 47,
+        start_at: '2019-05-30T17:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-05-30T18:15:00.000000Z',
+        description: '',
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 51230,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 47,
+        start_at: '2019-05-21T17:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-05-21T18:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 51141,
+        event_type_id: 1,
+        instructor_id: 61,
+        studio_id: 47,
+        start_at: '2019-05-16T06:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-05-16T07:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 50231,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 47,
+        start_at: '2019-05-02T18:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-05-02T19:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 49832,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 47,
+        start_at: '2019-04-25T18:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-04-25T19:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 49285,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 47,
+        start_at: '2019-04-16T17:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-04-16T18:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 48843,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 47,
+        start_at: '2019-04-07T10:45:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-04-07T11:30:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 48255,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 38,
+        start_at: '2019-04-02T17:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-04-02T18:15:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 48183,
+        event_type_id: 1,
+        instructor_id: 112,
+        studio_id: 35,
+        start_at: '2019-03-29T08:00:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-03-29T08:45:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 47486,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 38,
+        start_at: '2019-03-19T18:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-03-19T19:15:00.000000Z',
+        description: '',
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 47426,
+        event_type_id: 1,
+        instructor_id: 111,
+        studio_id: 35,
+        start_at: '2019-03-15T19:00:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-03-15T19:45:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 47262,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 38,
+        start_at: '2019-03-10T11:45:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-03-10T12:30:00.000000Z',
+        description: '',
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 46917,
+        event_type_id: 1,
+        instructor_id: 42,
+        studio_id: 38,
+        start_at: '2019-03-05T18:30:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-03-05T19:15:00.000000Z',
+        description: '',
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 3,
+          },
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 3,
+          },
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: true,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+      {
+        id: 46825,
+        event_type_id: 1,
+        instructor_id: 68,
+        studio_id: 35,
+        start_at: '2019-02-27T19:00:00.000000Z',
+        duration: 45,
+        bookable_until: '2019-02-27T19:45:00.000000Z',
+        description: null,
+        required_credits: 1,
+        credit_types: [
+          {
+            credit_type: 1,
+          },
+          {
+            credit_type: 2,
+          },
+        ],
+        accepted_plans: [],
+        accepted_credits: [
+          {
+            credit_type_id: 1,
+          },
+          {
+            credit_type_id: 2,
+          },
+        ],
+        is_visible: true,
+        is_waitlistable: true,
+        is_always_bookable: false,
+        is_live_stream: false,
+        is_fully_booked: false,
+        status: 'finished',
+        metafields: [],
+        tags: [],
+      },
+    ],
+    instructors: [
+      {
+        id: 42,
+        handle: 'alana',
+        first_name: 'Alana',
+        last_name: null,
+        full_name: 'Alana ',
+        photo: 'https://codexfit.s3.eu-west-2.amazonaws.com/psycle/public/1574171409Alana_01.JPG',
+        metafields: {
+          tags: 'head-of-ride,ride,yoga,digital',
+          keywords: null,
+          description:
+            'Get ready for a physical and mental challenge like no other. Alana’s fierce and friendly attitude is truly inspirational, and her infectious charisma sweeps you along in one incredible workout – whether it’s on the bike during Ride, or on the mat in a sweaty Yoga class. You’ll feel energised and alive and excited for your next workout together.',
+          spotify_handle: 'alanamurrin',
+          twitter_handle: 'alanamurrin',
+          instagram_handle: 'alanamurrin',
+        },
+        image_1:
+          'https://codexfit.s3.eu-west-2.amazonaws.com/psycle/public/nT04Odhboou3jrqAnRsYf6fjfItC6ON5uYDlrRmC.jpeg',
+        image_2: null,
+        image_3: null,
+        image_4: null,
+        image_5: null,
+        is_visible: 1,
+      },
+      {
+        id: 213,
+        handle: 'amy-g',
+        first_name: 'Amy Garcia',
+        last_name: null,
+        full_name: 'Amy Garcia ',
+        photo:
+          'https://codexfit.s3.eu-west-2.amazonaws.com/psycle/public/X9KNmYjeiqYJb1trnR0y75fy58NAEjr4sHBucjVz.jpeg',
+        metafields: {
+          tags: 'ride',
+          keywords: null,
+          description:
+            'Hailing from Sydney, Australia, Amy brings the sunshine with her.  With a degree in Human Movement and Health Education, Amy is passionate about using movement to improve mindset and wellbeing. Her infectious positivity will leave you feeling energised, strong and inspired. A firm believer of anything is possible, Amy will motivate you to reach your full potential and get a serious sweat on. Get ready to ride!',
+          spotify_handle: null,
+          twitter_handle: null,
+          instagram_handle: 'theamyaspect',
+        },
+        image_1:
+          'https://codexfit.s3.eu-west-2.amazonaws.com/psycle/public/fRl4EVhO0mZLetKaOaPaJqrxl88Tsvnj6LX7BEtK.jpeg',
+        image_2: null,
+        image_3: null,
+        image_4: null,
+        image_5: null,
+        is_visible: 1,
+      },
+      {
+        id: 199,
+        handle: 'kristina',
+        first_name: 'Kristina',
+        last_name: null,
+        full_name: 'Kristina ',
+        photo:
+          'https://codexfit.s3.eu-west-2.amazonaws.com/psycle/public/1579172887Kristina_01.jpg',
+        metafields: {
+          tags: 'ride',
+          keywords: null,
+          description:
+            'Hailing from Calgary, Canada, Kristina landed in London in 2019. With a degree in early education, Kristina understands how to create a safe and energetic space to coach you towards your full potential. No two classes are the same and no genre is safe when it comes to her music: you can expect to be singing along to your favourite rock classics, EDM and pop remixes, and even the occasional country track.',
+          spotify_handle: '',
+          twitter_handle: '',
+          instagram_handle: 'kristinaenash',
+        },
+        image_1:
+          'https://codexfit.s3.eu-west-2.amazonaws.com/psycle/public/AyVDvlq8jDIDXxWLUg5UBjBNQwtiT4eJghfXsC9Q.jpeg',
+        image_2: null,
+        image_3: null,
+        image_4: null,
+        image_5: null,
+        is_visible: 1,
+      },
+      {
+        id: 15,
+        handle: 'natalie-walker',
+        first_name: 'Natalie',
+        last_name: null,
+        full_name: 'Natalie ',
+        photo: 'https://codexfit.s3.eu-west-2.amazonaws.com/psycle/public/1574171013Nat_01.JPG',
+        metafields: {
+          tags: 'ride,digital',
+          keywords: null,
+          description:
+            'Natalie will keep you on your toes and make sure things are unpredictable – in a good way – in her high-intensity Ride classes. Her fascination with neuroscience and the psychology behind decision-making is infused into her workouts. “Once you know how the mind makes decisions, you can push the boundaries and reach a higher physical potential,” she says. Too right!',
+          spotify_handle: null,
+          twitter_handle: 'nataliejanew',
+          instagram_handle: 'iamnataliejane',
+        },
+        image_1:
+          'https://codexfit.s3.eu-west-2.amazonaws.com/psycle/public/ttmZhEtClFJNjRiym52aG9vLdNxBkADLnJTouNDX.jpeg',
+        image_2: null,
+        image_3: null,
+        image_4: null,
+        image_5: null,
+        is_visible: 1,
+      },
+      {
+        id: 61,
+        handle: 'marion',
+        first_name: 'Marion',
+        last_name: null,
+        full_name: 'Marion ',
+        photo: 'https://codexfit.s3.eu-west-2.amazonaws.com/psycle/public/1574266691Marion_01.jpg',
+        metafields: {
+          tags: 'yoga,digital',
+          keywords: null,
+          description:
+            'Marion’s sessions are tough but extremely rewarding. Each class is full of energy and careful consideration for you, your body and mind. As a mother of two, she is passionate about supporting women in their journey through motherhood and has found working out to be THE answer to staying invigorated, positive and confident.',
+          spotify_handle: null,
+          twitter_handle: null,
+          instagram_handle: null,
+        },
+        image_1:
+          'https://codexfit.s3.eu-west-2.amazonaws.com/psycle/public/QMR00gQ5zU0GHthyZ1ytxa3J7QvJt4414VKVFFim.jpeg',
+        image_2: null,
+        image_3: null,
+        image_4: null,
+        image_5: null,
+        is_visible: 0,
+      },
+      {
+        id: 104,
+        handle: 'wolf',
+        first_name: 'Wolf',
+        last_name: null,
+        full_name: 'Wolf ',
+        photo: 'https://codexfit.s3.eu-west-2.amazonaws.com/psycle/public/1574171730Wolf_01.JPG',
+        metafields: {
+          tags: 'ride,digital',
+          keywords: null,
+          description:
+            'He motivates, he inspires and he helps you get better, stronger and faster in every workout. Born in Uganda and raised in Germany and London, Wolf was once a professional dancer and choreographer who’s performed with the likes of Little Mix, Rita Ora and Ellie Goulding. With Wolf you’ll feel challenged, grounded, connected and strong.',
+          spotify_handle: null,
+          twitter_handle: null,
+          instagram_handle: 'wolfgangmwanje',
+        },
+        image_1:
+          'https://codexfit.s3.eu-west-2.amazonaws.com/psycle/public/w3Nz5RPL8RfBtjZifYko72JgO42P7sbebh5t1Xiv.jpeg',
+        image_2: null,
+        image_3: null,
+        image_4: null,
+        image_5: null,
+        is_visible: 1,
+      },
+      {
+        id: 146,
+        handle: 'nat-c',
+        first_name: 'Nat C.',
+        last_name: null,
+        full_name: 'Nat C. ',
+        photo: 'https://codexfit.s3.eu-west-2.amazonaws.com/psycle/public/1574341721Nat_C_01.jpg',
+        metafields: {
+          tags: 'ride',
+          keywords: null,
+          description:
+            'Johannesburg born and Sydney raised, Nat is all about working hard, and making progressions on the bike. She helps you to focus in on why you came to the studio and uses her incredible sense of humour and charming nature to push you, challenge your mind and most importantly - have fun in the saddle.\n\nHer music blends motivational tribal beats, deep house bangers and some fun, old school hip hop and RnB tracks you probably haven’t heard in a while. This mix tape is the perfect soundtrack to a class that takes you on a personal journey leading you through the workout to reach the pinnacle moment of euphoria when you know that you’ve smashed it!',
+          spotify_handle: null,
+          twitter_handle: null,
+          instagram_handle: 'nataliechassay',
+        },
+        image_1:
+          'https://codexfit.s3.eu-west-2.amazonaws.com/psycle/public/fgs4esYRRzwcB3SnVAJOhgMHstrmnX3AePr2ofMk.jpeg',
+        image_2: null,
+        image_3: null,
+        image_4: null,
+        image_5: null,
+        is_visible: 1,
+      },
+      {
+        id: 23,
+        handle: 'lemon',
+        first_name: 'Lemon',
+        last_name: null,
+        full_name: 'Lemon ',
+        photo: 'https://codexfit.s3.eu-west-2.amazonaws.com/psycle/public/1574171399Lemon_01.JPG',
+        metafields: {
+          tags: 'ride,digital',
+          keywords: null,
+          description:
+            "If you're looking for energy then look no further than Lemon! Lemon knows a thing or two about how to be confident and in control. Her vocal range is off the charts and her sessions are always inspiring. Lemon embodies infectious enthusiasm and will help motivate and guide you to reach your full Ride potential.",
+          spotify_handle: null,
+          twitter_handle: 'lemonyworld',
+          instagram_handle: 'lemonyworld',
+        },
+        image_1:
+          'https://codexfit.s3.eu-west-2.amazonaws.com/psycle/public/koi5KwDiziFcfwg5xMEZGiLg1YaYEs5IaihBPMuy.jpeg',
+        image_2: null,
+        image_3: null,
+        image_4: null,
+        image_5: null,
+        is_visible: 1,
+      },
+      {
+        id: 122,
+        handle: 'cescie',
+        first_name: 'Cescie',
+        last_name: null,
+        full_name: 'Cescie ',
+        photo: 'https://codexfit.s3.eu-west-2.amazonaws.com/psycle/public/1574172651Cescie_01.JPG',
+        metafields: {
+          tags: 'ride',
+          keywords: null,
+          description:
+            "As a songwriter and musician, Cescie knows the power of music and it's at the core of everything she does. Her choice of tracks is calculated to touch every rider in the room. Cescie gets her riders connected with their bodies and helps them to be distracted in the best way from anything going on outside the studio. She’s got the strongest legs in Psycle and doesn’t take any crap - she will get the best out of every single one of you… no matter what it takes!",
+          spotify_handle: '',
+          twitter_handle: '',
+          instagram_handle: 'cesciemusic',
+        },
+        image_1:
+          'https://codexfit.s3.eu-west-2.amazonaws.com/psycle/public/Ild0frgI6v22P0XLyavqM27V9J0Qps7kxKGBZG0U.jpeg',
+        image_2: null,
+        image_3: null,
+        image_4: null,
+        image_5: null,
+        is_visible: 1,
+      },
+      {
+        id: 170,
+        handle: 'sunny',
+        first_name: 'Sunny',
+        last_name: null,
+        full_name: 'Sunny ',
+        photo: 'https://codexfit.s3.eu-west-2.amazonaws.com/psycle/public/1574173111Sunny_01.JPG',
+        metafields: {
+          tags: 'ride',
+          keywords: null,
+          description:
+            'Hailing from NYC, Sunny’s love for music inspired her career as a choreographer and dancer, working alongside some of the best artists in the biz including Beyoncé, Britney Spears and Lady Gaga. Her years of experience in the fitness industry span from the US all the way to Thailand and she brings her unique flare and creativity to Psycle in her role as Creative Director of Ride.\r\n\r\nA passionate coach and teacher, Sunny believes in the transformative power of movement and is ready to serve up some serious vibes on the podium!',
+          spotify_handle: null,
+          twitter_handle: null,
+          instagram_handle: 'sunnywalters',
+        },
+        image_1:
+          'https://codexfit.s3.eu-west-2.amazonaws.com/psycle/public/tREwHw4d5Gi80DbxUb9EmLjWZGIl3yuIS62QhrLM.jpeg',
+        image_2: null,
+        image_3: null,
+        image_4: null,
+        image_5: null,
+        is_visible: 0,
+      },
+      {
+        id: 112,
+        handle: 'felix',
+        first_name: 'Felix',
+        last_name: '',
+        full_name: 'Felix ',
+        photo:
+          'https://codexfit.s3.eu-west-2.amazonaws.com/psycle/public/1544013795Felix_Headshot.jpg',
+        metafields: {
+          tags: 'ride',
+          keywords: null,
+          description:
+            'Although a self confessed Britney Spears fan expect nothing but afro beats, R&B, house and hip hop vibes from Felix. Nigerian born and raised in London, Felix is passionate about feeling stronger than yesterday and is passionate about making sure you leave the bike feeling the same. Expect to have fun, push your limits and to ‘sweat your clothes off!’ ',
+          spotify_handle: '',
+          twitter_handle: '',
+          instagram_handle: 'flexionthegram',
+        },
+        image_1: null,
+        image_2: null,
+        image_3: null,
+        image_4: null,
+        image_5: null,
+        is_visible: 0,
+      },
+      {
+        id: 111,
+        handle: 'arianna',
+        first_name: 'Arianna',
+        last_name: null,
+        full_name: 'Arianna ',
+        photo: 'https://codexfit.s3.eu-west-2.amazonaws.com/psycle/public/1574172539Arianna_01.JPG',
+        metafields: {
+          tags: 'ride',
+          keywords: null,
+          description:
+            "Arianna's superpower is bringing people together to feel something incredible, and that's exactly what her classes deliver. Having started as a rider on the back row to now - killing it on the podium with her heavy EDM beats and boundless energy, she understands exactly what it's like to walk into a studio full of the unknown. Her classes are for riders who want to challenge themselves, get lost in the music and have fun doing it!\n\nArianna's advice is to 'listen to your body; not every class will be the same. You're going to push yourself in different ways each time; but every time you come back to that studio, you're stronger than the last.'",
+          spotify_handle: 'arianna radji lee',
+          twitter_handle: null,
+          instagram_handle: 'ariannaradjilee',
+        },
+        image_1:
+          'https://codexfit.s3.eu-west-2.amazonaws.com/psycle/public/diBrCksd4D80rdf2tyfnQEKsDfJd7S3ZfHUM73re.jpeg',
+        image_2: null,
+        image_3: null,
+        image_4: null,
+        image_5: null,
+        is_visible: 0,
+      },
+      {
+        id: 68,
+        handle: 'aanya',
+        first_name: 'Aanya',
+        last_name: null,
+        full_name: 'Aanya ',
+        photo: 'https://codexfit.s3.eu-west-2.amazonaws.com/psycle/public/1574171569Aanya_01.JPG',
+        metafields: {
+          tags: 'ride,digital',
+          keywords: null,
+          description:
+            'Sweat, sass and spirit are the foundations of Aanya’s Ride workouts. Get ready to push yourself to your limit and use your workout time as yours and yours only. You’ll share her mental release and empowering energy during the workout, while improving your mental and physical agility. Bring your A-game – let’s go!',
+          spotify_handle: null,
+          twitter_handle: null,
+          instagram_handle: 'aanya.h',
+        },
+        image_1:
+          'https://codexfit.s3.eu-west-2.amazonaws.com/psycle/public/j0Lv6Q0wvm9Nw9mSIZXMZ1P9RpoimsbrDHp6VGZz.jpeg',
+        image_2: null,
+        image_3: null,
+        image_4: null,
+        image_5: null,
+        is_visible: 1,
+      },
+    ],
+    event_types: [
+      {
+        id: 1,
+        name: 'Ride 45',
+        handle: 'ride-45',
+        group: {
+          id: 1,
+          name: 'Ride',
+          handle: 'ride',
+          metafields: {
+            email:
+              '<strong>WHAT TO BRING</strong><br />All you need is something comfortable to sweat in and a water bottle. We’ve got everything else covered! <br /><br /><strong>CHECKING IN</strong><br />We ask that you adhere to the following check-in process when arriving at the studio.<br />\n<ul>\n<li>Please arrive no more than 15 minutes and no fewer than 5 minutes before your class begins. Failure to do so will result in your spot being cancelled.</li>\n<li>If you are new to Psycle we recommend you check in at least 15 minutes before the start of your class so we can help you get set up. Please ensure you arrive ready to workout or with enough time to get ready; once the class has begun, we can’t let anyone enter the studio.</li>\n<li>Hand sanitiser must be used on arrival</li>\n<li>We ask that you respect the direction of traffic flow and adhere to the studio and floor signs to maintain a minimum safe distance</li>\n<li>Masks are mandatory in the communal areas of our studios. When entering the building, waiting for a class and leaving the venue, you will be required to wear a mask. This will not apply during the class, but we ask you wear a mask whilst entering the studio to protect yourself, others in the community and ensure we continue to have a safe space to workout together.</li>\n</ul>\n<p><strong>KEEPING YOU SAFE</strong></p>\n<p>The wellbeing of our Psycle community has always been top priority for us. In response to Covid-19, we’ve reviewed and updated our health and safety standards with guidance from health officials and with the safety of our team and community in mind. These can be viewed <u><strong><a href="https://psyclelondon.com/pages/reopening-may-17th">here</a></strong></u>.</p>\n<br><br>\n<p><strong></strong></p><p><strong>CANCELLATION POLICY</strong></p>\n<p>We understand that plans change. If you’re unable to make it to class, please cancel your space at least 12 hours before class starts. This is to give us time to ensure nobody else misses out on that class. Any spaces cancelled prior to the 12-hour cancellation window are automatically returned to your account.</p><br>\n<p>If you cancel within 12 hours of your class, your credit will be forfeited; however, if someone grabs your spot, your credit will automatically be returned to your account.</p><p>',
+          },
+          is_visible: 1,
+          order: 1,
+        },
+        metafields: {
+          description:
+            'Our signature class. Designed to maximise the benefits of group performance, each class blends high-intensity cardio, muscular strength training and choreography — all to a killer playlist.',
+        },
+        is_visible: 1,
+        background_color: null,
+        color: null,
+      },
+      {
+        id: 5,
+        name: 'Ride 60',
+        handle: 'ride-60',
+        group: {
+          id: 1,
+          name: 'Ride',
+          handle: 'ride',
+          metafields: {
+            email:
+              '<strong>WHAT TO BRING</strong><br />All you need is something comfortable to sweat in and a water bottle. We’ve got everything else covered! <br /><br /><strong>CHECKING IN</strong><br />We ask that you adhere to the following check-in process when arriving at the studio.<br />\n<ul>\n<li>Please arrive no more than 15 minutes and no fewer than 5 minutes before your class begins. Failure to do so will result in your spot being cancelled.</li>\n<li>If you are new to Psycle we recommend you check in at least 15 minutes before the start of your class so we can help you get set up. Please ensure you arrive ready to workout or with enough time to get ready; once the class has begun, we can’t let anyone enter the studio.</li>\n<li>Hand sanitiser must be used on arrival</li>\n<li>We ask that you respect the direction of traffic flow and adhere to the studio and floor signs to maintain a minimum safe distance</li>\n<li>Masks are mandatory in the communal areas of our studios. When entering the building, waiting for a class and leaving the venue, you will be required to wear a mask. This will not apply during the class, but we ask you wear a mask whilst entering the studio to protect yourself, others in the community and ensure we continue to have a safe space to workout together.</li>\n</ul>\n<p><strong>KEEPING YOU SAFE</strong></p>\n<p>The wellbeing of our Psycle community has always been top priority for us. In response to Covid-19, we’ve reviewed and updated our health and safety standards with guidance from health officials and with the safety of our team and community in mind. These can be viewed <u><strong><a href="https://psyclelondon.com/pages/reopening-may-17th">here</a></strong></u>.</p>\n<br><br>\n<p><strong></strong></p><p><strong>CANCELLATION POLICY</strong></p>\n<p>We understand that plans change. If you’re unable to make it to class, please cancel your space at least 12 hours before class starts. This is to give us time to ensure nobody else misses out on that class. Any spaces cancelled prior to the 12-hour cancellation window are automatically returned to your account.</p><br>\n<p>If you cancel within 12 hours of your class, your credit will be forfeited; however, if someone grabs your spot, your credit will automatically be returned to your account.</p><p>',
+          },
+          is_visible: 1,
+          order: 1,
+        },
+        metafields: {
+          description:
+            'The 60-minute version of our signature class — perfect for anyone wanting an extra challenge. Expect more interval training, extended upper body work and a focus on strength.',
+        },
+        is_visible: 1,
+        background_color: null,
+        color: null,
+      },
+    ],
+    studios: [
+      {
+        id: 91,
+        name: 'Studio 1',
+        handle: 'studio-1-new',
+        location_id: 1,
+        occupancy: 52,
+        layout: {
+          slots: [
+            {
+              id: 1,
+              x: 200,
+              y: 0,
+            },
+            {
+              id: 2,
+              x: 650,
+              y: 0,
+            },
+            {
+              id: 3,
+              x: 750,
+              y: 100,
+            },
+            {
+              id: 4,
+              x: 675,
+              y: 100,
+            },
+            {
+              id: 5,
+              x: 600,
+              y: 100,
+            },
+            {
+              id: 6,
+              x: 525,
+              y: 100,
+            },
+            {
+              id: 7,
+              x: 450,
+              y: 100,
+            },
+            {
+              id: 8,
+              x: 375,
+              y: 100,
+            },
+            {
+              id: 9,
+              x: 300,
+              y: 100,
+            },
+            {
+              id: 10,
+              x: 225,
+              y: 100,
+            },
+            {
+              id: 11,
+              x: 150,
+              y: 100,
+            },
+            {
+              id: 12,
+              x: 75,
+              y: 100,
+            },
+            {
+              id: 13,
+              x: 75,
+              y: 200,
+            },
+            {
+              id: 14,
+              x: 150,
+              y: 200,
+            },
+            {
+              id: 15,
+              x: 225,
+              y: 200,
+            },
+            {
+              id: 16,
+              x: 300,
+              y: 200,
+            },
+            {
+              id: 17,
+              x: 375,
+              y: 200,
+            },
+            {
+              id: 18,
+              x: 450,
+              y: 200,
+            },
+            {
+              id: 19,
+              x: 525,
+              y: 200,
+            },
+            {
+              id: 20,
+              x: 600,
+              y: 200,
+            },
+            {
+              id: 21,
+              x: 675,
+              y: 200,
+            },
+            {
+              id: 22,
+              x: 750,
+              y: 200,
+            },
+            {
+              id: 23,
+              x: 750,
+              y: 300,
+            },
+            {
+              id: 24,
+              x: 675,
+              y: 300,
+            },
+            {
+              id: 25,
+              x: 600,
+              y: 300,
+            },
+            {
+              id: 26,
+              x: 525,
+              y: 300,
+            },
+            {
+              id: 27,
+              x: 450,
+              y: 300,
+            },
+            {
+              id: 28,
+              x: 375,
+              y: 300,
+            },
+            {
+              id: 29,
+              x: 300,
+              y: 300,
+            },
+            {
+              id: 30,
+              x: 225,
+              y: 300,
+            },
+            {
+              id: 31,
+              x: 150,
+              y: 300,
+            },
+            {
+              id: 32,
+              x: 75,
+              y: 300,
+            },
+            {
+              id: 33,
+              x: 0,
+              y: 350,
+            },
+            {
+              id: 34,
+              x: 50,
+              y: 400,
+            },
+            {
+              id: 35,
+              x: 150,
+              y: 400,
+            },
+            {
+              id: 36,
+              x: 225,
+              y: 400,
+            },
+            {
+              id: 37,
+              x: 300,
+              y: 400,
+            },
+            {
+              id: 38,
+              x: 375,
+              y: 400,
+            },
+            {
+              id: 39,
+              x: 450,
+              y: 400,
+            },
+            {
+              id: 40,
+              x: 525,
+              y: 400,
+            },
+            {
+              id: 41,
+              x: 600,
+              y: 400,
+            },
+            {
+              id: 42,
+              x: 675,
+              y: 400,
+            },
+            {
+              id: 43,
+              x: 750,
+              y: 400,
+            },
+            {
+              id: 44,
+              x: 750,
+              y: 500,
+            },
+            {
+              id: 45,
+              x: 675,
+              y: 500,
+            },
+            {
+              id: 46,
+              x: 600,
+              y: 500,
+            },
+            {
+              id: 47,
+              x: 525,
+              y: 500,
+            },
+            {
+              id: 48,
+              x: 450,
+              y: 500,
+            },
+            {
+              id: 49,
+              x: 375,
+              y: 500,
+            },
+            {
+              id: 50,
+              x: 300,
+              y: 500,
+            },
+            {
+              id: 51,
+              x: 225,
+              y: 500,
+            },
+            {
+              id: 52,
+              x: 150,
+              y: 500,
+            },
+          ],
+          objects: [
+            {
+              id: 1,
+              x: 450,
+              y: 0,
+            },
+          ],
+        },
+        has_layout: true,
+        metafields: null,
+        is_visible: 0,
+      },
+      {
+        id: 65,
+        name: 'Studio 1 (OLD)',
+        handle: 'studio-1-old',
+        location_id: 8,
+        occupancy: 33,
+        layout: {
+          slots: [
+            {
+              id: 1,
+              x: 525,
+              y: 75,
+            },
+            {
+              id: 2,
+              x: 450,
+              y: 75,
+            },
+            {
+              id: 3,
+              x: 375,
+              y: 75,
+            },
+            {
+              id: 4,
+              x: 75,
+              y: 0,
+            },
+            {
+              id: 5,
+              x: 75,
+              y: 75,
+            },
+            {
+              id: 6,
+              x: -25,
+              y: 0,
+            },
+            {
+              id: 7,
+              x: -25,
+              y: 75,
+            },
+            {
+              id: 8,
+              x: -25,
+              y: 150,
+            },
+            {
+              id: 9,
+              x: 50,
+              y: 150,
+            },
+            {
+              id: 10,
+              x: 125,
+              y: 150,
+            },
+            {
+              id: 11,
+              x: 200,
+              y: 150,
+            },
+            {
+              id: 12,
+              x: 275,
+              y: 150,
+            },
+            {
+              id: 13,
+              x: 350,
+              y: 150,
+            },
+            {
+              id: 14,
+              x: 425,
+              y: 150,
+            },
+            {
+              id: 15,
+              x: 500,
+              y: 150,
+            },
+            {
+              id: 16,
+              x: 575,
+              y: 150,
+            },
+            {
+              id: 17,
+              x: -25,
+              y: 225,
+            },
+            {
+              id: 18,
+              x: 50,
+              y: 225,
+            },
+            {
+              id: 19,
+              x: 125,
+              y: 225,
+            },
+            {
+              id: 20,
+              x: 225,
+              y: 225,
+            },
+            {
+              id: 21,
+              x: 300,
+              y: 225,
+            },
+            {
+              id: 22,
+              x: 375,
+              y: 225,
+            },
+            {
+              id: 23,
+              x: 450,
+              y: 225,
+            },
+            {
+              id: 24,
+              x: 525,
+              y: 225,
+            },
+            {
+              id: 25,
+              x: -25,
+              y: 300,
+            },
+            {
+              id: 26,
+              x: 50,
+              y: 300,
+            },
+            {
+              id: 27,
+              x: 125,
+              y: 300,
+            },
+            {
+              id: 28,
+              x: 200,
+              y: 300,
+            },
+            {
+              id: 29,
+              x: 275,
+              y: 300,
+            },
+            {
+              id: 30,
+              x: 350,
+              y: 300,
+            },
+            {
+              id: 31,
+              x: 425,
+              y: 300,
+            },
+            {
+              id: 32,
+              x: 500,
+              y: 300,
+            },
+            {
+              id: 33,
+              x: 575,
+              y: 300,
+            },
+            {
+              id: 34,
+              x: 200,
+              y: 150,
+            },
+          ],
+          objects: [
+            {
+              id: 1,
+              x: 250,
+              y: 50,
+            },
+          ],
+        },
+        has_layout: true,
+        metafields: null,
+        is_visible: 1,
+      },
+      {
+        id: 68,
+        name: 'Studio 1 (OLD)',
+        handle: 'studio-1-old-2',
+        location_id: 1,
+        occupancy: 34,
+        layout: {
+          slots: [
+            {
+              id: 1,
+              x: 100,
+              y: 0,
+            },
+            {
+              id: 2,
+              x: 400,
+              y: 0,
+            },
+            {
+              id: 3,
+              x: 525,
+              y: 75,
+            },
+            {
+              id: 4,
+              x: 450,
+              y: 75,
+            },
+            {
+              id: 5,
+              x: 375,
+              y: 75,
+            },
+            {
+              id: 6,
+              x: 300,
+              y: 75,
+            },
+            {
+              id: 7,
+              x: 200,
+              y: 75,
+            },
+            {
+              id: 8,
+              x: 125,
+              y: 75,
+            },
+            {
+              id: 9,
+              x: 50,
+              y: 75,
+            },
+            {
+              id: 10,
+              x: -25,
+              y: 75,
+            },
+            {
+              id: 11,
+              x: -25,
+              y: 150,
+            },
+            {
+              id: 12,
+              x: 50,
+              y: 150,
+            },
+            {
+              id: 13,
+              x: 125,
+              y: 150,
+            },
+            {
+              id: 14,
+              x: 200,
+              y: 150,
+            },
+            {
+              id: 15,
+              x: 300,
+              y: 150,
+            },
+            {
+              id: 16,
+              x: 375,
+              y: 150,
+            },
+            {
+              id: 17,
+              x: 450,
+              y: 150,
+            },
+            {
+              id: 18,
+              x: 525,
+              y: 150,
+            },
+            {
+              id: 19,
+              x: 500,
+              y: 225,
+            },
+            {
+              id: 20,
+              x: 425,
+              y: 225,
+            },
+            {
+              id: 21,
+              x: 350,
+              y: 225,
+            },
+            {
+              id: 22,
+              x: 275,
+              y: 225,
+            },
+            {
+              id: 23,
+              x: 200,
+              y: 225,
+            },
+            {
+              id: 24,
+              x: 125,
+              y: 225,
+            },
+            {
+              id: 25,
+              x: 50,
+              y: 225,
+            },
+            {
+              id: 26,
+              x: -25,
+              y: 225,
+            },
+            {
+              id: 27,
+              x: -25,
+              y: 300,
+            },
+            {
+              id: 28,
+              x: 50,
+              y: 300,
+            },
+            {
+              id: 29,
+              x: 125,
+              y: 300,
+            },
+            {
+              id: 30,
+              x: 200,
+              y: 300,
+            },
+            {
+              id: 31,
+              x: 275,
+              y: 300,
+            },
+            {
+              id: 32,
+              x: 350,
+              y: 300,
+            },
+            {
+              id: 33,
+              x: 425,
+              y: 300,
+            },
+            {
+              id: 34,
+              x: 500,
+              y: 300,
+            },
+          ],
+          objects: [
+            {
+              id: 1,
+              x: 250,
+              y: 0,
+            },
+          ],
+        },
+        has_layout: true,
+        metafields: null,
+        is_visible: 1,
+      },
+      {
+        id: 47,
+        name: 'Studio 1',
+        handle: 'studio-1',
+        location_id: 1,
+        occupancy: 56,
+        layout: null,
+        has_layout: false,
+        metafields: {
+          id: 47,
+          name: 'Studio 1',
+          order: 54,
+          is_visible: 1,
+          seat_count: 56,
+          location_id: 1,
+          seating_plan_css_class: 'mortimer_studio_1_mar_2019',
+        },
+        is_visible: 1,
+      },
+      {
+        id: 55,
+        name: 'Studio 1',
+        handle: 'studio-1',
+        location_id: 8,
+        occupancy: 55,
+        layout: null,
+        has_layout: false,
+        metafields: {
+          id: 55,
+          name: 'Studio 1',
+          order: 55,
+          is_visible: 1,
+          seat_count: 55,
+          location_id: 8,
+          seating_plan_css_class: 'clapham_studio_1_july_2019',
+        },
+        is_visible: 1,
+      },
+      {
+        id: 35,
+        name: 'Studio 2',
+        handle: 'studio-2',
+        location_id: 1,
+        occupancy: 32,
+        layout: null,
+        has_layout: false,
+        metafields: {
+          id: 35,
+          name: 'Studio 2',
+          order: 35,
+          is_visible: 1,
+          seat_count: 32,
+          location_id: 1,
+          seating_plan_css_class: 'mortimer_studio_2_aug_2018',
+        },
+        is_visible: 1,
+      },
+      {
+        id: 38,
+        name: 'Studio 1 - Do not use',
+        handle: 'studio-1-do-not-use',
+        location_id: 1,
+        occupancy: 53,
+        layout: null,
+        has_layout: false,
+        metafields: {
+          id: 38,
+          name: 'Studio 1 - Do not use',
+          order: 38,
+          is_visible: 0,
+          seat_count: 53,
+          location_id: 1,
+          seating_plan_css_class: 'mortimer_studio_1_nov_2018',
+        },
+        is_visible: 0,
+      },
+    ],
+    locations: [
+      {
+        id: 1,
+        name: 'Mortimer St',
+        handle: 'mortimer-st',
+        description:
+          'Our Mortimer Street studio is just two minutes north of Oxford Circus tube, where Regent Street meets Mortimer Street.',
+        address: '76 Mortimer Street\nW1W 7SA, London',
+        telephone: '020 3150 2644',
+        email: 'mortimerst@psyclelondon.com',
+        image: '1574338623Mortimer-Header-1-v3.jpg',
+        metafield: null,
+        is_visible: 1,
+      },
+      {
+        id: 8,
+        name: 'Clapham',
+        handle: 'clapham',
+        description:
+          'Psycle Clapham is 5 minutes away from Clapham Junction station and situated just off Northcote Road on Battersea Rise.',
+        address: '82-84 Battersea Rise\nSW11 1EH, London',
+        telephone: '0203 319 6348',
+        email: 'clapham@psyclelondon.com',
+        image: '1574338705Clapham-Header-1-v3.jpg',
+        metafield: null,
+        is_visible: 1,
+      },
+    ],
+  },
+};

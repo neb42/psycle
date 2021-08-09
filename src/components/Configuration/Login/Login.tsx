@@ -1,97 +1,54 @@
 import React from 'react';
-import axios from 'axios';
 
-import { BookingHistoryContext } from '../../../context/BookingHistory';
 import Spinner from '../../Spinner';
-import { fakeBookingHistory, fakeInstructors } from '../../../Data/fakeData';
+import { DataContext } from '../../../context/DataContext';
 
 import * as Styles from './Login.styles';
 
 type Props = {
-  onLogin: (username: string, password: string) => Promise<void>,
 };
 
 type State = {
-  username: string,
-  password: string,
+  username: string;
+  password: string;
 };
 
 export default class Login extends React.Component<Props, State> {
   state: State = {
     username: '',
     password: '',
-    // @ts-expect-error ts-migrate(2322) FIXME: Type '{ username: string; password: string; loadin... Remove this comment to see the full error message
-    loading: false,
-    error: false,
   };
 
-  static contextType = BookingHistoryContext;
+  static contextType = DataContext;
 
   context: any;
-  props: any;
-  setState: any;
 
-  handleUsernameChange = (value: string) => {
-    this.setState({ username: value });
+  handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ username: event.target.value });
   };
 
-  handlePasswordChange = (value: string) => {
-    this.setState({ password: value });
+  handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ password: event.target.value });
   };
 
   handleSubmit = async (event: any) => {
     const { username, password } = this.state;
-    const { setData } = this.context;
-
+    const { login } = this.context;
     event.preventDefault();
-
-    try {
-      this.setState({ loading: true });
-      const [bookingHistory, instructors] = await Promise.all([
-        this.fetchBookingHistory(username, password),
-        this.fetchInstructors(),
-      ]);
-      setData(bookingHistory, instructors);
-      this.setState({ loading: false });
-    } catch (error) {
-      this.setState({ loading: false, error: true });
-    }
+    login(username, password);
   };
 
   handleFakeData = (event: any) => {
     event.preventDefault();
-
-    const { setData } = this.context;
-    setData(fakeBookingHistory, fakeInstructors);
-  }
-
-  fetchBookingHistory = async (username: string, password: string) => {
-    const {
-      data: { bookingHistory },
-    } = await axios.get(`/booking-history?username=${username}&password=${password}`, {
-      headers: {
-        'UserAPI-Key': 'qaZ6fkpjjwRgDl77PS4s8bd26IQ3EuZzCgyuAMdxO8SPpllbKo',
-      },
-    });
-    return bookingHistory;
-  };
-
-  fetchInstructors = async () => {
-    const {
-      data: { instructors },
-    } = await axios.get('/instructors', {
-      headers: {
-        'UserAPI-Key': 'qaZ6fkpjjwRgDl77PS4s8bd26IQ3EuZzCgyuAMdxO8SPpllbKo',
-      },
-    });
-    return instructors;
+    // login(username, password);
   };
 
   render() {
-    const { activeIndex } = this.props;
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'loading' does not exist on type 'State'.
-    const { username, password, loading, error } = this.state;
+    const { username, password } = this.state;
     const { loaded } = this.context;
+
+    const loading = false;
+    const error = false;
 
     if (loaded) {
       return null;
@@ -106,33 +63,21 @@ export default class Login extends React.Component<Props, State> {
     }
 
     return (
-      <Styles.Container visible={activeIndex === 0} onSubmit={this.handleSubmit}>
-        <Input
+      <Styles.Container onSubmit={this.handleSubmit}>
+        <input
           type="email"
           value={username}
           placeholder="username"
           onChange={this.handleUsernameChange}
         />
-        <Input
+        <input
           type="password"
           value={password}
           placeholder="password"
           onChange={this.handlePasswordChange}
         />
-        <Button
-          type="submit"
-          text="login"
-          size={Button.sizes.medium}
-          style={Button.styles.filled}
-          color={Button.colors.primary}
-        />
-        <Button
-          text="use fake data"
-          size={Button.sizes.medium}
-          style={Button.styles.naked}
-          color={Button.colors.inverse}
-          onClick={this.handleFakeData}
-        />
+        <button type="submit">Login</button>
+        <button>Use fake data</button>
         {error && <span>error</span>}
       </Styles.Container>
     );

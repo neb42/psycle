@@ -19,10 +19,11 @@ const STUDIO_START_INDEX = 5;
 
 export default class MortimerStreetRideVis extends React.Component {
   props: any;
+
   render() {
     const { width, height, svgWidth, svgHeight, activeIndex, progress } = this.props;
     return (
-      <React.Fragment>
+      <>
         <Axis
           activeIndex={activeIndex}
           height={height}
@@ -71,9 +72,14 @@ export default class MortimerStreetRideVis extends React.Component {
           />
         </Styles.VisGroup>
         <Styles.VisGroup startIndex={STUDIO_START_INDEX} activeIndex={activeIndex}>
-          <Studio activeIndex={activeIndex} width={svgWidth} height={svgHeight} startIndex={STUDIO_START_INDEX} />
+          <Studio
+            activeIndex={activeIndex}
+            width={svgWidth}
+            height={svgHeight}
+            startIndex={STUDIO_START_INDEX}
+          />
         </Styles.VisGroup>
-      </React.Fragment>
+      </>
     );
   }
 }

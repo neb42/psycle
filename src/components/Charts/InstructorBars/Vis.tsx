@@ -1,31 +1,34 @@
 import React from 'react';
-// @ts-expect-error ts-migrate(7016) FIXME: Could not find a declaration file for module 'd3-s... Remove this comment to see the full error message
 import { selectAll } from 'd3-selection';
-// @ts-expect-error ts-migrate(7016) FIXME: Could not find a declaration file for module 'd3-t... Remove this comment to see the full error message
-import { transition } from 'd3-transition';
 
-import { BookingHistoryContext } from '../../../context/BookingHistory';
+import { DataContext } from '../../../context/DataContext';
 
-type State = any;
+type Props = {
+  activeIndex: number;
+};
 
-export default class InstructorBars extends React.PureComponent<{}, State> {
-  state = {
-    // @ts-expect-error ts-migrate(2729) FIXME: Property 'props' is used before its initialization... Remove this comment to see the full error message
+type State = {
+  visible: boolean;
+};
+
+export default class InstructorBars extends React.PureComponent<Props, State> {
+  state: State = {
     visible: this.props.activeIndex === 2,
   };
 
-  static contextType = BookingHistoryContext;
+  static contextType = DataContext;
 
   context: any;
+
   props: any;
+
   setState: any;
 
   componentDidMount() {
     selectAll('.instructor-count-bar').data(this.context.instructorBars.instructorCounts);
   }
 
-  componentDidUpdate(prevProps: {}) {
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'activeIndex' does not exist on type '{}'... Remove this comment to see the full error message
+  componentDidUpdate(prevProps: Props) {
     const { activeIndex: prevIdx } = prevProps;
     const { activeIndex } = this.props;
 
@@ -50,10 +53,10 @@ export default class InstructorBars extends React.PureComponent<{}, State> {
     selectAll('.instructor-count-bar')
       .transition()
       .duration(600)
-      .delay(function(d: any, i: any) {
+      .delay(function (d: any, i: any) {
         return 300 * (i + 1);
       })
-      .attr('width', function(d: any) {
+      .attr('width', function (d: any) {
         return xScale(d.value);
       });
 
@@ -66,12 +69,11 @@ export default class InstructorBars extends React.PureComponent<{}, State> {
   };
 
   hide = () => {
-    selectAll('.bar-text')
-      .transition(transition().duration(600))
-      .attr('opacity', 0);
+    selectAll('.bar-text').transition().duration(600).attr('opacity', 0);
 
     selectAll('.instructor-count-bar')
-      .transition(transition().duration(600))
+      .transition()
+      .duration(600)
       .attr('width', 0)
       .on('end', () => this.setState({ visible: false }));
   };
@@ -95,9 +97,8 @@ export default class InstructorBars extends React.PureComponent<{}, State> {
     const { visible } = this.state;
 
     return (
-      <React.Fragment>
+      <>
         {instructorCounts.map((datum: any, i: any) => (
-          // @ts-expect-error ts-migrate(7026) FIXME: JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message
           <rect
             className="instructor-count-bar"
             width={this.rectWidth(datum)}
@@ -110,7 +111,6 @@ export default class InstructorBars extends React.PureComponent<{}, State> {
           />
         ))}
         {instructorCounts.map((datum: any, i: any) => (
-          // @ts-expect-error ts-migrate(7026) FIXME: JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message
           <text
             className="bar-text"
             x={width - 50}
@@ -125,10 +125,9 @@ export default class InstructorBars extends React.PureComponent<{}, State> {
             }}
           >
             {datum.key}
-          {/* @ts-expect-error ts-migrate(7026) FIXME: JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message */}
           </text>
         ))}
-      </React.Fragment>
+      </>
     );
   }
 }

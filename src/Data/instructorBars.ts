@@ -20,7 +20,7 @@ export const yScale = (bookingHistory: any, height: any) => {
   return scaleBand()
     .paddingInner(0.08)
     .domain(instructorCounts(bookingHistory).map((_: any, i: any) => i))
-    .range([0, height - 50], 0.1, 0.1);
+    .range([0, height - 50]);
 };
 
 export const xScale = (bookingHistory: any, width: any) => {
@@ -41,11 +41,7 @@ export const colorScale = (bookingHistory: any) => {
     .range([0.2, 0.7]);
 };
 
-const data = ({
-  bookingHistory,
-  width,
-  height
-}: any) => ({
+const data = ({ bookingHistory, width, height }: any) => ({
   instructorCounts: instructorCounts(bookingHistory),
   yScale: yScale(bookingHistory, height),
   xScale: xScale(bookingHistory, width),

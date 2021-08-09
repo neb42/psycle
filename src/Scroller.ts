@@ -1,6 +1,6 @@
-import { select } from 'd3-selection';
+import { BaseType, select, Selection } from 'd3-selection';
 import { timer } from 'd3-timer';
-import { dispatch } from 'd3-dispatch';
+import { Dispatch, dispatch } from 'd3-dispatch';
 import { bisect } from 'd3-array';
 
 /**
@@ -12,9 +12,9 @@ import { bisect } from 'd3-array';
  */
 
 export default class Scroller {
-  container;
+  container: Selection<BaseType, unknown, HTMLElement, any>;
 
-  dispatch;
+  dispatch: Dispatch<object>;
 
   sections: any;
 
@@ -60,9 +60,7 @@ export default class Scroller {
     // when window is scrolled call
     // position. When it is resized
     // call resize.
-    select(window)
-      .on('scroll.scroller', this.position)
-      .on('resize.scroller', this.resize);
+    select(window).on('scroll.scroller', this.position).on('resize.scroller', this.resize);
 
     // manually call resize
     // initially to setup
@@ -116,14 +114,16 @@ export default class Scroller {
     this.sectionPositions = [];
     let startPos: any;
     const that = this;
-    this.sections.each(function(this: any, d: any, i: any) {
+    this.sections.each(function (this: any, d: any, i: any) {
       const { top } = this.getBoundingClientRect();
       if (i === 0) {
         startPos = top;
       }
       that.sectionPositions.push(top - startPos);
     });
-    this.containerStart = this.container.node().getBoundingClientRect().top + window.pageYOffset;
+    const node = this.container.node(); 
+    if (node)
+    this.containerStart = (node as HTMLElement).getBoundingClientRect().top + window.pageYOffset;
   };
 
   /**

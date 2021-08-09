@@ -13,7 +13,7 @@ const data = (d: any) => ({
   instructorBars: instructorBars(d),
   studio: studio(d),
   weeklyLollipop: weeklyLollipop(d),
-  movingAverage: movingAverage(d)
+  movingAverage: movingAverage(d),
 });
 
 export default data;

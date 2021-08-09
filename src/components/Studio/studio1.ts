@@ -32,7 +32,6 @@ const pillarPosition = 28;
 const inset = 23;
 const bikeRadius = 18;
 const bikeGap = 10;
-const pillarSize = 28;
 
 export const bikeCount = 56;
 
@@ -43,9 +42,9 @@ export const getX = (bikeNumber: any) => {
     return 0;
   }
 
-  const rowIdx = rows.findIndex(r => bikeNumber >= r.start && bikeNumber <= r.end);
+  const rowIdx = rows.findIndex((r) => bikeNumber >= r.start && bikeNumber <= r.end);
   const columnIdx = bikeNumber - rows[rowIdx].start;
-  const rowIdxWithPillar = rows.findIndex(r => r.hasPillar);
+  const rowIdxWithPillar = rows.findIndex((r) => r.hasPillar);
   const afterPillar = rowIdx === rowIdxWithPillar && bikeNumber >= pillarPosition;
 
   const gapSum = columnIdx * bikeGap;
@@ -59,7 +58,7 @@ export const getY = (bikeNumber: any) => {
     return 0;
   }
 
-  const rowIdx = rows.findIndex(r => bikeNumber >= r.start && bikeNumber <= r.end);
+  const rowIdx = rows.findIndex((r) => bikeNumber >= r.start && bikeNumber <= r.end);
 
   const gapSum = rowIdx * bikeGap;
   const previousBikeSum = bikeRadius * 2 * (rowIdx + 1);
@@ -67,7 +66,7 @@ export const getY = (bikeNumber: any) => {
 };
 
 export const getPillarX = () => {
-  const rowIdx = rows.findIndex(r => r.hasPillar);
+  const rowIdx = rows.findIndex((r) => r.hasPillar);
   const columnIdx = pillarPosition - rows[rowIdx].start;
 
   const gapSum = columnIdx * bikeGap;
@@ -75,8 +74,8 @@ export const getPillarX = () => {
   return gapSum + previousBikeSum + inset * rows[rowIdx].inset;
 };
 
-export const getPillarY = () => {
-  const rowIdx = rows.findIndex(r => r.hasPillar);
+export const getPillarY = (pillarSize: number) => {
+  const rowIdx = rows.findIndex((r) => r.hasPillar);
 
   const gapSum = rowIdx * bikeGap;
   const previousBikeSum = bikeRadius * 2 * (rowIdx + 1);

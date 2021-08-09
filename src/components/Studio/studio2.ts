@@ -21,13 +21,12 @@ export const bikeCount = 32;
 
 export const hasPillar = false;
 
-// @ts-expect-error ts-migrate(7024) FIXME: Function implicitly has return type 'any' because ... Remove this comment to see the full error message
-export const getX = (bikeNumber: any) => {
+export const getX = (bikeNumber: any): number => {
   if (bikeNumber > bikeCount) {
     return getX(bikeCount);
   }
 
-  const rowIdx = rows.findIndex(r => bikeNumber >= r.start && bikeNumber <= r.end);
+  const rowIdx = rows.findIndex((r) => bikeNumber >= r.start && bikeNumber <= r.end);
   const columnIdx = bikeNumber - rows[rowIdx].start;
   const spacePosition = rows[rowIdx].space;
 
@@ -40,13 +39,12 @@ export const getX = (bikeNumber: any) => {
   );
 };
 
-// @ts-expect-error ts-migrate(7024) FIXME: Function implicitly has return type 'any' because ... Remove this comment to see the full error message
-export const getY = (bikeNumber: any) => {
+export const getY = (bikeNumber: any): number => {
   if (bikeNumber > bikeCount) {
     return getY(bikeCount);
   }
 
-  const rowIdx = rows.findIndex(r => bikeNumber >= r.start && bikeNumber <= r.end);
+  const rowIdx = rows.findIndex((r) => bikeNumber >= r.start && bikeNumber <= r.end);
 
   const gapSum = rowIdx * bikeGap;
   const previousBikeSum = bikeRadius * 2 * (rowIdx + 1);

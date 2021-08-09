@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
-const getOpacity = ({
-  isActive
-}: any) => (isActive ? 1 : 0.1);
+const getOpacity = ({ isActive }: any) => (isActive ? 1 : 0.1);
 
-export const Step = styled.section`
+export const Step = styled.section<{ isActive: boolean }>`
   margin-bottom: 200px;
   font-family: soin_sans_neueroman, sans-serif;
   font-size: 16px;

@@ -1,9 +1,8 @@
 import React from 'react';
 import { select, selectAll } from 'd3-selection';
-import { transition } from 'd3-transition';
 import styled from 'styled-components';
 
-import { BookingHistoryContext } from '../../../context/BookingHistory';
+import { DataContext } from '../../../context/DataContext';
 
 const A = styled.text`
   fill: #fff;
@@ -26,21 +25,30 @@ const C = styled.text`
   font-family: soin_sans_neueroman, sans-serif;
 `;
 
-type State = any;
+type Props = {
+  activeIndex: number;
+};
 
-export default class ClassCount extends React.PureComponent<{}, State> {
-  state = {
+type State = {
+  visible: boolean;
+  state: 0 | 1 | 2;
+};
+
+export default class ClassCount extends React.PureComponent<Props, State> {
+  state: State = {
     visible: this.props.activeIndex === this.props.startIndex,
+    state: 0,
   };
 
-  static contextType = BookingHistoryContext;
+  static contextType = DataContext;
 
   context: any;
+
   props: any;
+
   setState: any;
 
-  componentDidUpdate(prevProps: {}) {
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'activeIndex' does not exist on type '{}'... Remove this comment to see the full error message
+  componentDidUpdate(prevProps: Props) {
     const { activeIndex: prevIdx } = prevProps;
     const { activeIndex } = this.props;
 
@@ -68,63 +76,56 @@ export default class ClassCount extends React.PureComponent<{}, State> {
     // initialise
 
     select('.class-count.b')
-      .transition(transition().duration(0))
+      .transition()
+      .duration(0)
       .attr('x', width / 2)
       .attr('y', height / 3 + height / 5)
       .attr('opacity', 0);
 
     select('.class-count.c')
-      .transition(transition().duration(0))
+      .transition()
+      .duration(0)
       .attr('x', width / 2)
       .attr('y', height / 3 + height / 5)
       .attr('opacity', 0);
 
     select('.class-count.a')
-      .transition(transition().duration(0))
+      .transition()
+      .duration(0)
       .attr('transform', '')
       .attr('x', width / 2)
       .attr('y', height / 2);
 
     // step 1
 
-    select('.class-count.a')
-      .transition(transition().duration(transitionSpeed))
-      .attr('opacity', 1);
+    select('.class-count.a').transition().duration(transitionSpeed).attr('opacity', 1);
 
     // step 2
 
     select('.class-count.a')
-      .transition(
-        transition()
-          .duration(transitionSpeed)
-          .delay(transitionSpeed),
-      )
+      .transition()
+      .duration(transitionSpeed)
+      .delay(transitionSpeed)
       .attr('y', height / 3);
 
     select('.class-count.b')
-      .transition(
-        transition()
-          .duration(transitionSpeed)
-          .delay(transitionSpeed),
-      )
+      .transition()
+      .duration(transitionSpeed)
+      .delay(transitionSpeed)
       .attr('opacity', 1);
 
     // step 3
 
     select('.class-count.b')
-      .transition(
-        transition()
-          .duration(transitionSpeed)
-          .delay(transitionSpeed * 2),
-      )
+      .transition()
+      .duration(transitionSpeed)
+      .delay(transitionSpeed * 2)
       .attr('x', width / 5 + 45);
 
     select('.class-count.c')
-      .transition(
-        transition()
-          .duration(transitionSpeed)
-          .delay(transitionSpeed * 2),
-      )
+      .transition()
+      .duration(transitionSpeed)
+      .delay(transitionSpeed * 2)
       .attr('x', (width * 4) / 5 - 45)
       .attr('opacity', 1)
       .on('end', () => this.setState({ state: 1 }));
@@ -132,35 +133,38 @@ export default class ClassCount extends React.PureComponent<{}, State> {
 
   showFromBottom = () => {
     selectAll('.class-count')
-      .transition(transition().duration(600))
+      .transition()
+      .duration(600)
       .attr('opacity', 1)
       .on('end', () => this.setState({ state: 1 }));
   };
 
   hideFromTop = () => {
     selectAll('.class-count')
-      .transition(transition().duration(600))
+      .transition()
+      .duration(600)
       .attr('opacity', 0)
       .on('end', () => this.setState({ state: 0 }));
   };
 
   hideFromBottom = () => {
     selectAll('.class-count')
-      .transition(transition().duration(600))
+      .transition()
+      .duration(600)
       .attr('opacity', 0)
       .on('end', () => this.setState({ state: 2 }));
   };
 
   hide = () => {
     selectAll('.class-count')
-      .transition(transition().duration(600))
+      .transition()
+      .duration(600)
       .attr('opacity', 0)
       .on('end', () => this.setState({ opacity: 0 }));
   };
 
   get aProps(): Object {
     const { width, height } = this.props;
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'state' does not exist on type '{ visible... Remove this comment to see the full error message
     const { state } = this.state;
     return {
       x: width / 2,
@@ -171,7 +175,6 @@ export default class ClassCount extends React.PureComponent<{}, State> {
 
   get bProps(): Object {
     const { width, height } = this.props;
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'state' does not exist on type '{ visible... Remove this comment to see the full error message
     const { state } = this.state;
     return {
       x: state === 0 ? width / 2 : width / 5 + 45,
@@ -182,7 +185,6 @@ export default class ClassCount extends React.PureComponent<{}, State> {
 
   get cProps(): Object {
     const { width, height } = this.props;
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'state' does not exist on type '{ visible... Remove this comment to see the full error message
     const { state } = this.state;
     return {
       x: state === 0 ? width / 2 : (width * 4) / 5 - 45,
@@ -197,7 +199,7 @@ export default class ClassCount extends React.PureComponent<{}, State> {
     } = this.context;
 
     return (
-      <React.Fragment>
+      <>
         <A className="class-count a" {...this.aProps}>
           {count} classes
         </A>
@@ -207,7 +209,7 @@ export default class ClassCount extends React.PureComponent<{}, State> {
         <C className="class-count c" {...this.cProps}>
           {averagePerMonth} / month
         </C>
-      </React.Fragment>
+      </>
     );
   }
 }

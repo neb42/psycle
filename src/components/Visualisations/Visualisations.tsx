@@ -1,23 +1,33 @@
 import React from 'react';
 import { select, selectAll } from 'd3-selection';
 
-import { BookingHistoryContext } from '../../context/BookingHistory';
 import Sections from '../Sections';
 import Scroller from '../../Scroller';
-import MortimerStreetRideVis from './MortimerStreetRideVis';
+import { DataContext, Margin } from '../../context/DataContext';
 
+import MortimerStreetRideVis from './MortimerStreetRideVis';
 import * as Styles from './Visualisations.styles';
 
-type State1 = any;
+type Props = {
+  width: number;
+  height: number;
+  margin: Margin;
+};
 
-export default class Visualisations extends React.Component<{}, State1> {
-  static contextType = BookingHistoryContext;
+type State = {
+  activeIndex: number;
+  progress: number;
+};
+
+export default class Visualisations extends React.Component<Props, State> {
+  static contextType = DataContext;
 
   props: any;
+
   scroller: any;
+
   setState: any;
 
-  // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'State'.
   state: State = {
     activeIndex: -1,
     progress: 0,
@@ -86,7 +96,8 @@ export default class Visualisations extends React.Component<{}, State1> {
       <Styles.Container className="container">
         <Styles.Graphic id="graphic">
           <Sections activeIndex={activeIndex} progress={progress} />
-          <Styles.VisGroup index={0} activeIndex={activeIndex}>
+          {/* <Styles.VisGroup index={0} activeIndex={activeIndex}> */}
+          <Styles.VisGroup startIndex={0} activeIndex={activeIndex}>
             <Styles.Visualisations id="vis">
               <svg width={this.svgWidth} height={this.svgHeight}>
                 <g transform={this.groupTransform}>

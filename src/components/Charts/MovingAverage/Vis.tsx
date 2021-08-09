@@ -1,29 +1,22 @@
-import React, { useContext, useEffect, useCallback } from 'react';
-// @ts-expect-error ts-migrate(7016) FIXME: Could not find a declaration file for module 'd3-s... Remove this comment to see the full error message
+import React from 'react';
 import { line, curveBasis } from 'd3-shape';
-// @ts-expect-error ts-migrate(7016) FIXME: Could not find a declaration file for module 'd3-s... Remove this comment to see the full error message
 import { selectAll, select } from 'd3-selection';
-// @ts-expect-error ts-migrate(7016) FIXME: Could not find a declaration file for module 'd3-t... Remove this comment to see the full error message
-import { transition } from 'd3-transition';
-// @ts-expect-error ts-migrate(7016) FIXME: Could not find a declaration file for module 'd3-t... Remove this comment to see the full error message
 import { isoParse } from 'd3-time-format';
 
-import { BookingHistoryContext } from '../../../context/BookingHistory';
 import useChartTransition from '../../../hooks/useChartTransition';
+import { useDataContext } from '../../../context/DataContext';
 
-const MovingAverage = ({
-  width,
-  height,
-  activeIndex,
-  progress,
-  startIndex
-}: any) => {
-  const { movingAverage: { dataByMonth, xScale, yScale }} = useContext(BookingHistoryContext);
+const MovingAverage = ({ width, height, activeIndex, progress, startIndex }: any) => {
+  const {
+    movingAverage: { dataByMonth, xScale, yScale },
+  } = useDataContext();
 
   const show = () => {
-    const totalLength = select('.moving-average-path').node().getTotalLength();
+    const node = select('.moving-average-path').node();
+    if (!node) return;
+    const totalLength = (node as SVGPathElement).getTotalLength();
     selectAll('.moving-average-path')
-      .attr('stroke-dasharray', totalLength + ' ' + totalLength)
+      .attr('stroke-dasharray', `${totalLength} ${totalLength}`)
       .attr('stroke-dashoffset', totalLength)
       .transition()
       .duration(2000)
@@ -31,7 +24,9 @@ const MovingAverage = ({
   };
 
   const hide = () => {
-    const totalLength = select('.moving-average-path').node().getTotalLength();
+    const node = select('.moving-average-path').node();
+    if (!node) return;
+    const totalLength = (node as SVGPathElement).getTotalLength();
     selectAll('.moving-average-path')
       .transition()
       .duration(600)
@@ -39,17 +34,19 @@ const MovingAverage = ({
   };
 
   useChartTransition({ [startIndex]: show }, hide, activeIndex);
-      
-  const movingAverageLine = line()
-    .x((d: any) => xScale(isoParse(d.key)))
+
+  const movingAverageLine = line<typeof dataByMonth[number]>()
+    .x((d: any) => {
+      const date = isoParse(d.key);
+      return date ? xScale(date) : 0;
+    })
     .y((d: any) => yScale(d.value))
     .curve(curveBasis);
-       
+
   return (
-    // @ts-expect-error ts-migrate(7026) FIXME: JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message
     <path
       className="moving-average-path"
-      d={movingAverageLine(dataByMonth)}
+      d={movingAverageLine(dataByMonth) || undefined}
       stroke="#fff"
       strokeWidth="4px"
       strokeLinecap="round"

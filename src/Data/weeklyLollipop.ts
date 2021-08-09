@@ -21,7 +21,7 @@ const yScale = (bookingHistory: any, height: any) => {
   });
   return scaleLinear()
     .domain([countMax + Math.round(countMax * 0.05), 0])
-    .range([50, height], 0.1, 0.1);
+    .range([50, height]);
 };
 
 const xScale = (width: any) => {
@@ -30,11 +30,7 @@ const xScale = (width: any) => {
     .range([0, width]);
 };
 
-const data = ({
-  bookingHistory,
-  width,
-  height
-}: any) => ({
+const data = ({ bookingHistory, width, height }: any) => ({
   weeklyCount: weeklyCount(bookingHistory),
   yScale: yScale(bookingHistory, height),
   xScale: xScale(width),

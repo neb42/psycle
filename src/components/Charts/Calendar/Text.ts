@@ -1,9 +1,6 @@
 const calendarText = (context: any) => {
   const {
-    classCount: {
-      count,
-      monthCount,
-    },
+    classCount: { count, monthCount },
   } = context;
 
   const title = 'Your timeline';

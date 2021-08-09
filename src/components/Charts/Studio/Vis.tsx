@@ -1,31 +1,37 @@
 import React from 'react';
-// @ts-expect-error ts-migrate(7016) FIXME: Could not find a declaration file for module 'd3-s... Remove this comment to see the full error message
 import { selectAll } from 'd3-selection';
-// @ts-expect-error ts-migrate(7016) FIXME: Could not find a declaration file for module 'd3-t... Remove this comment to see the full error message
-import { transition } from 'd3-transition';
-// @ts-expect-error ts-migrate(7016) FIXME: Could not find a declaration file for module 'd3-g... Remove this comment to see the full error message
 import { geoPath } from 'd3-geo';
 
 import Studio from '../../Studio';
-import { BookingHistoryContext } from '../../../context/BookingHistory';
+import { DataContext } from '../../../context/DataContext';
 
-type State = any;
+type Props = {
+  activeIndex: number;
+  startIndex: number;
+};
 
-export default class StudioViz extends React.Component<{}, State> {
-  state = {
+type State = {
+  studio: 'studio1' | 'studio2' | null;
+  heatmap: boolean;
+  favouriteBike: boolean;
+};
+
+export default class StudioViz extends React.Component<Props, State> {
+  state: State = {
     studio: null,
     heatmap: false,
     favouriteBike: false,
   };
 
-  static contextType = BookingHistoryContext;
+  static contextType = DataContext;
 
   context: any;
+
   props: any;
+
   setState: any;
 
-  componentDidUpdate(prevProps: {}) {
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'activeIndex' does not exist on type '{}'... Remove this comment to see the full error message
+  componentDidUpdate(prevProps: Props) {
     const { activeIndex: prevIdx } = prevProps;
     const { activeIndex } = this.props;
 
@@ -34,7 +40,7 @@ export default class StudioViz extends React.Component<{}, State> {
     }
   }
 
-  handleActiveIndexChange = (activeIndex: any) => {
+  handleActiveIndexChange = (activeIndex: number) => {
     const { startIndex } = this.props;
     if (activeIndex === startIndex) {
       this.showStudio1();
@@ -70,7 +76,8 @@ export default class StudioViz extends React.Component<{}, State> {
   showHeatmap = (studio: any) => {
     this.setState({ favouriteBike: false });
     selectAll(`.heatmap-${studio}`)
-      .transition(transition().duration(600))
+      .transition()
+      .duration(600)
       .attr('opacity', 1)
       .on('end', () => this.setState({ heatmap: true }));
   };
@@ -78,7 +85,8 @@ export default class StudioViz extends React.Component<{}, State> {
   showFavouriteBike = (studio: any) => {
     this.setState({ favouriteBike: true });
     selectAll(`.heatmap-${studio}`)
-      .transition(transition().duration(600))
+      .transition()
+      .duration(600)
       .attr('opacity', 0)
       .on('end', () => this.setState({ heatmap: false }));
   };
@@ -89,7 +97,8 @@ export default class StudioViz extends React.Component<{}, State> {
       .heatmap-studio-1,
       .heatmap-studio-2
     `)
-      .transition(transition().duration(600))
+      .transition()
+      .duration(600)
       .attr('opacity', 0)
       .on('end', () => this.setState({ heatmap: false }));
   };
@@ -130,7 +139,7 @@ export default class StudioViz extends React.Component<{}, State> {
       },
     } = this.context;
     return (
-      <React.Fragment>
+      <>
         <Studio
           showCircle
           showFavouriteBikes={favouriteBike}
@@ -140,25 +149,23 @@ export default class StudioViz extends React.Component<{}, State> {
           width={width}
           transform={this.groupTransform}
         />
-        {/* @ts-expect-error ts-migrate(7026) FIXME: JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message */}
         <g
           className="heatmap-studio-1"
           opacity={this.heatmapStudio1Opacity}
           transform={this.groupTransform}
         >
-          {/* @ts-expect-error ts-migrate(7026) FIXME: JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message */}
-          {studio1ContourDensity.map((d: any) => <path d={geoPath()(d)} fill={contourDensityColorScale(d.value)} />)}
-        {/* @ts-expect-error ts-migrate(7026) FIXME: JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message */}
+          {studio1ContourDensity.map((d: any) => (
+            <path d={geoPath()(d) || undefined} fill={contourDensityColorScale(d.value)} />
+          ))}
         </g>
-        {/* @ts-expect-error ts-migrate(7026) FIXME: JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message */}
         <g
           className="heatmap-studio-2"
           opacity={this.heatmapStudio2Opacity}
           transform={this.groupTransform}
         >
-          {/* @ts-expect-error ts-migrate(7026) FIXME: JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message */}
-          {studio2ContourDensity.map((d: any) => <path d={geoPath()(d)} fill={contourDensityColorScale(d.value)} />)}
-        {/* @ts-expect-error ts-migrate(7026) FIXME: JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message */}
+          {studio2ContourDensity.map((d: any) => (
+            <path d={geoPath()(d) || undefined} fill={contourDensityColorScale(d.value)} />
+          ))}
         </g>
         <Studio
           showText
@@ -167,7 +174,7 @@ export default class StudioViz extends React.Component<{}, State> {
           width={width}
           transform={this.groupTransform}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

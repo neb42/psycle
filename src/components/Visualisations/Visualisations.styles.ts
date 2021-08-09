@@ -34,8 +34,19 @@ export const Subtitle = styled.text`
   text-anchor: middle;
 `;
 
-// @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'Props'.
-const delay = ({ property, startValue, endValue, time, reverse }: Props) => {
+const delay = ({
+  property,
+  startValue,
+  endValue,
+  time,
+  reverse,
+}: {
+  property: string;
+  startValue: string;
+  endValue: string;
+  time: string | number;
+  reverse?: boolean;
+}) => {
   const keyframe = keyframes`
     0% {
       ${property}: ${reverse ? endValue : startValue};
@@ -50,11 +61,8 @@ const delay = ({ property, startValue, endValue, time, reverse }: Props) => {
   `;
 };
 
-export const VisGroup = styled.g`
-  ${({
-  activeIndex,
-  startIndex
-}: any) =>
+export const VisGroup = styled.g<{ activeIndex: number; startIndex: number }>`
+  ${({ activeIndex, startIndex }) =>
     activeIndex < startIndex
       ? delay({
           property: 'visibility',
